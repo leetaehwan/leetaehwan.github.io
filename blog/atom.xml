@@ -2,11 +2,24 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://leetaehwan.github.io/blog</id>
     <title>개발자 이태환 블로그 Blog</title>
-    <updated>2023-03-18T00:00:00.000Z</updated>
+    <updated>2023-03-23T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://leetaehwan.github.io/blog"/>
     <subtitle>개발자 이태환 블로그 Blog</subtitle>
     <icon>https://leetaehwan.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[data tag sample]]></title>
+        <id>https://leetaehwan.github.io/blog/data-sample</id>
+        <link href="https://leetaehwan.github.io/blog/data-sample"/>
+        <updated>2023-03-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.]]></summary>
+        <content type="html"><![CDATA[<p>Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.</p>]]></content>
+        <author>
+            <name>이태환</name>
+            <uri>https://github.com/leetaehwan</uri>
+        </author>
+        <category label="data" term="data"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Greetings!]]></title>
         <id>https://leetaehwan.github.io/blog/greetings</id>
