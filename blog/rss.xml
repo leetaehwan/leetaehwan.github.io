@@ -9,15 +9,6 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
         <item>
-            <title><![CDATA[data tag sample]]></title>
-            <link>https://leetaehwan.github.io/blog/data-sample</link>
-            <guid>https://leetaehwan.github.io/blog/data-sample</guid>
-            <pubDate>Thu, 23 Mar 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.]]></description>
-            <content:encoded><![CDATA[<p>Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.</p>]]></content:encoded>
-            <category>data</category>
-        </item>
-        <item>
             <title><![CDATA[스프링 부트 구성요소 살펴보기]]></title>
             <link>https://leetaehwan.github.io/blog/spring-boot-component-research</link>
             <guid>https://leetaehwan.github.io/blog/spring-boot-component-research</guid>

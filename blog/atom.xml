@@ -8,19 +8,6 @@
     <subtitle>데이터 기반 쉐어링 Blog</subtitle>
     <icon>https://leetaehwan.github.io/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[data tag sample]]></title>
-        <id>https://leetaehwan.github.io/blog/data-sample</id>
-        <link href="https://leetaehwan.github.io/blog/data-sample"/>
-        <updated>2023-03-23T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.]]></summary>
-        <content type="html"><![CDATA[<p>Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.</p>]]></content>
-        <author>
-            <name>이태환</name>
-            <uri>https://github.com/leetaehwan</uri>
-        </author>
-        <category label="data" term="data"/>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[스프링 부트 구성요소 살펴보기]]></title>
         <id>https://leetaehwan.github.io/blog/spring-boot-component-research</id>
         <link href="https://leetaehwan.github.io/blog/spring-boot-component-research"/>
