@@ -1,17 +1,17 @@
 {
-  "defaultLocale": "en",
+  "defaultLocale": "ko",
   "locales": [
-    "en"
+    "ko"
   ],
   "path": "i18n",
-  "currentLocale": "en",
+  "currentLocale": "ko",
   "localeConfigs": {
-    "en": {
-      "label": "English",
+    "ko": {
+      "label": "한국어",
       "direction": "ltr",
-      "htmlLang": "en",
+      "htmlLang": "ko",
       "calendar": "gregory",
-      "path": "en"
+      "path": "ko"
     }
   }
 }

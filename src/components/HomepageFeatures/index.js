@@ -4,32 +4,32 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: '데이터 톺아보기',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        파이썬을 이용해, 넘파이와 판다스를 활용한 데이터 분석과
+        Seaborn과 matplotlib의 라이브러리를 활용해 시각화를 합니다.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '인공지능을 더한 융합지능 만들기',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        텐서플로와 파이토치를 활용한 딥러닝을 학습하고
+        근간이 되는 논문들을 파해친다.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '데이터 ETL',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        정형, 비정형 데이터들을 비즈니스 로직에 적합한 형식과 구조로 준비한다.
+        SQL 및 스프링 부트 프레임워크 학습
       </>
     ),
   },

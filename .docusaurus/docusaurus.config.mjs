@@ -4,8 +4,8 @@
  * Modify the docusaurus.config.js file at your site's root instead.
  */
 export default {
-  "title": "My Site",
-  "tagline": "Dinosaurs are cool",
+  "title": "개발자 이태환 블로그",
+  "tagline": "데이터를 활용하는 다양한 방법을 나누고 싶습니다.",
   "favicon": "img/favicon.ico",
   "url": "https://leetaehwan.github.io",
   "baseUrl": "/",
@@ -15,9 +15,9 @@ export default {
   "onBrokenLinks": "warn",
   "onBrokenMarkdownLinks": "warn",
   "i18n": {
-    "defaultLocale": "en",
+    "defaultLocale": "ko",
     "locales": [
-      "en"
+      "ko"
     ],
     "path": "i18n",
     "localeConfigs": {}
@@ -43,7 +43,7 @@ export default {
   "themeConfig": {
     "image": "img/docusaurus-social-card.jpg",
     "navbar": {
-      "title": "My Site",
+      "title": "데이터 기반 쉐어링",
       "logo": {
         "alt": "My Site Logo",
         "src": "img/logo.svg"
@@ -61,7 +61,7 @@ export default {
           "position": "left"
         },
         {
-          "href": "https://github.com/facebook/docusaurus",
+          "href": "https://github.com/leetaehwan",
           "label": "GitHub",
           "position": "right"
         }
@@ -106,7 +106,7 @@ export default {
             },
             {
               "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
+              "href": "https://github.com/leetaehwan"
             }
           ]
         }
