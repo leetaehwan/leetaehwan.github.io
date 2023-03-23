@@ -1,0 +1,56 @@
+{
+  "permalink": "/blog/docusaurus-deploy",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-03-23-docusaurus-deploy/2023-03-23-docusaurus-deploy.md",
+  "source": "@site/blog/2023-03-23-docusaurus-deploy/2023-03-23-docusaurus-deploy.md",
+  "title": "Docusaurus 깃허브 페이지 호스팅하기",
+  "description": "- 깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자.",
+  "date": "2023-03-23T00:00:00.000Z",
+  "formattedDate": "2023년 3월 23일",
+  "tags": [
+    {
+      "label": "web",
+      "permalink": "/blog/tags/web"
+    },
+    {
+      "label": "blog",
+      "permalink": "/blog/tags/blog"
+    },
+    {
+      "label": "writing",
+      "permalink": "/blog/tags/writing"
+    }
+  ],
+  "readingTime": 4.27,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "docusaurus-deploy",
+    "title": "Docusaurus 깃허브 페이지 호스팅하기",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "web",
+      "blog",
+      "writing"
+    ]
+  },
+  "nextItem": {
+    "title": "스프링 부트 구성요소 살펴보기",
+    "permalink": "/blog/spring-boot-component-research"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "/blog-a4e": {
+  "/blog-f11": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -7,7 +7,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "a61bc3fe"
+        "content": "f5d9fd2d"
+      },
+      {
+        "content": "5c321b4e"
       },
       {
         "content": "35f0e8ad"
@@ -34,13 +37,13 @@
     },
     "archive": "b2f554cd"
   },
-  "/blog/data-sample-582": {
+  "/blog/docusaurus-deploy-5f4": {
     "__comp": "ccc49370",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
-    "content": "a532d66e"
+    "content": "7b64115e"
   },
   "/blog/first-blog-post-0d7": {
     "__comp": "ccc49370",
@@ -74,6 +77,14 @@
     "sidebar": "814f3328",
     "content": "59362658"
   },
+  "/blog/spring-boot-component-research-656": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "740b0891"
+  },
   "/blog/tags-a90": {
     "__comp": "01a85c17",
     "__context": {
@@ -82,7 +93,7 @@
     "sidebar": "814f3328",
     "tags": "a7023ddc"
   },
-  "/blog/tags/data-e33": {
+  "/blog/tags/blog-b6a": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -90,7 +101,21 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "a61bc3fe"
+        "content": "f5d9fd2d"
+      }
+    ],
+    "tag": "631037e5",
+    "listMetadata": "3f3a03c1"
+  },
+  "/blog/tags/data-946": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "5c321b4e"
       }
     ],
     "tag": "332c576c",
@@ -177,6 +202,34 @@
     ],
     "tag": "e16015ca",
     "listMetadata": "4c9e35b1"
+  },
+  "/blog/tags/web-01a": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "f5d9fd2d"
+      }
+    ],
+    "tag": "74450489",
+    "listMetadata": "b059735e"
+  },
+  "/blog/tags/writing-c53": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "f5d9fd2d"
+      }
+    ],
+    "tag": "1bd5f201",
+    "listMetadata": "cb134c96"
   },
   "/blog/welcome-3cd": {
     "__comp": "ccc49370",

@@ -2,8 +2,12 @@
   "title": "Recent posts",
   "items": [
     {
-      "title": "data tag sample",
-      "permalink": "/blog/data-sample"
+      "title": "Docusaurus 깃허브 페이지 호스팅하기",
+      "permalink": "/blog/docusaurus-deploy"
+    },
+    {
+      "title": "스프링 부트 구성요소 살펴보기",
+      "permalink": "/blog/spring-boot-component-research"
     },
     {
       "title": "Greetings!",
@@ -16,10 +20,6 @@
     {
       "title": "MDX Blog Post",
       "permalink": "/blog/mdx-blog-post"
-    },
-    {
-      "title": "Long Blog Post",
-      "permalink": "/blog/long-blog-post"
     }
   ]
 }

@@ -1,0 +1,50 @@
+{
+  "permalink": "/blog/spring-boot-component-research",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-03-23-spring-boot/2023-03-23-spring-boot.md",
+  "source": "@site/blog/2023-03-23-spring-boot/2023-03-23-spring-boot.md",
+  "title": "스프링 부트 구성요소 살펴보기",
+  "description": "- 백엔드를 배워본 적이 없는 학생이 김영한 스프링 부트 입문 강의를 듣고 작성한 글이다.",
+  "date": "2023-03-23T00:00:00.000Z",
+  "formattedDate": "2023년 3월 23일",
+  "tags": [
+    {
+      "label": "data",
+      "permalink": "/blog/tags/data"
+    }
+  ],
+  "readingTime": 10.525,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "spring-boot-component-research",
+    "title": "스프링 부트 구성요소 살펴보기",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "data"
+    ]
+  },
+  "prevItem": {
+    "title": "Docusaurus 깃허브 페이지 호스팅하기",
+    "permalink": "/blog/docusaurus-deploy"
+  },
+  "nextItem": {
+    "title": "Greetings!",
+    "permalink": "/blog/greetings"
+  }
+}

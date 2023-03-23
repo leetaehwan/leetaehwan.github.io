@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', 'a4e'),
+    component: ComponentCreator('/blog', 'f11'),
     exact: true
   },
   {
@@ -13,8 +13,8 @@ export default [
     exact: true
   },
   {
-    path: '/blog/data-sample',
-    component: ComponentCreator('/blog/data-sample', '582'),
+    path: '/blog/docusaurus-deploy',
+    component: ComponentCreator('/blog/docusaurus-deploy', '5f4'),
     exact: true
   },
   {
@@ -38,13 +38,23 @@ export default [
     exact: true
   },
   {
+    path: '/blog/spring-boot-component-research',
+    component: ComponentCreator('/blog/spring-boot-component-research', '656'),
+    exact: true
+  },
+  {
     path: '/blog/tags',
     component: ComponentCreator('/blog/tags', 'a90'),
     exact: true
   },
   {
+    path: '/blog/tags/blog',
+    component: ComponentCreator('/blog/tags/blog', 'b6a'),
+    exact: true
+  },
+  {
     path: '/blog/tags/data',
-    component: ComponentCreator('/blog/tags/data', 'e33'),
+    component: ComponentCreator('/blog/tags/data', '946'),
     exact: true
   },
   {
@@ -70,6 +80,16 @@ export default [
   {
     path: '/blog/tags/hola',
     component: ComponentCreator('/blog/tags/hola', '07c'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/web',
+    component: ComponentCreator('/blog/tags/web', '01a'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/writing',
+    component: ComponentCreator('/blog/tags/writing', 'c53'),
     exact: true
   },
   {

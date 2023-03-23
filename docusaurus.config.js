@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: '개발자 이태환 블로그',
-  tagline: '데이터를 활용하는 다양한 방법을 나누고 싶습니다.',
+  title: '데이터 기반 쉐어링',
+  tagline: '데이터와 인공지능의 정보를 공유하는 이태환 블로그입니다.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -78,6 +78,8 @@ const config = {
             label: 'Portfolio',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/blog/tags/eda', label: 'EDA', position: 'left'},
+          {to: '/blog/tags/ai', label: 'AI', position: 'left'},
           {to: '/blog/tags/data', label: 'Data', position: 'left'},
           {
             href: 'https://github.com/leetaehwan',
@@ -129,7 +131,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Taehwan Lee. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
