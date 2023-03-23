@@ -1,5 +1,5 @@
 {
-  "/blog-c1b": {
+  "/blog-17f": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -8,9 +8,6 @@
     "items": [
       {
         "content": "35f0e8ad"
-      },
-      {
-        "content": "88721e2c"
       },
       {
         "content": "7661071f"
@@ -26,14 +23,6 @@
       }
     ],
     "metadata": "b2b675dd"
-  },
-  "/blog/2023/01/05/Seq2Seq-thesis-fd5": {
-    "__comp": "ccc49370",
-    "__context": {
-      "plugin": "4ed5a51b"
-    },
-    "sidebar": "814f3328",
-    "content": "7190cb4c"
   },
   "/blog/archive-c88": {
     "__comp": "9e4087bc",

@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: '개발자 이태환 블로그',
+  tagline: '데이터를 활용하는 다양한 방법을 나누고 싶습니다.',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -29,8 +29,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ko',
+    locales: ['ko'],
   },
 
   presets: [
@@ -65,7 +65,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: '데이터 기반 쉐어링',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -79,7 +79,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/leetaehwan',
             label: 'GitHub',
             position: 'right',
           },
@@ -123,7 +123,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/leetaehwan',
               },
             ],
           },

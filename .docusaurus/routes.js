@@ -4,12 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', 'c1b'),
-    exact: true
-  },
-  {
-    path: '/blog/2023/01/05/Seq2Seq-thesis',
-    component: ComponentCreator('/blog/2023/01/05/Seq2Seq-thesis', 'fd5'),
+    component: ComponentCreator('/blog', '17f'),
     exact: true
   },
   {
