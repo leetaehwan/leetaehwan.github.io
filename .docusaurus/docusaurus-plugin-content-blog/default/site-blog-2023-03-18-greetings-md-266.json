@@ -53,6 +53,10 @@
       "greetings"
     ]
   },
+  "prevItem": {
+    "title": "data tag sample",
+    "permalink": "/blog/data-sample"
+  },
   "nextItem": {
     "title": "Welcome",
     "permalink": "/blog/welcome"

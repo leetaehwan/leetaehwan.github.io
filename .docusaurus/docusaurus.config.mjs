@@ -53,11 +53,16 @@ export default {
           "type": "doc",
           "docId": "intro",
           "position": "left",
-          "label": "Tutorial"
+          "label": "Portfolio"
         },
         {
           "to": "/blog",
           "label": "Blog",
+          "position": "left"
+        },
+        {
+          "to": "/blog/tags/data",
+          "label": "Data",
           "position": "left"
         },
         {

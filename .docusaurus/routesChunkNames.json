@@ -1,11 +1,14 @@
 {
-  "/blog-17f": {
+  "/blog-a4e": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "a61bc3fe"
+      },
       {
         "content": "35f0e8ad"
       },
@@ -30,6 +33,14 @@
       "plugin": "4ed5a51b"
     },
     "archive": "b2f554cd"
+  },
+  "/blog/data-sample-582": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "a532d66e"
   },
   "/blog/first-blog-post-0d7": {
     "__comp": "ccc49370",
@@ -70,6 +81,20 @@
     },
     "sidebar": "814f3328",
     "tags": "a7023ddc"
+  },
+  "/blog/tags/data-e33": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "a61bc3fe"
+      }
+    ],
+    "tag": "332c576c",
+    "listMetadata": "e0eb994a"
   },
   "/blog/tags/docusaurus-8ee": {
     "__comp": "6875c492",

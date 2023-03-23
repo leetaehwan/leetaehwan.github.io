@@ -4,10 +4,19 @@
         <title>개발자 이태환 블로그 Blog</title>
         <link>https://leetaehwan.github.io/blog</link>
         <description>개발자 이태환 블로그 Blog</description>
-        <lastBuildDate>Sat, 18 Mar 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 23 Mar 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
+        <item>
+            <title><![CDATA[data tag sample]]></title>
+            <link>https://leetaehwan.github.io/blog/data-sample</link>
+            <guid>https://leetaehwan.github.io/blog/data-sample</guid>
+            <pubDate>Thu, 23 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.]]></description>
+            <content:encoded><![CDATA[<p>Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.</p>]]></content:encoded>
+            <category>data</category>
+        </item>
         <item>
             <title><![CDATA[Greetings!]]></title>
             <link>https://leetaehwan.github.io/blog/greetings</link>

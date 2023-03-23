@@ -2,6 +2,10 @@
   "title": "Recent posts",
   "items": [
     {
+      "title": "data tag sample",
+      "permalink": "/blog/data-sample"
+    },
+    {
       "title": "Greetings!",
       "permalink": "/blog/greetings"
     },
@@ -16,10 +20,6 @@
     {
       "title": "Long Blog Post",
       "permalink": "/blog/long-blog-post"
-    },
-    {
-      "title": "First Blog Post",
-      "permalink": "/blog/first-blog-post"
     }
   ]
 }

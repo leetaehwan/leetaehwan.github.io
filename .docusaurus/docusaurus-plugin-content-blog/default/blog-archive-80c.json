@@ -1,6 +1,52 @@
 {
   "blogPosts": [
     {
+      "id": "data-sample",
+      "metadata": {
+        "permalink": "/blog/data-sample",
+        "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-03-23-data-tag-sample.md",
+        "source": "@site/blog/2023-03-23-data-tag-sample.md",
+        "title": "data tag sample",
+        "description": "Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better.",
+        "date": "2023-03-23T00:00:00.000Z",
+        "formattedDate": "2023년 3월 23일",
+        "tags": [
+          {
+            "label": "data",
+            "permalink": "/blog/tags/data"
+          }
+        ],
+        "readingTime": 0.12,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "이태환",
+            "title": "개발자",
+            "url": "https://github.com/leetaehwan"
+          }
+        ],
+        "frontMatter": {
+          "slug": "data-sample",
+          "title": "data tag sample",
+          "authors": [
+            {
+              "name": "이태환",
+              "title": "개발자",
+              "url": "https://github.com/leetaehwan"
+            }
+          ],
+          "tags": [
+            "data"
+          ]
+        },
+        "nextItem": {
+          "title": "Greetings!",
+          "permalink": "/blog/greetings"
+        }
+      },
+      "content": "Hello. It's my first blog article to check whether I can create menu item in nav. It filters articles with tags to look better."
+    },
+    {
       "id": "greetings",
       "metadata": {
         "permalink": "/blog/greetings",
@@ -56,6 +102,10 @@
           "tags": [
             "greetings"
           ]
+        },
+        "prevItem": {
+          "title": "data tag sample",
+          "permalink": "/blog/data-sample"
         },
         "nextItem": {
           "title": "Welcome",
