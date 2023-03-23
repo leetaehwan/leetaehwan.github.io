@@ -1,0 +1,22 @@
+{
+  "permalink": "/blog/2023/01/05/Seq2Seq-thesis",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-01-05-Seq2Seq-thesis.md",
+  "source": "@site/blog/2023-01-05-Seq2Seq-thesis.md",
+  "title": "Seq2Seq-thesis",
+  "description": "<<<<<<< HEAD",
+  "date": "2023-01-05T00:00:00.000Z",
+  "formattedDate": "January 5, 2023",
+  "tags": [],
+  "readingTime": 17.475,
+  "hasTruncateMarker": false,
+  "authors": [],
+  "frontMatter": {},
+  "prevItem": {
+    "title": "Greetings!",
+    "permalink": "/blog/greetings"
+  },
+  "nextItem": {
+    "title": "Welcome",
+    "permalink": "/blog/welcome"
+  }
+}
