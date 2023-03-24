@@ -113,3 +113,7 @@ GIT_USER={깃허브 유저명} USE_SSH=true yarn deploy
 
 - 이제 000.github.io에 접속해보자.
 - 이제 내용을 꾸며보자.
+
+# refference
+- [docusaurus installation](https://docusaurus.io/docs/installation)
+- [docusaurus documentation](https://github.com/dochavez/Documenting-with-Docusaurus-V2.-)
