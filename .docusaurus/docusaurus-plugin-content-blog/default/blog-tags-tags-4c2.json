@@ -1,5 +1,15 @@
 [
   {
+    "label": "eda",
+    "permalink": "/blog/tags/eda",
+    "count": 1
+  },
+  {
+    "label": "pandas",
+    "permalink": "/blog/tags/pandas",
+    "count": 1
+  },
+  {
     "label": "web",
     "permalink": "/blog/tags/web",
     "count": 1

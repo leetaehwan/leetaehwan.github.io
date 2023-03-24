@@ -1,6 +1,61 @@
 {
   "blogPosts": [
     {
+      "id": "pandas-2-feature-1",
+      "metadata": {
+        "permalink": "/blog/pandas-2-feature-1",
+        "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-03-23-pandas2/2023-03-24-pandas2.md",
+        "source": "@site/blog/2023-03-23-pandas2/2023-03-24-pandas2.md",
+        "title": "넘파이와 친해진 판다스 2.0",
+        "description": "다양한 자료형을 지원하는 인덱스",
+        "date": "2023-03-24T00:00:00.000Z",
+        "formattedDate": "2023년 3월 24일",
+        "tags": [
+          {
+            "label": "eda",
+            "permalink": "/blog/tags/eda"
+          },
+          {
+            "label": "pandas",
+            "permalink": "/blog/tags/pandas"
+          }
+        ],
+        "readingTime": 2.83,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "이태환",
+            "title": "개발자",
+            "url": "https://github.com/leetaehwan",
+            "image_url": "https://github.com/leetaehwan.png",
+            "imageURL": "https://github.com/leetaehwan.png"
+          }
+        ],
+        "frontMatter": {
+          "slug": "pandas-2-feature-1",
+          "title": "넘파이와 친해진 판다스 2.0",
+          "authors": [
+            {
+              "name": "이태환",
+              "title": "개발자",
+              "url": "https://github.com/leetaehwan",
+              "image_url": "https://github.com/leetaehwan.png",
+              "imageURL": "https://github.com/leetaehwan.png"
+            }
+          ],
+          "tags": [
+            "eda",
+            "pandas"
+          ]
+        },
+        "nextItem": {
+          "title": "Docusaurus 깃허브 페이지 호스팅하기",
+          "permalink": "/blog/docusaurus-deploy"
+        }
+      },
+      "content": "## 다양한 자료형을 지원하는 인덱스\n- 인덱스가 dtype 속성에서 더많은 넘파이 숫자 자료형으로 지정할 수 있다. (e.g. np.int8, np.unit32, float32)\n\t- 기존에는 np.int64, np.uint64와 np.float64만이 지정가능했다.\n![](./pandas1.5-numeric-dtype.png)\n- 기존에는 인덱스의 자료형이 int, uint, flaot으로만 지정되고,\n- 64비트로만 지정이 가능으며 Int64Index 등으로 표현되었다.\n- 판다스2.0 부터는 다양한 비트의 숫자 자료형을 인덱스를 지원하게 되었다.\n- 그리고 인덱스의 이름도 Index로 통일되었다.\n\n![[pandas2.0-numeric-dtype 1.png]]\n- 인덱스가 더 넘파이 숫자 자료형을 가질 수 있어, 판다스 기능에 변화가 생겼다.\n- 특히 64비트로 생성하도록 강제되었던 작업들이 이제는 작은 비트 사이즈를 갖는 인덱스를 생성하게 되었다.\n## 넘파이 숫자 자료형으로 달라진 작업\n### 넘파이 배열\n- 넘파이 숫자형 배열을 인스턴스화 시킬 때 넘파이 배열의 자료형을 따르게 된다.\n- 이전에는, 모든 인덱스들이 64비트로 강제된 넘파이 숫자 배열로 생성되었다.\n![](./pandas1.5-arry-numeric-dtype.png)\n### 숫자 날짜 속성의 DatetimeIndex \n- 판다스 2.0 이전에는 DatetimeIndex(day, month, year)의 자료형이 int64이다.\n- 반면에 arrays.DatetimeArray에서는 32비트이다. \n- 2.0 이후 버전에서는 DatetimeIndex가 int32 자료형으로 변경되면서 통일되었다.\n![](./pandas2.0-datetime-dtype.png)\n\n### Series.sparse.from_coo()가 int32를 지원한다.\n- Series.sparse.from_coo()의 인덱스의 레벨 자료형이 int32 자료형이 되었다.\n- 2.0버전 이전에는 행과 열 모두 int64 자료형을 가졌다.\n![](./1.5-sparse-matrix-dtype.png)\n- 2.0 버전부터는 행과 열의 자료형이 int32로 바꼈다.\n![](./2.0-sparse-matrix-dtype.png)\n\n### Index가 float16 dtype으로 인스턴스화 시킬 수 없다.\n- 이전 버전에서는 Index를 float16의 자료형으로 인스턴스화 시키면 Float64Index로 생성되었다.\n- 이제 float16으로 자료형을 설정한 Index 인스턴스는 NotImplementedError의 에러를 발생한다.\n![](./NotImplementedError.png)\n\n- 다음 변경점들은 하나씩 포스팅 해보겠다. 그럼 이만\n\n\n## refference\n[판다스 공식 페이지](https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html)"
+    },
+    {
       "id": "docusaurus-deploy",
       "metadata": {
         "permalink": "/blog/docusaurus-deploy",
@@ -24,7 +79,7 @@
             "permalink": "/blog/tags/writing"
           }
         ],
-        "readingTime": 4.27,
+        "readingTime": 4.305,
         "hasTruncateMarker": false,
         "authors": [
           {
@@ -53,12 +108,16 @@
             "writing"
           ]
         },
+        "prevItem": {
+          "title": "넘파이와 친해진 판다스 2.0",
+          "permalink": "/blog/pandas-2-feature-1"
+        },
         "nextItem": {
           "title": "스프링 부트 구성요소 살펴보기",
           "permalink": "/blog/spring-boot-component-research"
         }
       },
-      "content": "- 깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자. \n\n# 목적\n- GitHub 블로그를 만들어보자.\n- Docusaurus를 사용해보자.\n\n# 작업순서\n![](./docusaurus-deploy.png)\n1. 깃허브 블로그 repo 생성\n2. 개발환경 구축\n3. Docusaurus 설치\n4. 로컬에서 서비스\n5. 깃허브 페이지에 배포\n\n# 깃허브 블로그 repo 생성\n![](./git-hub-repo-generation.png)\n- Repo 이름은 github 아이디.github.io로 작성한다.\n- Public 상태로 설정된 걸 확인하고 생성한다.\n\n# 개발환경 구축\n- Docusaurus 블로그를 구축하기 위해서는 Node.js, npm, yarn, git 등이 필요하다. 하나씩 따라해보자.\n\n## Node.js\n- 터미널(CLI)을 켜고, Node.js의 버전을 확인하자.\n- macOS의 터미널에서는 node -v 명령어를 통해 확인할 수 있다.\n- Docusaurus v2.3.1(2023.3월 기준)에는 v16.14 이상의 Node.js가 설치되어야 한다.\n- nvm을 통해서 설치나 버전을 관리할 수 있다.\n- 아래와 같은 명령어를 통해 최신버전으로 관리할 수 있다.\n\n```\nnpm install -g npm\n```\n\n## NPM\n- 위의 명령어로 npm이 설치되면 node.js와 npm이 설치가 된다.\n- npm -v 명령어를 통해 버전도 확인할 수 있다.\n- npm은 docusaurus를 로컬에서 테스트할 때 사용한다.\n\n## Yarn\n- Yarn을 통해서 우리는 빌드하고 배포한다.\n```\nnpm install --global yarn\n```\n- 다음과 같이 yarn을 설치한다.\n- 설치가 잘 됐는지, 버전을 확인하기 위해서 아래 명령어를 입력해보자.\n```\nyarn --version\n```\n\n# Git\n- 앞서 생성한 repo를 로컬에 클론을 떠와서 작업한다.\n![](./github-ssh-code.png)\n- 위의 화면같이 코드의 SSH코드를 복사하자.\n- CLI를 통하여 클론 폴더를 가질 로컬 폴더에 가서 아래의 명령어를 통해 클론을 진행한다.\n```\ngit clone {SSH 코드}\n```\n- 중괄호 없이 SSH 코드를 입력한다.\n- 그러면 로컬에 000.github.io repo 클론이 저장되었고, repo에 연결된다.\n\n- 이제 다음 단계로 넘어가자\n\n# Docusaurus 설치하기\n```\nnpx create-docusaurus@latest my-website classic\n```\n- 터미널현재 경로에서 my-website 폴더가 설치된다.\n- 해당 폴더 안의 폴더와 파일들을 모두 복사해 클론 repo인 000.github.io 폴더 안에 붙여넣는다.\n- 아래와 같이 깃 허브에 add / commit / push를 해보자.\n```\ngit add .\n```\n```\ngit commit -m 'test'\n```\n```\ngit push\n```\n\n## 로컬에서 docusaurus 서비스 테스트\n- 다시 CLI에서 000.github.io 폴더에 접근하여 아래 명령어를 입력한다.\n```\nyarn run start\n```\n- 그러면 http://localhost:3000 로컬 url을 통해서 접속할 수 있다.\n\n## 깃허브 페이지에 호스팅하기\n- docusaurus를 호스팅하는 다양한 방법이 있지만, 여기서는 깃허브페이지에 호스팅한다.\n- 먼저 빌드를 해야된다.\n```\nyarn build\n```\n- 이렇게 하면 build 폴더안에 콘텐츠들이 만들어진다. 이제 호스팅에 배포해보자.\n```\nGIT_USER={깃허브 유저명} USE_SSH=true yarn deploy\n```\n- 이렇게 하면 gh-pages라는 브랜치가 생성된다.\n- 여기 까지 했다면 깃허브 repo의 page 설정을 다시 확인해보자.\n![](./Github-pages-setting.png)\n- 그림과 같이 페이지 설정에 들어가서, gh-pages라는 브랜치로 저장한다.\n\n- 이제 000.github.io에 접속해보자.\n- 이제 내용을 꾸며보자."
+      "content": "- 깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자. \n\n# 목적\n- GitHub 블로그를 만들어보자.\n- Docusaurus를 사용해보자.\n\n# 작업순서\n![](./docusaurus-deploy.png)\n1. 깃허브 블로그 repo 생성\n2. 개발환경 구축\n3. Docusaurus 설치\n4. 로컬에서 서비스\n5. 깃허브 페이지에 배포\n\n# 깃허브 블로그 repo 생성\n![](./git-hub-repo-generation.png)\n- Repo 이름은 github 아이디.github.io로 작성한다.\n- Public 상태로 설정된 걸 확인하고 생성한다.\n\n# 개발환경 구축\n- Docusaurus 블로그를 구축하기 위해서는 Node.js, npm, yarn, git 등이 필요하다. 하나씩 따라해보자.\n\n## Node.js\n- 터미널(CLI)을 켜고, Node.js의 버전을 확인하자.\n- macOS의 터미널에서는 node -v 명령어를 통해 확인할 수 있다.\n- Docusaurus v2.3.1(2023.3월 기준)에는 v16.14 이상의 Node.js가 설치되어야 한다.\n- nvm을 통해서 설치나 버전을 관리할 수 있다.\n- 아래와 같은 명령어를 통해 최신버전으로 관리할 수 있다.\n\n```\nnpm install -g npm\n```\n\n## NPM\n- 위의 명령어로 npm이 설치되면 node.js와 npm이 설치가 된다.\n- npm -v 명령어를 통해 버전도 확인할 수 있다.\n- npm은 docusaurus를 로컬에서 테스트할 때 사용한다.\n\n## Yarn\n- Yarn을 통해서 우리는 빌드하고 배포한다.\n```\nnpm install --global yarn\n```\n- 다음과 같이 yarn을 설치한다.\n- 설치가 잘 됐는지, 버전을 확인하기 위해서 아래 명령어를 입력해보자.\n```\nyarn --version\n```\n\n# Git\n- 앞서 생성한 repo를 로컬에 클론을 떠와서 작업한다.\n![](./github-ssh-code.png)\n- 위의 화면같이 코드의 SSH코드를 복사하자.\n- CLI를 통하여 클론 폴더를 가질 로컬 폴더에 가서 아래의 명령어를 통해 클론을 진행한다.\n```\ngit clone {SSH 코드}\n```\n- 중괄호 없이 SSH 코드를 입력한다.\n- 그러면 로컬에 000.github.io repo 클론이 저장되었고, repo에 연결된다.\n\n- 이제 다음 단계로 넘어가자\n\n# Docusaurus 설치하기\n```\nnpx create-docusaurus@latest my-website classic\n```\n- 터미널현재 경로에서 my-website 폴더가 설치된다.\n- 해당 폴더 안의 폴더와 파일들을 모두 복사해 클론 repo인 000.github.io 폴더 안에 붙여넣는다.\n- 아래와 같이 깃 허브에 add / commit / push를 해보자.\n```\ngit add .\n```\n```\ngit commit -m 'test'\n```\n```\ngit push\n```\n\n## 로컬에서 docusaurus 서비스 테스트\n- 다시 CLI에서 000.github.io 폴더에 접근하여 아래 명령어를 입력한다.\n```\nyarn run start\n```\n- 그러면 http://localhost:3000 로컬 url을 통해서 접속할 수 있다.\n\n## 깃허브 페이지에 호스팅하기\n- docusaurus를 호스팅하는 다양한 방법이 있지만, 여기서는 깃허브페이지에 호스팅한다.\n- 먼저 빌드를 해야된다.\n```\nyarn build\n```\n- 이렇게 하면 build 폴더안에 콘텐츠들이 만들어진다. 이제 호스팅에 배포해보자.\n```\nGIT_USER={깃허브 유저명} USE_SSH=true yarn deploy\n```\n- 이렇게 하면 gh-pages라는 브랜치가 생성된다.\n- 여기 까지 했다면 깃허브 repo의 page 설정을 다시 확인해보자.\n![](./Github-pages-setting.png)\n- 그림과 같이 페이지 설정에 들어가서, gh-pages라는 브랜치로 저장한다.\n\n- 이제 000.github.io에 접속해보자.\n- 이제 내용을 꾸며보자.\n\n# refference\n- [docusaurus installation](https://docusaurus.io/docs/installation)\n- [docusaurus documentation](https://github.com/dochavez/Documenting-with-Docusaurus-V2.-)"
     },
     {
       "id": "spring-boot-component-research",

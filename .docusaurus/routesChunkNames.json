@@ -1,11 +1,14 @@
 {
-  "/blog-f11": {
+  "/blog-d5b": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "4e20ab3a"
+      },
       {
         "content": "f5d9fd2d"
       },
@@ -77,6 +80,14 @@
     "sidebar": "814f3328",
     "content": "59362658"
   },
+  "/blog/pandas-2-feature-1-973": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "4316c688"
+  },
   "/blog/spring-boot-component-research-656": {
     "__comp": "ccc49370",
     "__context": {
@@ -144,6 +155,20 @@
     "tag": "a80da1cf",
     "listMetadata": "608ae6a4"
   },
+  "/blog/tags/eda-07c": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "4e20ab3a"
+      }
+    ],
+    "tag": "e9ebc1cc",
+    "listMetadata": "b6e03d41"
+  },
   "/blog/tags/facebook-289": {
     "__comp": "6875c492",
     "__context": {
@@ -202,6 +227,20 @@
     ],
     "tag": "e16015ca",
     "listMetadata": "4c9e35b1"
+  },
+  "/blog/tags/pandas-446": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "4e20ab3a"
+      }
+    ],
+    "tag": "d740a617",
+    "listMetadata": "0a2019c5"
   },
   "/blog/tags/web-01a": {
     "__comp": "6875c492",

@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', 'f11'),
+    component: ComponentCreator('/blog', 'd5b'),
     exact: true
   },
   {
@@ -38,6 +38,11 @@ export default [
     exact: true
   },
   {
+    path: '/blog/pandas-2-feature-1',
+    component: ComponentCreator('/blog/pandas-2-feature-1', '973'),
+    exact: true
+  },
+  {
     path: '/blog/spring-boot-component-research',
     component: ComponentCreator('/blog/spring-boot-component-research', '656'),
     exact: true
@@ -63,6 +68,11 @@ export default [
     exact: true
   },
   {
+    path: '/blog/tags/eda',
+    component: ComponentCreator('/blog/tags/eda', '07c'),
+    exact: true
+  },
+  {
     path: '/blog/tags/facebook',
     component: ComponentCreator('/blog/tags/facebook', '289'),
     exact: true
@@ -80,6 +90,11 @@ export default [
   {
     path: '/blog/tags/hola',
     component: ComponentCreator('/blog/tags/hola', '07c'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/pandas',
+    component: ComponentCreator('/blog/tags/pandas', '446'),
     exact: true
   },
   {
