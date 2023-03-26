@@ -1,0 +1,51 @@
+{
+  "permalink": "/blog/spring-boot-dev-basic",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-03-25-Spring-boot-dev-basic/2023-03-25-Spring-boot-dev-basic.md",
+  "source": "@site/blog/2023-03-25-Spring-boot-dev-basic/2023-03-25-Spring-boot-dev-basic.md",
+  "title": "스프링 부트 개발의 기초 상식",
+  "description": "- 애플리케이션이 어떻게 동작하는지",
+  "date": "2023-03-25T00:00:00.000Z",
+  "formattedDate": "2023년 3월 25일",
+  "tags": [
+    {
+      "label": "eda",
+      "permalink": "/blog/tags/eda"
+    },
+    {
+      "label": "pandas",
+      "permalink": "/blog/tags/pandas"
+    }
+  ],
+  "readingTime": 11.375,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "spring-boot-dev-basic",
+    "title": "스프링 부트 개발의 기초 상식",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "eda",
+      "pandas"
+    ]
+  },
+  "nextItem": {
+    "title": "넘파이와 친해진 판다스 2.0",
+    "permalink": "/blog/pandas-2-feature-1"
+  }
+}

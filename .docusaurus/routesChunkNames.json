@@ -1,5 +1,5 @@
 {
-  "/blog-d5b": {
+  "/blog-12e": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -7,7 +7,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "4e20ab3a"
+        "content": "59acd36f"
+      },
+      {
+        "content": "43acb624"
       },
       {
         "content": "f5d9fd2d"
@@ -80,13 +83,13 @@
     "sidebar": "814f3328",
     "content": "59362658"
   },
-  "/blog/pandas-2-feature-1-973": {
+  "/blog/pandas-2-feature-1-da5": {
     "__comp": "ccc49370",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
-    "content": "4316c688"
+    "content": "9498b5b0"
   },
   "/blog/spring-boot-component-research-656": {
     "__comp": "ccc49370",
@@ -95,6 +98,14 @@
     },
     "sidebar": "814f3328",
     "content": "740b0891"
+  },
+  "/blog/spring-boot-dev-basic-6ed": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "3f5ddc12"
   },
   "/blog/tags-a90": {
     "__comp": "01a85c17",
@@ -155,7 +166,7 @@
     "tag": "a80da1cf",
     "listMetadata": "608ae6a4"
   },
-  "/blog/tags/eda-07c": {
+  "/blog/tags/eda-2ee": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -163,7 +174,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "4e20ab3a"
+        "content": "59acd36f"
+      },
+      {
+        "content": "43acb624"
       }
     ],
     "tag": "e9ebc1cc",
@@ -228,7 +242,7 @@
     "tag": "e16015ca",
     "listMetadata": "4c9e35b1"
   },
-  "/blog/tags/pandas-446": {
+  "/blog/tags/pandas-747": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -236,7 +250,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "4e20ab3a"
+        "content": "59acd36f"
+      },
+      {
+        "content": "43acb624"
       }
     ],
     "tag": "d740a617",

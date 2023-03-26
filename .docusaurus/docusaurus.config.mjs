@@ -28,11 +28,11 @@ export default {
       {
         "docs": {
           "sidebarPath": "/Users/taehwan/repository/leetaehwan.github.io/sidebars.js",
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/"
         },
         "blog": {
           "showReadingTime": true,
-          "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/"
+          "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main"
         },
         "theme": {
           "customCss": "/Users/taehwan/repository/leetaehwan.github.io/src/css/custom.css"

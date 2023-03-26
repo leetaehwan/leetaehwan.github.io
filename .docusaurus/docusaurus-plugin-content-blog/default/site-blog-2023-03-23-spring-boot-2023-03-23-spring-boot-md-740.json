@@ -1,6 +1,6 @@
 {
   "permalink": "/blog/spring-boot-component-research",
-  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-03-23-spring-boot/2023-03-23-spring-boot.md",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-03-23-spring-boot/2023-03-23-spring-boot.md",
   "source": "@site/blog/2023-03-23-spring-boot/2023-03-23-spring-boot.md",
   "title": "스프링 부트 구성요소 살펴보기",
   "description": "- 백엔드를 배워본 적이 없는 학생이 김영한 스프링 부트 입문 강의를 듣고 작성한 글이다.",

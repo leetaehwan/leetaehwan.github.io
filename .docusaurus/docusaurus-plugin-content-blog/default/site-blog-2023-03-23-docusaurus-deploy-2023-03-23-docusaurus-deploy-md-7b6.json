@@ -1,6 +1,6 @@
 {
   "permalink": "/blog/docusaurus-deploy",
-  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2023-03-23-docusaurus-deploy/2023-03-23-docusaurus-deploy.md",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-03-23-docusaurus-deploy/2023-03-23-docusaurus-deploy.md",
   "source": "@site/blog/2023-03-23-docusaurus-deploy/2023-03-23-docusaurus-deploy.md",
   "title": "Docusaurus 깃허브 페이지 호스팅하기",
   "description": "- 깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자.",

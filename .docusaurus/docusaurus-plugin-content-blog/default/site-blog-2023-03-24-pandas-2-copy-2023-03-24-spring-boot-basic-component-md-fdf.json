@@ -1,0 +1,55 @@
+{
+  "permalink": "/blog/pandas-2-feature-1",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-03-24-pandas2 copy/2023-03-24-Spring-boot-basic-component.md",
+  "source": "@site/blog/2023-03-24-pandas2 copy/2023-03-24-Spring-boot-basic-component.md",
+  "title": "넘파이와 친해진 판다스 2.0",
+  "description": "다양한 자료형을 지원하는 인덱스",
+  "date": "2023-03-24T00:00:00.000Z",
+  "formattedDate": "2023년 3월 24일",
+  "tags": [
+    {
+      "label": "eda",
+      "permalink": "/blog/tags/eda"
+    },
+    {
+      "label": "pandas",
+      "permalink": "/blog/tags/pandas"
+    }
+  ],
+  "readingTime": 2.825,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "pandas-2-feature-1",
+    "title": "넘파이와 친해진 판다스 2.0",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "eda",
+      "pandas"
+    ]
+  },
+  "prevItem": {
+    "title": "넘파이와 친해진 판다스 2.0",
+    "permalink": "/blog/pandas-2-feature-1"
+  },
+  "nextItem": {
+    "title": "Docusaurus 깃허브 페이지 호스팅하기",
+    "permalink": "/blog/docusaurus-deploy"
+  }
+}

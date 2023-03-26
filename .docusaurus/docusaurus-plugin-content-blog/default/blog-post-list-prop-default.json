@@ -2,6 +2,10 @@
   "title": "Recent posts",
   "items": [
     {
+      "title": "스프링 부트 개발의 기초 상식",
+      "permalink": "/blog/spring-boot-dev-basic"
+    },
+    {
       "title": "넘파이와 친해진 판다스 2.0",
       "permalink": "/blog/pandas-2-feature-1"
     },
@@ -16,10 +20,6 @@
     {
       "title": "Greetings!",
       "permalink": "/blog/greetings"
-    },
-    {
-      "title": "Welcome",
-      "permalink": "/blog/welcome"
     }
   ]
 }

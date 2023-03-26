@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', 'd5b'),
+    component: ComponentCreator('/blog', '12e'),
     exact: true
   },
   {
@@ -39,12 +39,17 @@ export default [
   },
   {
     path: '/blog/pandas-2-feature-1',
-    component: ComponentCreator('/blog/pandas-2-feature-1', '973'),
+    component: ComponentCreator('/blog/pandas-2-feature-1', 'da5'),
     exact: true
   },
   {
     path: '/blog/spring-boot-component-research',
     component: ComponentCreator('/blog/spring-boot-component-research', '656'),
+    exact: true
+  },
+  {
+    path: '/blog/spring-boot-dev-basic',
+    component: ComponentCreator('/blog/spring-boot-dev-basic', '6ed'),
     exact: true
   },
   {
@@ -69,7 +74,7 @@ export default [
   },
   {
     path: '/blog/tags/eda',
-    component: ComponentCreator('/blog/tags/eda', '07c'),
+    component: ComponentCreator('/blog/tags/eda', '2ee'),
     exact: true
   },
   {
@@ -94,7 +99,7 @@ export default [
   },
   {
     path: '/blog/tags/pandas',
-    component: ComponentCreator('/blog/tags/pandas', '446'),
+    component: ComponentCreator('/blog/tags/pandas', '747'),
     exact: true
   },
   {
