@@ -19,6 +19,7 @@
             <name>이태환</name>
             <uri>https://github.com/leetaehwan</uri>
         </author>
+        <category label="ai" term="ai"/>
         <category label="pytorch" term="pytorch"/>
         <category label="dataset" term="dataset"/>
         <category label="sklearn" term="sklearn"/>
