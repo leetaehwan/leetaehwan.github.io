@@ -7,7 +7,7 @@ authors :
     url : https://github.com/leetaehwan
     image_url : https://github.com/leetaehwan.png
   
-tags : [eda, pandas]
+tags : [data, spring-boot, contoller, handler-mapping]
 ---
 
 # 목적

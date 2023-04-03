@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '12e'),
+    component: ComponentCreator('/blog', '202'),
     exact: true
   },
   {
@@ -43,6 +43,11 @@ export default [
     exact: true
   },
   {
+    path: '/blog/pytorch-dataset-split',
+    component: ComponentCreator('/blog/pytorch-dataset-split', '2a0'),
+    exact: true
+  },
+  {
     path: '/blog/spring-boot-component-research',
     component: ComponentCreator('/blog/spring-boot-component-research', '656'),
     exact: true
@@ -63,8 +68,18 @@ export default [
     exact: true
   },
   {
+    path: '/blog/tags/contoller',
+    component: ComponentCreator('/blog/tags/contoller', '0ce'),
+    exact: true
+  },
+  {
     path: '/blog/tags/data',
-    component: ComponentCreator('/blog/tags/data', '946'),
+    component: ComponentCreator('/blog/tags/data', '826'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/dataset',
+    component: ComponentCreator('/blog/tags/dataset', 'b56'),
     exact: true
   },
   {
@@ -74,7 +89,7 @@ export default [
   },
   {
     path: '/blog/tags/eda',
-    component: ComponentCreator('/blog/tags/eda', '2ee'),
+    component: ComponentCreator('/blog/tags/eda', 'edc'),
     exact: true
   },
   {
@@ -85,6 +100,11 @@ export default [
   {
     path: '/blog/tags/greetings',
     component: ComponentCreator('/blog/tags/greetings', 'c99'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/handler-mapping',
+    component: ComponentCreator('/blog/tags/handler-mapping', '47b'),
     exact: true
   },
   {
@@ -99,7 +119,22 @@ export default [
   },
   {
     path: '/blog/tags/pandas',
-    component: ComponentCreator('/blog/tags/pandas', '747'),
+    component: ComponentCreator('/blog/tags/pandas', '914'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/pytorch',
+    component: ComponentCreator('/blog/tags/pytorch', 'c37'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/sklearn',
+    component: ComponentCreator('/blog/tags/sklearn', '460'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/spring-boot',
+    component: ComponentCreator('/blog/tags/spring-boot', '4f1'),
     exact: true
   },
   {

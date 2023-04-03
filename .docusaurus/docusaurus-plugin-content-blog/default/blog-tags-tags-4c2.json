@@ -1,13 +1,48 @@
 [
   {
+    "label": "pytorch",
+    "permalink": "/blog/tags/pytorch",
+    "count": 1
+  },
+  {
+    "label": "dataset",
+    "permalink": "/blog/tags/dataset",
+    "count": 1
+  },
+  {
+    "label": "sklearn",
+    "permalink": "/blog/tags/sklearn",
+    "count": 1
+  },
+  {
+    "label": "data",
+    "permalink": "/blog/tags/data",
+    "count": 2
+  },
+  {
+    "label": "spring-boot",
+    "permalink": "/blog/tags/spring-boot",
+    "count": 1
+  },
+  {
+    "label": "contoller",
+    "permalink": "/blog/tags/contoller",
+    "count": 1
+  },
+  {
+    "label": "handler-mapping",
+    "permalink": "/blog/tags/handler-mapping",
+    "count": 1
+  },
+  {
     "label": "eda",
     "permalink": "/blog/tags/eda",
-    "count": 2
+    "count": 1
   },
   {
     "label": "pandas",
     "permalink": "/blog/tags/pandas",
-    "count": 2
+    "count": 1
   },
   {
     "label": "web",
@@ -22,11 +57,6 @@
   {
     "label": "writing",
     "permalink": "/blog/tags/writing",
-    "count": 1
-  },
-  {
-    "label": "data",
-    "permalink": "/blog/tags/data",
     "count": 1
   },
   {

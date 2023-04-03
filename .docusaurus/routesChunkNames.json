@@ -1,11 +1,14 @@
 {
-  "/blog-12e": {
+  "/blog-202": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "d21a8aab"
+      },
       {
         "content": "59acd36f"
       },
@@ -91,6 +94,14 @@
     "sidebar": "814f3328",
     "content": "9498b5b0"
   },
+  "/blog/pytorch-dataset-split-2a0": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "391e1e4d"
+  },
   "/blog/spring-boot-component-research-656": {
     "__comp": "ccc49370",
     "__context": {
@@ -129,7 +140,7 @@
     "tag": "631037e5",
     "listMetadata": "3f3a03c1"
   },
-  "/blog/tags/data-946": {
+  "/blog/tags/contoller-0ce": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -137,11 +148,42 @@
     "sidebar": "814f3328",
     "items": [
       {
+        "content": "59acd36f"
+      }
+    ],
+    "tag": "deb78cde",
+    "listMetadata": "b864a303"
+  },
+  "/blog/tags/data-826": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "59acd36f"
+      },
+      {
         "content": "5c321b4e"
       }
     ],
     "tag": "332c576c",
     "listMetadata": "e0eb994a"
+  },
+  "/blog/tags/dataset-b56": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "d21a8aab"
+      }
+    ],
+    "tag": "489e7b1b",
+    "listMetadata": "05ec1a9c"
   },
   "/blog/tags/docusaurus-8ee": {
     "__comp": "6875c492",
@@ -166,16 +208,13 @@
     "tag": "a80da1cf",
     "listMetadata": "608ae6a4"
   },
-  "/blog/tags/eda-2ee": {
+  "/blog/tags/eda-edc": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
     "items": [
-      {
-        "content": "59acd36f"
-      },
       {
         "content": "43acb624"
       }
@@ -211,6 +250,20 @@
     "tag": "ce05bb0c",
     "listMetadata": "c8c4b6cb"
   },
+  "/blog/tags/handler-mapping-47b": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "59acd36f"
+      }
+    ],
+    "tag": "da9b7130",
+    "listMetadata": "272b0dc2"
+  },
   "/blog/tags/hello-2f3": {
     "__comp": "6875c492",
     "__context": {
@@ -242,7 +295,49 @@
     "tag": "e16015ca",
     "listMetadata": "4c9e35b1"
   },
-  "/blog/tags/pandas-747": {
+  "/blog/tags/pandas-914": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "43acb624"
+      }
+    ],
+    "tag": "d740a617",
+    "listMetadata": "0a2019c5"
+  },
+  "/blog/tags/pytorch-c37": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "d21a8aab"
+      }
+    ],
+    "tag": "56ea5381",
+    "listMetadata": "ae03ca28"
+  },
+  "/blog/tags/sklearn-460": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "d21a8aab"
+      }
+    ],
+    "tag": "4f221e6d",
+    "listMetadata": "61bd1e02"
+  },
+  "/blog/tags/spring-boot-4f1": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -251,13 +346,10 @@
     "items": [
       {
         "content": "59acd36f"
-      },
-      {
-        "content": "43acb624"
       }
     ],
-    "tag": "d740a617",
-    "listMetadata": "0a2019c5"
+    "tag": "c3130c37",
+    "listMetadata": "1299411f"
   },
   "/blog/tags/web-01a": {
     "__comp": "6875c492",

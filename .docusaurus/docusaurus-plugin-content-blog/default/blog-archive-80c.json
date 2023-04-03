@@ -1,6 +1,66 @@
 {
   "blogPosts": [
     {
+      "id": "pytorch-dataset-split",
+      "metadata": {
+        "permalink": "/blog/pytorch-dataset-split",
+        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-03-25-Spring-boot-dev-basic copy/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+        "source": "@site/blog/2023-03-25-Spring-boot-dev-basic copy/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+        "title": "파이토치를 이용한 데이터셋 분리",
+        "description": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.",
+        "date": "2023-04-03T00:00:00.000Z",
+        "formattedDate": "2023년 4월 3일",
+        "tags": [
+          {
+            "label": "pytorch",
+            "permalink": "/blog/tags/pytorch"
+          },
+          {
+            "label": "dataset",
+            "permalink": "/blog/tags/dataset"
+          },
+          {
+            "label": "sklearn",
+            "permalink": "/blog/tags/sklearn"
+          }
+        ],
+        "readingTime": 5.375,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "이태환",
+            "title": "개발자",
+            "url": "https://github.com/leetaehwan",
+            "image_url": "https://github.com/leetaehwan.png",
+            "imageURL": "https://github.com/leetaehwan.png"
+          }
+        ],
+        "frontMatter": {
+          "slug": "pytorch-dataset-split",
+          "title": "파이토치를 이용한 데이터셋 분리",
+          "authors": [
+            {
+              "name": "이태환",
+              "title": "개발자",
+              "url": "https://github.com/leetaehwan",
+              "image_url": "https://github.com/leetaehwan.png",
+              "imageURL": "https://github.com/leetaehwan.png"
+            }
+          ],
+          "tags": [
+            "pytorch",
+            "dataset",
+            "sklearn"
+          ]
+        },
+        "nextItem": {
+          "title": "스프링 부트 개발의 기초 상식",
+          "permalink": "/blog/spring-boot-dev-basic"
+        }
+      },
+      "content": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.\n- 분리하는 과정에서 사용되는 함수들에 대해 정리하자.\n\n\n# 왜 파이토치인가?\n- 파이토치에서 사용하는 토치는 신경망을 구성하고 훈련하는 핵심 기능을 제공하는 패키지다.\n- 다차원 배열이라 불리는 텐서를 사용한다. 넘파이배열도 다차원을 지원한다.\n- 하지만, 텐서는 GPU가속 지원과 텐서의 그라디언트를 자동으로 구해주는 'autograd'를 지원한다.\n- 이로써, 개발자가 복잡한 연산 그래프를 정의하도록 해주고 훈련 중에 역전파에 대한 그레디언트를 자동으로 연산해준다.\n\n# 데이터셋의 분리\n- 데이터셋은 모델의 학습, 검증, 평가에 따라 구분하여 사용한다.\n- 학습데이터셋은 모델에 파라미터를 학습하는데 사용하고\n- 검증데이터셋은 학습하는데 사용하지 않지만, 검증데이터를 좋게 만들기 위해 하이퍼파라미터를 튜닝하거나 학습데이터를 전처리한다.\n- 평가데이터셋은 다양한 모델의 성능을 비교하기 위해 사용하는 용도로 구분한다.\n\n# 데이터프레임의 분리\n## sklearn 데이터셋 불러오기\n```python\nfrom sklearn.datasets import fetch_california_housing\n\ncalifonia = fetch_california_housing()\n```\n- sklearn.datasets에서 fetch_califonia_housing을 임포트해서 califonia에 넣어준다.\n```python\ndf = pd.DataFrame(califonia.data, columns = califonia.feature_names)\n```\n- 임포트한 califonia.values를 pandas.DataFrame()인 df에 넣어준다.\n- sklearn에서 임포트한 califonia는 data, target, feature_names, DESCR, frame 등의 데이터셋인 Bunch를 가지고 있다. 호출 하는 방법은 객체.(요청하는 bunch)를 통해 호출한다.\n- .data는 ndarray타입으로, shpae = (20640, 8)이다.\n- .feature_names은 길이가 8인 리스트이다.\n```python\ndf[\"Target\"] = califonia.target\n```\n- .target은 numpy array 타입으로, shape = (20640,)\n- 만들어진 df에 \"Target\" 컬럼을 추가하고, califonia.target의 어레이를 넣어준다.\n```python\ndf.tail()\n```\n- 데이터프레임의 하위 5개의 데이터를 드려다보면 아래와 같다.\n![](sklearn-california-housing.png)\n\n## 파이토치의 텐서 분리하기\n### float 자료형의 텐서 호출\n```python\nimport torch\n\ndata = torch.from_numpy(df.values).float()\n```\n- 파이토치를 임포트하고\n- df.values로 데이터프레임의 값을 넘파이배열로 호출한다.\n- 호출된 배열을 from_numpy()를 통해 텐서를 반환하고\n- .float()을 통해서 자료형을 선언한다.\n\n### 입력과 출력을 나눈다.\n- 텐서의 데이터셋을 입력값과 출력값(레이블)으로 분리한다.\n```python\nx = data[:,:-1]\ny = data[:, -1:]\n```\n- 나누고 사이즈를 출력해보자.\n- x.size() = torch.Size[20640,8]\n- y.size() = torch.Size[20640,1]\n\n### 훈련 / 검증 / 평가 데이터셋 비율 정하기\n- 6:2:2로 하는게 무난하지만, 데이터셋이 클수록, 비율은 크게 상관 없다.\n```python\nratios = [.6, .2, .2]\n```\n\n### 비율에 따른 데이터셋의 크기를 정하기\n- 비율에 따른 데이터셋의 크기를 train_cnt, valid_cnt, test_cnt로 각각 정의하고 cnts 배열에 넣어준다.\n```python\ntrain_cnt = int(data.size(0) * ratios[0])\nvaild_cnt = int(data.size(0) * ratios[1])\ntest_cnt = data.size(0)-train_cnt-valid_cnt\n\ncnts = [train_cnt, valid_cnt, test_cnt]\n```\n\n### 무작위로 추출하기 위해 섞어서 분리한다.\n\n```python\nindices = torch.randperm(data.size(0))\n```\n- torch.randperm(n)은 0부터 n-1까지 정수의 랜덤 수열을 반환한다.\n- data.size(0)는 텐서의 0차원의 크기인 20640을 반환한다.\n- 즉, indices 변수는 0부터 20639까지의 정수를 랜덤 수열로 반환한다.\n```python\nx = torch.index_select(x, dim=0, index = indices)\ny = torch.index_select(y, dim=0, index = indices)\n```\n- torch.index_select()를 통해서, 텐서 x,y의 0차원의 방향으로 indices를 인덱스로 하는 새로운 텐서를 반환한다.\n```python\nx = list(x.split(cnts, dim=0))\ny = y.split(cnts, dim=0)\n```\n- 0차원을 따라 cnts 배열의 split_size를 가지고 분리한다.\n- x를 분리하면 tuple의 자료형이라 list()로 감싸준다.\n\n```python\nfor x_i, y_i in zip(x,y):\n\tprint(x_i.size(), y_i.size())\n```\n- 다음과 같이 작성하고 실행하면 분리된 결과를 확인할 수 있다.\n- torch.Size([12384, 8]). torch.Size([12384, 1])\n- torch.Size([4128, 8]). torch.Size([4128, 1])\n- torch.Size([4128, 8]). torch.Size([4128, 1])"
+    },
+    {
       "id": "spring-boot-dev-basic",
       "metadata": {
         "permalink": "/blog/spring-boot-dev-basic",
@@ -12,12 +72,20 @@
         "formattedDate": "2023년 3월 25일",
         "tags": [
           {
-            "label": "eda",
-            "permalink": "/blog/tags/eda"
+            "label": "data",
+            "permalink": "/blog/tags/data"
           },
           {
-            "label": "pandas",
-            "permalink": "/blog/tags/pandas"
+            "label": "spring-boot",
+            "permalink": "/blog/tags/spring-boot"
+          },
+          {
+            "label": "contoller",
+            "permalink": "/blog/tags/contoller"
+          },
+          {
+            "label": "handler-mapping",
+            "permalink": "/blog/tags/handler-mapping"
           }
         ],
         "readingTime": 11.375,
@@ -44,9 +112,15 @@
             }
           ],
           "tags": [
-            "eda",
-            "pandas"
+            "data",
+            "spring-boot",
+            "contoller",
+            "handler-mapping"
           ]
+        },
+        "prevItem": {
+          "title": "파이토치를 이용한 데이터셋 분리",
+          "permalink": "/blog/pytorch-dataset-split"
         },
         "nextItem": {
           "title": "넘파이와 친해진 판다스 2.0",
