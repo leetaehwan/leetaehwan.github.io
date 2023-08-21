@@ -15,7 +15,7 @@ folium.Choropleth() 메서드를 이용해서 등차지역도를 그릴 수 있�
 [서울시 개별공시지가 정보](http://data.seoul.go.kr/dataList/OA-1180/F/1/datasetView.do)의 데이터를 활용하면, 동별 평균 공시지가를 구할 수 있고,
 지정된 데이터의 법정동 이름과 공시지가의 컬럼을 가지고 데이터 만들고, 법정동 명을 키로 해서 지도에 시각화 시키고자 한다.
 
-![](./1_folium_choropleth)
+![](./1_folium_choropleth.png)
 
 key_on의 파라미터의 인수로서 geo_data의 컬럼을 지정하는 지 않고, JSON의 형식처럼 "feature.propertiees.bj_nm"을 넣어주었다.
 
@@ -30,21 +30,21 @@ sungdong_gu_dong_gpd.info()
 ```
 를 출력해보자. GeoDataFrame이라고 한다. 컬럼들을 갖는게 데이터프레임과 비슷해보인다.
 
-![](./2_sungdong_gu_dong_gpd)
+![](./2_sungdong_gu_dong_gpd.png)
 
 ```python
 sungdong_gu_dong_gpd.head()
 ```
 를 출력해보자. 여전히 데이터 프레임과 같아 보인다.
 
-![](./3_sungdong_gu_dong_gpd)
+![](./3_sungdong_gu_dong_gpd.png)
 
 ```python
 sungdong_gu_dong_gpd.to_json()
 ```
 으로 JSON 형식으로 바꿔보자.
 
-![](./4_sungdong_gu_dong_gpd)
+![](./4_sungdong_gu_dong_gpd.png)
 한 줄로 나와서 보기가 불편하다.
 
 ```python
@@ -52,7 +52,7 @@ sungdong_gu_dong_gpd.__geo_interface__
 ```
 으로 출력하니 보기가 좋다.
 
-![](./5_sungdong_gu_dong_gpd)
+![](./5_sungdong_gu_dong_gpd.png)
 
 우리가 찾는 구조의 json형식의 파일이 나온다. 그럼 JSON 자료형인가? `__geo_interface__` 에 대해서 알아보자.
 

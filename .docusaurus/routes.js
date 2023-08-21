@@ -4,12 +4,17 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '609'),
+    component: ComponentCreator('/blog', '3a0'),
     exact: true
   },
   {
     path: '/blog/archive',
     component: ComponentCreator('/blog/archive', 'c88'),
+    exact: true
+  },
+  {
+    path: '/blog/bean-scope',
+    component: ComponentCreator('/blog/bean-scope', '10f'),
     exact: true
   },
   {
@@ -34,11 +39,6 @@ export default [
   },
   {
     path: '/blog/pytorch-dataset-split',
-    component: ComponentCreator('/blog/pytorch-dataset-split', '4e6'),
-    exact: true
-  },
-  {
-    path: '/blog/pytorch-dataset-split',
     component: ComponentCreator('/blog/pytorch-dataset-split', 'c3b'),
     exact: true
   },
@@ -59,7 +59,7 @@ export default [
   },
   {
     path: '/blog/tags/ai',
-    component: ComponentCreator('/blog/tags/ai', 'f29'),
+    component: ComponentCreator('/blog/tags/ai', 'bd3'),
     exact: true
   },
   {
@@ -84,7 +84,7 @@ export default [
   },
   {
     path: '/blog/tags/dataset',
-    component: ComponentCreator('/blog/tags/dataset', '042'),
+    component: ComponentCreator('/blog/tags/dataset', '5d7'),
     exact: true
   },
   {
@@ -144,12 +144,12 @@ export default [
   },
   {
     path: '/blog/tags/pytorch',
-    component: ComponentCreator('/blog/tags/pytorch', 'c45'),
+    component: ComponentCreator('/blog/tags/pytorch', '788'),
     exact: true
   },
   {
     path: '/blog/tags/sklearn',
-    component: ComponentCreator('/blog/tags/sklearn', '8e2'),
+    component: ComponentCreator('/blog/tags/sklearn', '2ed'),
     exact: true
   },
   {

@@ -1,5 +1,5 @@
 {
-  "permalink": "/blog/pytorch-dataset-split",
+  "permalink": "/blog/bean-scope",
   "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-04-23-bean-scope/2023-04-23-bean-scope.md",
   "source": "@site/blog/2023-04-23-bean-scope/2023-04-23-bean-scope.md",
   "title": "파이토치를 이용한 데이터셋 분리",
@@ -36,7 +36,7 @@
     }
   ],
   "frontMatter": {
-    "slug": "pytorch-dataset-split",
+    "slug": "bean-scope",
     "title": "파이토치를 이용한 데이터셋 분리",
     "authors": [
       {

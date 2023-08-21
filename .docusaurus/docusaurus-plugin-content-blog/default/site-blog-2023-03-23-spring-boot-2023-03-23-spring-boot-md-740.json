@@ -40,11 +40,11 @@
     ]
   },
   "prevItem": {
-    "title": "Docusaurus 깃허브 페이지 호스팅하기",
-    "permalink": "/blog/docusaurus-deploy"
+    "title": "넘파이와 친해진 판다스 2.0",
+    "permalink": "/blog/pandas-2-feature-1"
   },
   "nextItem": {
-    "title": "Greetings!",
-    "permalink": "/blog/greetings"
+    "title": "Docusaurus 깃허브 페이지 호스팅하기",
+    "permalink": "/blog/docusaurus-deploy"
   }
 }

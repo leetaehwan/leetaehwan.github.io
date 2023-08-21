@@ -1,5 +1,5 @@
 {
-  "/blog-609": {
+  "/blog-3a0": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -10,7 +10,7 @@
         "content": "00d63a0e"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
         "content": "34f474c3"
@@ -22,10 +22,10 @@
         "content": "43acb624"
       },
       {
-        "content": "f5d9fd2d"
+        "content": "5c321b4e"
       },
       {
-        "content": "5c321b4e"
+        "content": "f5d9fd2d"
       },
       {
         "content": "35f0e8ad"
@@ -42,6 +42,14 @@
       "plugin": "4ed5a51b"
     },
     "archive": "b2f554cd"
+  },
+  "/blog/bean-scope-10f": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "c4a19803"
   },
   "/blog/docusaurus-deploy-5f4": {
     "__comp": "ccc49370",
@@ -75,14 +83,6 @@
     "sidebar": "814f3328",
     "content": "9498b5b0"
   },
-  "/blog/pytorch-dataset-split-4e6": {
-    "__comp": "ccc49370",
-    "__context": {
-      "plugin": "4ed5a51b"
-    },
-    "sidebar": "814f3328",
-    "content": "c4a19803"
-  },
   "/blog/pytorch-dataset-split-c3b": {
     "__comp": "ccc49370",
     "__context": {
@@ -115,7 +115,7 @@
     "sidebar": "814f3328",
     "tags": "a7023ddc"
   },
-  "/blog/tags/ai-f29": {
+  "/blog/tags/ai-bd3": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -123,7 +123,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
         "content": "34f474c3"
@@ -191,7 +191,7 @@
     "tag": "332c576c",
     "listMetadata": "e0eb994a"
   },
-  "/blog/tags/dataset-042": {
+  "/blog/tags/dataset-5d7": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -199,7 +199,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
         "content": "34f474c3"
@@ -362,7 +362,7 @@
     "tag": "d740a617",
     "listMetadata": "0a2019c5"
   },
-  "/blog/tags/pytorch-c45": {
+  "/blog/tags/pytorch-788": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -370,7 +370,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
         "content": "34f474c3"
@@ -379,7 +379,7 @@
     "tag": "56ea5381",
     "listMetadata": "ae03ca28"
   },
-  "/blog/tags/sklearn-8e2": {
+  "/blog/tags/sklearn-2ed": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -387,7 +387,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
         "content": "34f474c3"
