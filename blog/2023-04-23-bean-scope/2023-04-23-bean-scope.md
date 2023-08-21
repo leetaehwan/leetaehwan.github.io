@@ -1,5 +1,5 @@
 ---
-slug : pytorch-dataset-split
+slug : bean-scope
 title : 파이토치를 이용한 데이터셋 분리
 authors :
   - name : 이태환

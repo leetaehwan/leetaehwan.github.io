@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '002'),
+    component: ComponentCreator('/blog', '609'),
     exact: true
   },
   {
@@ -19,7 +19,7 @@ export default [
   },
   {
     path: '/blog/features_collection',
-    component: ComponentCreator('/blog/features_collection', 'c7e'),
+    component: ComponentCreator('/blog/features_collection', 'e92'),
     exact: true
   },
   {
@@ -34,12 +34,12 @@ export default [
   },
   {
     path: '/blog/pytorch-dataset-split',
-    component: ComponentCreator('/blog/pytorch-dataset-split', 'c3b'),
+    component: ComponentCreator('/blog/pytorch-dataset-split', '4e6'),
     exact: true
   },
   {
     path: '/blog/pytorch-dataset-split',
-    component: ComponentCreator('/blog/pytorch-dataset-split', '4e6'),
+    component: ComponentCreator('/blog/pytorch-dataset-split', 'c3b'),
     exact: true
   },
   {
@@ -59,7 +59,7 @@ export default [
   },
   {
     path: '/blog/tags/ai',
-    component: ComponentCreator('/blog/tags/ai', 'deb'),
+    component: ComponentCreator('/blog/tags/ai', 'f29'),
     exact: true
   },
   {
@@ -69,7 +69,7 @@ export default [
   },
   {
     path: '/blog/tags/choropleth',
-    component: ComponentCreator('/blog/tags/choropleth', '5bc'),
+    component: ComponentCreator('/blog/tags/choropleth', '869'),
     exact: true
   },
   {
@@ -84,7 +84,7 @@ export default [
   },
   {
     path: '/blog/tags/dataset',
-    component: ComponentCreator('/blog/tags/dataset', '1cd'),
+    component: ComponentCreator('/blog/tags/dataset', '042'),
     exact: true
   },
   {
@@ -104,17 +104,17 @@ export default [
   },
   {
     path: '/blog/tags/folium',
-    component: ComponentCreator('/blog/tags/folium', 'e97'),
+    component: ComponentCreator('/blog/tags/folium', 'b31'),
     exact: true
   },
   {
     path: '/blog/tags/geo-interface',
-    component: ComponentCreator('/blog/tags/geo-interface', '10b'),
+    component: ComponentCreator('/blog/tags/geo-interface', '28e'),
     exact: true
   },
   {
     path: '/blog/tags/geo-json',
-    component: ComponentCreator('/blog/tags/geo-json', 'f85'),
+    component: ComponentCreator('/blog/tags/geo-json', '7fb'),
     exact: true
   },
   {
@@ -134,7 +134,7 @@ export default [
   },
   {
     path: '/blog/tags/key-on',
-    component: ComponentCreator('/blog/tags/key-on', '917'),
+    component: ComponentCreator('/blog/tags/key-on', 'a8c'),
     exact: true
   },
   {
@@ -144,12 +144,12 @@ export default [
   },
   {
     path: '/blog/tags/pytorch',
-    component: ComponentCreator('/blog/tags/pytorch', 'c71'),
+    component: ComponentCreator('/blog/tags/pytorch', 'c45'),
     exact: true
   },
   {
     path: '/blog/tags/sklearn',
-    component: ComponentCreator('/blog/tags/sklearn', '762'),
+    component: ComponentCreator('/blog/tags/sklearn', '8e2'),
     exact: true
   },
   {

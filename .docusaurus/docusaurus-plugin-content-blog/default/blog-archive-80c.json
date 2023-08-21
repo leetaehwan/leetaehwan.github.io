@@ -4,8 +4,8 @@
       "id": "features_collection",
       "metadata": {
         "permalink": "/blog/features_collection",
-        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-08-20-FeaturesCollection/2023-08-20-features_collection.md",
-        "source": "@site/blog/2023-08-20-FeaturesCollection/2023-08-20-features_collection.md",
+        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-08-20-features_collection/2023-08-20-features_collection.md",
+        "source": "@site/blog/2023-08-20-features_collection/2023-08-20-features_collection.md",
         "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
         "description": "폴리움으로 등차지역도 그리기",
         "date": "2023-08-20T00:00:00.000Z",
