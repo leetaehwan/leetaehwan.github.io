@@ -15,7 +15,7 @@ folium.Choropleth() 메서드를 이용해서 등차지역도를 그릴 수 있�
 [서울시 개별공시지가 정보](http://data.seoul.go.kr/dataList/OA-1180/F/1/datasetView.do)의 데이터를 활용하면, 동별 평균 공시지가를 구할 수 있고,
 지정된 데이터의 법정동 이름과 공시지가의 컬럼을 가지고 데이터 만들고, 법정동 명을 키로 해서 지도에 시각화 시키고자 한다.
 
-![](./1_folium_Choropleth)
+![](./1_folium_choropleth)
 
 key_on의 파라미터의 인수로서 geo_data의 컬럼을 지정하는 지 않고, JSON의 형식처럼 "feature.propertiees.bj_nm"을 넣어주었다.
 
