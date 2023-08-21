@@ -1,5 +1,5 @@
 {
-  "/blog-202": {
+  "/blog-098": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -7,7 +7,13 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "d21a8aab"
+        "content": "9a97df7f"
+      },
+      {
+        "content": "34f474c3"
+      },
+      {
+        "content": "34f474c3"
       },
       {
         "content": "59acd36f"
@@ -26,15 +32,6 @@
       },
       {
         "content": "7661071f"
-      },
-      {
-        "content": "f4f34a3a"
-      },
-      {
-        "content": "8717b14a"
-      },
-      {
-        "content": "925b3f96"
       }
     ],
     "metadata": "b2b675dd"
@@ -54,13 +51,13 @@
     "sidebar": "814f3328",
     "content": "7b64115e"
   },
-  "/blog/first-blog-post-0d7": {
+  "/blog/features_collection-d00": {
     "__comp": "ccc49370",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
-    "content": "e273c56f"
+    "content": "d028713b"
   },
   "/blog/greetings-0f7": {
     "__comp": "ccc49370",
@@ -70,22 +67,6 @@
     "sidebar": "814f3328",
     "content": "266bf746"
   },
-  "/blog/long-blog-post-42d": {
-    "__comp": "ccc49370",
-    "__context": {
-      "plugin": "4ed5a51b"
-    },
-    "sidebar": "814f3328",
-    "content": "73664a40"
-  },
-  "/blog/mdx-blog-post-ce8": {
-    "__comp": "ccc49370",
-    "__context": {
-      "plugin": "4ed5a51b"
-    },
-    "sidebar": "814f3328",
-    "content": "59362658"
-  },
   "/blog/pandas-2-feature-1-da5": {
     "__comp": "ccc49370",
     "__context": {
@@ -94,13 +75,21 @@
     "sidebar": "814f3328",
     "content": "9498b5b0"
   },
-  "/blog/pytorch-dataset-split-2a0": {
+  "/blog/pytorch-dataset-split-4e6": {
     "__comp": "ccc49370",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
-    "content": "391e1e4d"
+    "content": "c4a19803"
+  },
+  "/blog/pytorch-dataset-split-c3b": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "cfae5def"
   },
   "/blog/spring-boot-component-research-656": {
     "__comp": "ccc49370",
@@ -126,6 +115,23 @@
     "sidebar": "814f3328",
     "tags": "a7023ddc"
   },
+  "/blog/tags/ai-f29": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "34f474c3"
+      },
+      {
+        "content": "34f474c3"
+      }
+    ],
+    "tag": "f32fe326",
+    "listMetadata": "ab4c6d72"
+  },
   "/blog/tags/blog-b6a": {
     "__comp": "6875c492",
     "__context": {
@@ -139,6 +145,20 @@
     ],
     "tag": "631037e5",
     "listMetadata": "3f3a03c1"
+  },
+  "/blog/tags/choropleth-a3a": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "9a97df7f"
+      }
+    ],
+    "tag": "66671b5b",
+    "listMetadata": "52784d98"
   },
   "/blog/tags/contoller-0ce": {
     "__comp": "6875c492",
@@ -171,7 +191,7 @@
     "tag": "332c576c",
     "listMetadata": "e0eb994a"
   },
-  "/blog/tags/dataset-b56": {
+  "/blog/tags/dataset-042": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -179,13 +199,16 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "d21a8aab"
+        "content": "34f474c3"
+      },
+      {
+        "content": "34f474c3"
       }
     ],
     "tag": "489e7b1b",
     "listMetadata": "05ec1a9c"
   },
-  "/blog/tags/docusaurus-8ee": {
+  "/blog/tags/docusaurus-fa1": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -194,15 +217,6 @@
     "items": [
       {
         "content": "7661071f"
-      },
-      {
-        "content": "f4f34a3a"
-      },
-      {
-        "content": "8717b14a"
-      },
-      {
-        "content": "925b3f96"
       }
     ],
     "tag": "a80da1cf",
@@ -236,6 +250,48 @@
     "tag": "031793e1",
     "listMetadata": "096bfee4"
   },
+  "/blog/tags/folium-298": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "9a97df7f"
+      }
+    ],
+    "tag": "461a784a",
+    "listMetadata": "3e1ed252"
+  },
+  "/blog/tags/geo-interface-6e3": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "9a97df7f"
+      }
+    ],
+    "tag": "133a873c",
+    "listMetadata": "08c5c1cd"
+  },
+  "/blog/tags/geo-json-faa": {
+    "__comp": "6875c492",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "items": [
+      {
+        "content": "9a97df7f"
+      }
+    ],
+    "tag": "e897bada",
+    "listMetadata": "454f0c55"
+  },
   "/blog/tags/greetings-c99": {
     "__comp": "6875c492",
     "__context": {
@@ -264,7 +320,7 @@
     "tag": "da9b7130",
     "listMetadata": "272b0dc2"
   },
-  "/blog/tags/hello-2f3": {
+  "/blog/tags/hello-e72": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -273,15 +329,12 @@
     "items": [
       {
         "content": "7661071f"
-      },
-      {
-        "content": "8717b14a"
       }
     ],
     "tag": "30a24c52",
     "listMetadata": "66406991"
   },
-  "/blog/tags/hola-07c": {
+  "/blog/tags/key-on-ff0": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -289,11 +342,11 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "925b3f96"
+        "content": "9a97df7f"
       }
     ],
-    "tag": "e16015ca",
-    "listMetadata": "4c9e35b1"
+    "tag": "55eabfa4",
+    "listMetadata": "3b5b8938"
   },
   "/blog/tags/pandas-914": {
     "__comp": "6875c492",
@@ -309,7 +362,7 @@
     "tag": "d740a617",
     "listMetadata": "0a2019c5"
   },
-  "/blog/tags/pytorch-c37": {
+  "/blog/tags/pytorch-c45": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -317,13 +370,16 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "d21a8aab"
+        "content": "34f474c3"
+      },
+      {
+        "content": "34f474c3"
       }
     ],
     "tag": "56ea5381",
     "listMetadata": "ae03ca28"
   },
-  "/blog/tags/sklearn-460": {
+  "/blog/tags/sklearn-8e2": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -331,7 +387,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "d21a8aab"
+        "content": "34f474c3"
+      },
+      {
+        "content": "34f474c3"
       }
     ],
     "tag": "4f221e6d",

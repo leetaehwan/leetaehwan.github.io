@@ -8,6 +8,10 @@
   "formattedDate": "2023년 4월 3일",
   "tags": [
     {
+      "label": "ai",
+      "permalink": "/blog/tags/ai"
+    },
+    {
       "label": "pytorch",
       "permalink": "/blog/tags/pytorch"
     },
@@ -44,6 +48,7 @@
       }
     ],
     "tags": [
+      "ai",
       "pytorch",
       "dataset",
       "sklearn"

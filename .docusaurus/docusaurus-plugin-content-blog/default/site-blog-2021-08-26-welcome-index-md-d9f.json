@@ -54,9 +54,5 @@
   "prevItem": {
     "title": "Greetings!",
     "permalink": "/blog/greetings"
-  },
-  "nextItem": {
-    "title": "MDX Blog Post",
-    "permalink": "/blog/mdx-blog-post"
   }
 }

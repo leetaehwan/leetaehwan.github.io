@@ -1,0 +1,65 @@
+{
+  "permalink": "/blog/pytorch-dataset-split",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-04-03-pytorch-dataset-split/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+  "source": "@site/blog/2023-04-03-pytorch-dataset-split/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+  "title": "파이토치를 이용한 데이터셋 분리",
+  "description": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.",
+  "date": "2023-04-03T00:00:00.000Z",
+  "formattedDate": "2023년 4월 3일",
+  "tags": [
+    {
+      "label": "ai",
+      "permalink": "/blog/tags/ai"
+    },
+    {
+      "label": "pytorch",
+      "permalink": "/blog/tags/pytorch"
+    },
+    {
+      "label": "dataset",
+      "permalink": "/blog/tags/dataset"
+    },
+    {
+      "label": "sklearn",
+      "permalink": "/blog/tags/sklearn"
+    }
+  ],
+  "readingTime": 5.375,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "pytorch-dataset-split",
+    "title": "파이토치를 이용한 데이터셋 분리",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "ai",
+      "pytorch",
+      "dataset",
+      "sklearn"
+    ]
+  },
+  "prevItem": {
+    "title": "파이토치를 이용한 데이터셋 분리",
+    "permalink": "/blog/pytorch-dataset-split"
+  },
+  "nextItem": {
+    "title": "스프링 부트 개발의 기초 상식",
+    "permalink": "/blog/spring-boot-dev-basic"
+  }
+}

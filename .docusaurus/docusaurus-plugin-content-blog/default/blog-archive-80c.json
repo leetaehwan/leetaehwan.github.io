@@ -1,16 +1,90 @@
 {
   "blogPosts": [
     {
+      "id": "features_collection",
+      "metadata": {
+        "permalink": "/blog/features_collection",
+        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-08-20-FeaturesCollection/2023-08-20-FeaturesCollection.md",
+        "source": "@site/blog/2023-08-20-FeaturesCollection/2023-08-20-FeaturesCollection.md",
+        "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+        "description": "폴리움으로 등차지역도 그리기",
+        "date": "2023-08-20T00:00:00.000Z",
+        "formattedDate": "2023년 8월 20일",
+        "tags": [
+          {
+            "label": "folium",
+            "permalink": "/blog/tags/folium"
+          },
+          {
+            "label": "Choropleth",
+            "permalink": "/blog/tags/choropleth"
+          },
+          {
+            "label": "__geo_interface__",
+            "permalink": "/blog/tags/geo-interface"
+          },
+          {
+            "label": "GeoJSON",
+            "permalink": "/blog/tags/geo-json"
+          },
+          {
+            "label": "key_on",
+            "permalink": "/blog/tags/key-on"
+          }
+        ],
+        "readingTime": 2.81,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "이태환",
+            "title": "개발자",
+            "url": "https://github.com/leetaehwan",
+            "image_url": "https://github.com/leetaehwan.png",
+            "imageURL": "https://github.com/leetaehwan.png"
+          }
+        ],
+        "frontMatter": {
+          "slug": "features_collection",
+          "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+          "authors": [
+            {
+              "name": "이태환",
+              "title": "개발자",
+              "url": "https://github.com/leetaehwan",
+              "image_url": "https://github.com/leetaehwan.png",
+              "imageURL": "https://github.com/leetaehwan.png"
+            }
+          ],
+          "tags": [
+            "folium",
+            "Choropleth",
+            "__geo_interface__",
+            "GeoJSON",
+            "key_on"
+          ]
+        },
+        "nextItem": {
+          "title": "파이토치를 이용한 데이터셋 분리",
+          "permalink": "/blog/pytorch-dataset-split"
+        }
+      },
+      "content": "## 폴리움으로 등차지역도 그리기\nfolium.Choropleth() 메서드를 이용해서 등차지역도를 그릴 수 있다.\n[서울시 개별공시지가 정보](http://data.seoul.go.kr/dataList/OA-1180/F/1/datasetView.do)의 데이터를 활용하면, 동별 평균 공시지가를 구할 수 있고,\n지정된 데이터의 법정동 이름과 공시지가의 컬럼을 가지고 데이터 만들고, 법정동 명을 키로 해서 지도에 시각화 시키고자 한다.\n\n![](./1_folium_Choropleth())\n\nkey_on의 파라미터의 인수로서 geo_data의 컬럼을 지정하는 지 않고, JSON의 형식처럼 \"feature.propertiees.bj_nm\"을 넣어주었다.\n\ngeo_data는 어떻게 생겼길래 이렇게 넣어주는 것인가?\n\n## Geo_data는 어떤 녀석인가?\n\n여기에서 나오는 sungdong_gu_dong_gpd는 GeoDataFrame이다.\n\n```python\nsungdong_gu_dong_gpd.info()\n```\n를 출력해보자. GeoDataFrame이라고 한다. 컬럼들을 갖는게 데이터프레임과 비슷해보인다.\n\n![](./2_sungdong_gu_dong_gpd)\n\n```python\nsungdong_gu_dong_gpd.head()\n```\n를 출력해보자. 여전히 데이터 프레임과 같아 보인다.\n\n![](./3_sungdong_gu_dong_gpd)\n\n```python\nsungdong_gu_dong_gpd.to_json()\n```\n으로 JSON 형식으로 바꿔보자.\n\n![](./4_sungdong_gu_dong_gpd)\n한 줄로 나와서 보기가 불편하다.\n\n```python\nsungdong_gu_dong_gpd.__geo_interface__\n```\n으로 출력하니 보기가 좋다.\n\n![](./5_sungdong_gu_dong_gpd)\n\n우리가 찾는 구조의 json형식의 파일이 나온다. 그럼 JSON 자료형인가? `__geo_interface__` 에 대해서 알아보자.\n\n## `__geo_interface__`이란 무엇인가?\n`GeoDataFrame.__geo_interface__` 메서드는 GeoDataFrame을 파이썬의 GeoJSON 같은 FeaturesCollection의 형식으로 반환한다.\n\n## folium.choroplth(key_on) 파라미터는 무엇인가?\n`folium.Choropleth()`는 컬러 그레디언트를 사용해서 맵에 데이터를 시각화 하기 위해 사용하는 메서드이다.\n메서드의 한 파라미터가 `key_on`이다. 이 파라미터는 다른 파라미터로 제공된 `data`와 매칭되어 사용되어질 GeoJSON 데이터의 property를 가리킨다.\n\n위 코드에서 사용한 `key_on=feature.properties.bj_nm`을 쪼개서 이해해보면\n- feature : folium이 GeoJSON을 구성하고 있는 feature 레벨 데이터에 접근하도록 말해준다.\n- properties : feature와 함께 많이 쓰게 되는 `properties`는 GeoJSON Feature들로 묶여 저장된 데이터들을 말하며 `<GeoJSON_object>`의 하나이다.\n- bj_nm : `properties`로 묶여진 특정 속성의 이름이다."
+    },
+    {
       "id": "pytorch-dataset-split",
       "metadata": {
         "permalink": "/blog/pytorch-dataset-split",
-        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-03-25-Spring-boot-dev-basic copy/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
-        "source": "@site/blog/2023-03-25-Spring-boot-dev-basic copy/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-04-23-bean-scope/2023-04-23-bean-scope.md",
+        "source": "@site/blog/2023-04-23-bean-scope/2023-04-23-bean-scope.md",
         "title": "파이토치를 이용한 데이터셋 분리",
         "description": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.",
-        "date": "2023-04-03T00:00:00.000Z",
-        "formattedDate": "2023년 4월 3일",
+        "date": "2023-04-23T00:00:00.000Z",
+        "formattedDate": "2023년 4월 23일",
         "tags": [
+          {
+            "label": "ai",
+            "permalink": "/blog/tags/ai"
+          },
           {
             "label": "pytorch",
             "permalink": "/blog/tags/pytorch"
@@ -48,10 +122,84 @@
             }
           ],
           "tags": [
+            "ai",
             "pytorch",
             "dataset",
             "sklearn"
           ]
+        },
+        "prevItem": {
+          "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+          "permalink": "/blog/features_collection"
+        },
+        "nextItem": {
+          "title": "파이토치를 이용한 데이터셋 분리",
+          "permalink": "/blog/pytorch-dataset-split"
+        }
+      },
+      "content": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.\n- 분리하는 과정에서 사용되는 함수들에 대해 정리하자.\n\n\n# 왜 파이토치인가?\n- 파이토치에서 사용하는 토치는 신경망을 구성하고 훈련하는 핵심 기능을 제공하는 패키지다.\n- 다차원 배열이라 불리는 텐서를 사용한다. 넘파이배열도 다차원을 지원한다.\n- 하지만, 텐서는 GPU가속 지원과 텐서의 그라디언트를 자동으로 구해주는 'autograd'를 지원한다.\n- 이로써, 개발자가 복잡한 연산 그래프를 정의하도록 해주고 훈련 중에 역전파에 대한 그레디언트를 자동으로 연산해준다.\n\n# 데이터셋의 분리\n- 데이터셋은 모델의 학습, 검증, 평가에 따라 구분하여 사용한다.\n- 학습데이터셋은 모델에 파라미터를 학습하는데 사용하고\n- 검증데이터셋은 학습하는데 사용하지 않지만, 검증데이터를 좋게 만들기 위해 하이퍼파라미터를 튜닝하거나 학습데이터를 전처리한다.\n- 평가데이터셋은 다양한 모델의 성능을 비교하기 위해 사용하는 용도로 구분한다.\n\n# 데이터프레임의 분리\n## sklearn 데이터셋 불러오기\n```python\nfrom sklearn.datasets import fetch_california_housing\n\ncalifonia = fetch_california_housing()\n```\n- sklearn.datasets에서 fetch_califonia_housing을 임포트해서 califonia에 넣어준다.\n```python\ndf = pd.DataFrame(califonia.data, columns = califonia.feature_names)\n```\n- 임포트한 califonia.values를 pandas.DataFrame()인 df에 넣어준다.\n- sklearn에서 임포트한 califonia는 data, target, feature_names, DESCR, frame 등의 데이터셋인 Bunch를 가지고 있다. 호출 하는 방법은 객체.(요청하는 bunch)를 통해 호출한다.\n- .data는 ndarray타입으로, shpae = (20640, 8)이다.\n- .feature_names은 길이가 8인 리스트이다.\n```python\ndf[\"Target\"] = califonia.target\n```\n- .target은 numpy array 타입으로, shape = (20640,)\n- 만들어진 df에 \"Target\" 컬럼을 추가하고, califonia.target의 어레이를 넣어준다.\n```python\ndf.tail()\n```\n- 데이터프레임의 하위 5개의 데이터를 드려다보면 아래와 같다.\n![](../2023-04-03-pytorch-dataset-split/sklearn-california-housing.png)\n\n## 파이토치의 텐서 분리하기\n### float 자료형의 텐서 호출\n```python\nimport torch\n\ndata = torch.from_numpy(df.values).float()\n```\n- 파이토치를 임포트하고\n- df.values로 데이터프레임의 값을 넘파이배열로 호출한다.\n- 호출된 배열을 from_numpy()를 통해 텐서를 반환하고\n- .float()을 통해서 자료형을 선언한다.\n\n### 입력과 출력을 나눈다.\n- 텐서의 데이터셋을 입력값과 출력값(레이블)으로 분리한다.\n```python\nx = data[:,:-1]\ny = data[:, -1:]\n```\n- 나누고 사이즈를 출력해보자.\n- x.size() = torch.Size[20640,8]\n- y.size() = torch.Size[20640,1]\n\n### 훈련 / 검증 / 평가 데이터셋 비율 정하기\n- 6:2:2로 하는게 무난하지만, 데이터셋이 클수록, 비율은 크게 상관 없다.\n```python\nratios = [.6, .2, .2]\n```\n\n### 비율에 따른 데이터셋의 크기를 정하기\n- 비율에 따른 데이터셋의 크기를 train_cnt, valid_cnt, test_cnt로 각각 정의하고 cnts 배열에 넣어준다.\n```python\ntrain_cnt = int(data.size(0) * ratios[0])\nvaild_cnt = int(data.size(0) * ratios[1])\ntest_cnt = data.size(0)-train_cnt-valid_cnt\n\ncnts = [train_cnt, valid_cnt, test_cnt]\n```\n\n### 무작위로 추출하기 위해 섞어서 분리한다.\n\n```python\nindices = torch.randperm(data.size(0))\n```\n- torch.randperm(n)은 0부터 n-1까지 정수의 랜덤 수열을 반환한다.\n- data.size(0)는 텐서의 0차원의 크기인 20640을 반환한다.\n- 즉, indices 변수는 0부터 20639까지의 정수를 랜덤 수열로 반환한다.\n```python\nx = torch.index_select(x, dim=0, index = indices)\ny = torch.index_select(y, dim=0, index = indices)\n```\n- torch.index_select()를 통해서, 텐서 x,y의 0차원의 방향으로 indices를 인덱스로 하는 새로운 텐서를 반환한다.\n```python\nx = list(x.split(cnts, dim=0))\ny = y.split(cnts, dim=0)\n```\n- 0차원을 따라 cnts 배열의 split_size를 가지고 분리한다.\n- x를 분리하면 tuple의 자료형이라 list()로 감싸준다.\n\n```python\nfor x_i, y_i in zip(x,y):\n\tprint(x_i.size(), y_i.size())\n```\n- 다음과 같이 작성하고 실행하면 분리된 결과를 확인할 수 있다.\n- torch.Size([12384, 8]). torch.Size([12384, 1])\n- torch.Size([4128, 8]). torch.Size([4128, 1])\n- torch.Size([4128, 8]). torch.Size([4128, 1])"
+    },
+    {
+      "id": "pytorch-dataset-split",
+      "metadata": {
+        "permalink": "/blog/pytorch-dataset-split",
+        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-04-03-pytorch-dataset-split/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+        "source": "@site/blog/2023-04-03-pytorch-dataset-split/2023-04-03-파이토치를 이용한 데이터셋 분리.md",
+        "title": "파이토치를 이용한 데이터셋 분리",
+        "description": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.",
+        "date": "2023-04-03T00:00:00.000Z",
+        "formattedDate": "2023년 4월 3일",
+        "tags": [
+          {
+            "label": "ai",
+            "permalink": "/blog/tags/ai"
+          },
+          {
+            "label": "pytorch",
+            "permalink": "/blog/tags/pytorch"
+          },
+          {
+            "label": "dataset",
+            "permalink": "/blog/tags/dataset"
+          },
+          {
+            "label": "sklearn",
+            "permalink": "/blog/tags/sklearn"
+          }
+        ],
+        "readingTime": 5.375,
+        "hasTruncateMarker": false,
+        "authors": [
+          {
+            "name": "이태환",
+            "title": "개발자",
+            "url": "https://github.com/leetaehwan",
+            "image_url": "https://github.com/leetaehwan.png",
+            "imageURL": "https://github.com/leetaehwan.png"
+          }
+        ],
+        "frontMatter": {
+          "slug": "pytorch-dataset-split",
+          "title": "파이토치를 이용한 데이터셋 분리",
+          "authors": [
+            {
+              "name": "이태환",
+              "title": "개발자",
+              "url": "https://github.com/leetaehwan",
+              "image_url": "https://github.com/leetaehwan.png",
+              "imageURL": "https://github.com/leetaehwan.png"
+            }
+          ],
+          "tags": [
+            "ai",
+            "pytorch",
+            "dataset",
+            "sklearn"
+          ]
+        },
+        "prevItem": {
+          "title": "파이토치를 이용한 데이터셋 분리",
+          "permalink": "/blog/pytorch-dataset-split"
         },
         "nextItem": {
           "title": "스프링 부트 개발의 기초 상식",
@@ -432,165 +580,9 @@
         "prevItem": {
           "title": "Greetings!",
           "permalink": "/blog/greetings"
-        },
-        "nextItem": {
-          "title": "MDX Blog Post",
-          "permalink": "/blog/mdx-blog-post"
         }
       },
       "content": "[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).\n\nSimply add Markdown files (or folders) to the `blog` directory.\n\nRegular blog authors can be added to `authors.yml`.\n\nThe blog post date can be extracted from filenames, such as:\n\n- `2019-05-30-welcome.md`\n- `2019-05-30-welcome/index.md`\n\nA blog post folder can be convenient to co-locate blog post images:\n\n![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)\n\nThe blog supports tags as well!\n\n**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config."
-    },
-    {
-      "id": "mdx-blog-post",
-      "metadata": {
-        "permalink": "/blog/mdx-blog-post",
-        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2021-08-01-mdx-blog-post.mdx",
-        "source": "@site/blog/2021-08-01-mdx-blog-post.mdx",
-        "title": "MDX Blog Post",
-        "description": "Blog posts support Docusaurus Markdown features, such as MDX.",
-        "date": "2021-08-01T00:00:00.000Z",
-        "formattedDate": "2021년 8월 1일",
-        "tags": [
-          {
-            "label": "docusaurus",
-            "permalink": "/blog/tags/docusaurus"
-          }
-        ],
-        "readingTime": 0.175,
-        "hasTruncateMarker": false,
-        "authors": [
-          {
-            "name": "Sébastien Lorber",
-            "title": "Docusaurus maintainer",
-            "url": "https://sebastienlorber.com",
-            "imageURL": "https://github.com/slorber.png",
-            "key": "slorber"
-          }
-        ],
-        "frontMatter": {
-          "slug": "mdx-blog-post",
-          "title": "MDX Blog Post",
-          "authors": [
-            "slorber"
-          ],
-          "tags": [
-            "docusaurus"
-          ]
-        },
-        "prevItem": {
-          "title": "Welcome",
-          "permalink": "/blog/welcome"
-        },
-        "nextItem": {
-          "title": "Long Blog Post",
-          "permalink": "/blog/long-blog-post"
-        }
-      },
-      "content": "Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).\n\n:::tip\n\nUse the power of React to create interactive blog posts.\n\n```js\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n```\n\n<button onClick={() => alert('button clicked!')}>Click me!</button>\n\n:::"
-    },
-    {
-      "id": "long-blog-post",
-      "metadata": {
-        "permalink": "/blog/long-blog-post",
-        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2019-05-29-long-blog-post.md",
-        "source": "@site/blog/2019-05-29-long-blog-post.md",
-        "title": "Long Blog Post",
-        "description": "This is the summary of a very long blog post,",
-        "date": "2019-05-29T00:00:00.000Z",
-        "formattedDate": "2019년 5월 29일",
-        "tags": [
-          {
-            "label": "hello",
-            "permalink": "/blog/tags/hello"
-          },
-          {
-            "label": "docusaurus",
-            "permalink": "/blog/tags/docusaurus"
-          }
-        ],
-        "readingTime": 2.05,
-        "hasTruncateMarker": true,
-        "authors": [
-          {
-            "name": "Endilie Yacop Sucipto",
-            "title": "Maintainer of Docusaurus",
-            "url": "https://github.com/endiliey",
-            "imageURL": "https://github.com/endiliey.png",
-            "key": "endi"
-          }
-        ],
-        "frontMatter": {
-          "slug": "long-blog-post",
-          "title": "Long Blog Post",
-          "authors": "endi",
-          "tags": [
-            "hello",
-            "docusaurus"
-          ]
-        },
-        "prevItem": {
-          "title": "MDX Blog Post",
-          "permalink": "/blog/mdx-blog-post"
-        },
-        "nextItem": {
-          "title": "First Blog Post",
-          "permalink": "/blog/first-blog-post"
-        }
-      },
-      "content": "This is the summary of a very long blog post,\n\nUse a `<!--` `truncate` `-->` comment to limit blog post size in the list view.\n\n<!--truncate-->\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet"
-    },
-    {
-      "id": "first-blog-post",
-      "metadata": {
-        "permalink": "/blog/first-blog-post",
-        "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2019-05-28-first-blog-post.md",
-        "source": "@site/blog/2019-05-28-first-blog-post.md",
-        "title": "First Blog Post",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet",
-        "date": "2019-05-28T00:00:00.000Z",
-        "formattedDate": "2019년 5월 28일",
-        "tags": [
-          {
-            "label": "hola",
-            "permalink": "/blog/tags/hola"
-          },
-          {
-            "label": "docusaurus",
-            "permalink": "/blog/tags/docusaurus"
-          }
-        ],
-        "readingTime": 0.12,
-        "hasTruncateMarker": false,
-        "authors": [
-          {
-            "name": "Gao Wei",
-            "title": "Docusaurus Core Team",
-            "url": "https://github.com/wgao19",
-            "image_url": "https://github.com/wgao19.png",
-            "imageURL": "https://github.com/wgao19.png"
-          }
-        ],
-        "frontMatter": {
-          "slug": "first-blog-post",
-          "title": "First Blog Post",
-          "authors": {
-            "name": "Gao Wei",
-            "title": "Docusaurus Core Team",
-            "url": "https://github.com/wgao19",
-            "image_url": "https://github.com/wgao19.png",
-            "imageURL": "https://github.com/wgao19.png"
-          },
-          "tags": [
-            "hola",
-            "docusaurus"
-          ]
-        },
-        "prevItem": {
-          "title": "Long Blog Post",
-          "permalink": "/blog/long-blog-post"
-        }
-      },
-      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet"
     }
   ]
 }

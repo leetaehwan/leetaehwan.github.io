@@ -1,0 +1,65 @@
+{
+  "permalink": "/blog/pytorch-dataset-split",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-04-23-bean-scope/2023-04-23-bean-scope.md",
+  "source": "@site/blog/2023-04-23-bean-scope/2023-04-23-bean-scope.md",
+  "title": "파이토치를 이용한 데이터셋 분리",
+  "description": "- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.",
+  "date": "2023-04-23T00:00:00.000Z",
+  "formattedDate": "2023년 4월 23일",
+  "tags": [
+    {
+      "label": "ai",
+      "permalink": "/blog/tags/ai"
+    },
+    {
+      "label": "pytorch",
+      "permalink": "/blog/tags/pytorch"
+    },
+    {
+      "label": "dataset",
+      "permalink": "/blog/tags/dataset"
+    },
+    {
+      "label": "sklearn",
+      "permalink": "/blog/tags/sklearn"
+    }
+  ],
+  "readingTime": 5.375,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "pytorch-dataset-split",
+    "title": "파이토치를 이용한 데이터셋 분리",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "ai",
+      "pytorch",
+      "dataset",
+      "sklearn"
+    ]
+  },
+  "prevItem": {
+    "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+    "permalink": "/blog/features_collection"
+  },
+  "nextItem": {
+    "title": "파이토치를 이용한 데이터셋 분리",
+    "permalink": "/blog/pytorch-dataset-split"
+  }
+}

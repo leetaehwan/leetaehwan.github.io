@@ -2,6 +2,14 @@
   "title": "Recent posts",
   "items": [
     {
+      "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+      "permalink": "/blog/features_collection"
+    },
+    {
+      "title": "파이토치를 이용한 데이터셋 분리",
+      "permalink": "/blog/pytorch-dataset-split"
+    },
+    {
       "title": "파이토치를 이용한 데이터셋 분리",
       "permalink": "/blog/pytorch-dataset-split"
     },
@@ -12,14 +20,6 @@
     {
       "title": "넘파이와 친해진 판다스 2.0",
       "permalink": "/blog/pandas-2-feature-1"
-    },
-    {
-      "title": "Docusaurus 깃허브 페이지 호스팅하기",
-      "permalink": "/blog/docusaurus-deploy"
-    },
-    {
-      "title": "스프링 부트 구성요소 살펴보기",
-      "permalink": "/blog/spring-boot-component-research"
     }
   ]
 }

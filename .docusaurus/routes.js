@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '202'),
+    component: ComponentCreator('/blog', '098'),
     exact: true
   },
   {
@@ -18,23 +18,13 @@ export default [
     exact: true
   },
   {
-    path: '/blog/first-blog-post',
-    component: ComponentCreator('/blog/first-blog-post', '0d7'),
+    path: '/blog/features_collection',
+    component: ComponentCreator('/blog/features_collection', 'd00'),
     exact: true
   },
   {
     path: '/blog/greetings',
     component: ComponentCreator('/blog/greetings', '0f7'),
-    exact: true
-  },
-  {
-    path: '/blog/long-blog-post',
-    component: ComponentCreator('/blog/long-blog-post', '42d'),
-    exact: true
-  },
-  {
-    path: '/blog/mdx-blog-post',
-    component: ComponentCreator('/blog/mdx-blog-post', 'ce8'),
     exact: true
   },
   {
@@ -44,7 +34,12 @@ export default [
   },
   {
     path: '/blog/pytorch-dataset-split',
-    component: ComponentCreator('/blog/pytorch-dataset-split', '2a0'),
+    component: ComponentCreator('/blog/pytorch-dataset-split', '4e6'),
+    exact: true
+  },
+  {
+    path: '/blog/pytorch-dataset-split',
+    component: ComponentCreator('/blog/pytorch-dataset-split', 'c3b'),
     exact: true
   },
   {
@@ -63,8 +58,18 @@ export default [
     exact: true
   },
   {
+    path: '/blog/tags/ai',
+    component: ComponentCreator('/blog/tags/ai', 'f29'),
+    exact: true
+  },
+  {
     path: '/blog/tags/blog',
     component: ComponentCreator('/blog/tags/blog', 'b6a'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/choropleth',
+    component: ComponentCreator('/blog/tags/choropleth', 'a3a'),
     exact: true
   },
   {
@@ -79,12 +84,12 @@ export default [
   },
   {
     path: '/blog/tags/dataset',
-    component: ComponentCreator('/blog/tags/dataset', 'b56'),
+    component: ComponentCreator('/blog/tags/dataset', '042'),
     exact: true
   },
   {
     path: '/blog/tags/docusaurus',
-    component: ComponentCreator('/blog/tags/docusaurus', '8ee'),
+    component: ComponentCreator('/blog/tags/docusaurus', 'fa1'),
     exact: true
   },
   {
@@ -95,6 +100,21 @@ export default [
   {
     path: '/blog/tags/facebook',
     component: ComponentCreator('/blog/tags/facebook', '289'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/folium',
+    component: ComponentCreator('/blog/tags/folium', '298'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/geo-interface',
+    component: ComponentCreator('/blog/tags/geo-interface', '6e3'),
+    exact: true
+  },
+  {
+    path: '/blog/tags/geo-json',
+    component: ComponentCreator('/blog/tags/geo-json', 'faa'),
     exact: true
   },
   {
@@ -109,12 +129,12 @@ export default [
   },
   {
     path: '/blog/tags/hello',
-    component: ComponentCreator('/blog/tags/hello', '2f3'),
+    component: ComponentCreator('/blog/tags/hello', 'e72'),
     exact: true
   },
   {
-    path: '/blog/tags/hola',
-    component: ComponentCreator('/blog/tags/hola', '07c'),
+    path: '/blog/tags/key-on',
+    component: ComponentCreator('/blog/tags/key-on', 'ff0'),
     exact: true
   },
   {
@@ -124,12 +144,12 @@ export default [
   },
   {
     path: '/blog/tags/pytorch',
-    component: ComponentCreator('/blog/tags/pytorch', 'c37'),
+    component: ComponentCreator('/blog/tags/pytorch', 'c45'),
     exact: true
   },
   {
     path: '/blog/tags/sklearn',
-    component: ComponentCreator('/blog/tags/sklearn', '460'),
+    component: ComponentCreator('/blog/tags/sklearn', '8e2'),
     exact: true
   },
   {

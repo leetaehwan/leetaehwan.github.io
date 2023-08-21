@@ -1,18 +1,48 @@
 [
   {
+    "label": "folium",
+    "permalink": "/blog/tags/folium",
+    "count": 1
+  },
+  {
+    "label": "Choropleth",
+    "permalink": "/blog/tags/choropleth",
+    "count": 1
+  },
+  {
+    "label": "__geo_interface__",
+    "permalink": "/blog/tags/geo-interface",
+    "count": 1
+  },
+  {
+    "label": "GeoJSON",
+    "permalink": "/blog/tags/geo-json",
+    "count": 1
+  },
+  {
+    "label": "key_on",
+    "permalink": "/blog/tags/key-on",
+    "count": 1
+  },
+  {
+    "label": "ai",
+    "permalink": "/blog/tags/ai",
+    "count": 2
+  },
+  {
     "label": "pytorch",
     "permalink": "/blog/tags/pytorch",
-    "count": 1
+    "count": 2
   },
   {
     "label": "dataset",
     "permalink": "/blog/tags/dataset",
-    "count": 1
+    "count": 2
   },
   {
     "label": "sklearn",
     "permalink": "/blog/tags/sklearn",
-    "count": 1
+    "count": 2
   },
   {
     "label": "data",
@@ -72,16 +102,11 @@
   {
     "label": "hello",
     "permalink": "/blog/tags/hello",
-    "count": 2
+    "count": 1
   },
   {
     "label": "docusaurus",
     "permalink": "/blog/tags/docusaurus",
-    "count": 4
-  },
-  {
-    "label": "hola",
-    "permalink": "/blog/tags/hola",
     "count": 1
   }
 ]
