@@ -1,0 +1,66 @@
+{
+  "permalink": "/blog/features_collection",
+  "editUrl": "https://github.com/leetaehwan/leetaehwan.github.io/edit/main/blog/2023-08-20-FeaturesCollection/2023-08-20-features_collection.md",
+  "source": "@site/blog/2023-08-20-FeaturesCollection/2023-08-20-features_collection.md",
+  "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+  "description": "폴리움으로 등차지역도 그리기",
+  "date": "2023-08-20T00:00:00.000Z",
+  "formattedDate": "2023년 8월 20일",
+  "tags": [
+    {
+      "label": "folium",
+      "permalink": "/blog/tags/folium"
+    },
+    {
+      "label": "Choropleth",
+      "permalink": "/blog/tags/choropleth"
+    },
+    {
+      "label": "__geo_interface__",
+      "permalink": "/blog/tags/geo-interface"
+    },
+    {
+      "label": "GeoJSON",
+      "permalink": "/blog/tags/geo-json"
+    },
+    {
+      "label": "key_on",
+      "permalink": "/blog/tags/key-on"
+    }
+  ],
+  "readingTime": 3.005,
+  "hasTruncateMarker": false,
+  "authors": [
+    {
+      "name": "이태환",
+      "title": "개발자",
+      "url": "https://github.com/leetaehwan",
+      "image_url": "https://github.com/leetaehwan.png",
+      "imageURL": "https://github.com/leetaehwan.png"
+    }
+  ],
+  "frontMatter": {
+    "slug": "features_collection",
+    "title": "폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기",
+    "authors": [
+      {
+        "name": "이태환",
+        "title": "개발자",
+        "url": "https://github.com/leetaehwan",
+        "image_url": "https://github.com/leetaehwan.png",
+        "imageURL": "https://github.com/leetaehwan.png"
+      }
+    ],
+    "tags": [
+      "folium",
+      "Choropleth",
+      "__geo_interface__",
+      "GeoJSON",
+      "key_on"
+    ]
+  },
+  "nextItem": {
+    "title": "파이토치를 이용한 데이터셋 분리",
+    "permalink": "/blog/pytorch-dataset-split"
+  }
+}

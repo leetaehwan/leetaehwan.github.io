@@ -1,5 +1,5 @@
 {
-  "/blog-098": {
+  "/blog-002": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -7,13 +7,13 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "9a97df7f"
+        "content": "49cec1dd"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
         "content": "59acd36f"
@@ -51,13 +51,13 @@
     "sidebar": "814f3328",
     "content": "7b64115e"
   },
-  "/blog/features_collection-d00": {
+  "/blog/features_collection-c7e": {
     "__comp": "ccc49370",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
-    "content": "d028713b"
+    "content": "d8c232b0"
   },
   "/blog/greetings-0f7": {
     "__comp": "ccc49370",
@@ -75,14 +75,6 @@
     "sidebar": "814f3328",
     "content": "9498b5b0"
   },
-  "/blog/pytorch-dataset-split-4e6": {
-    "__comp": "ccc49370",
-    "__context": {
-      "plugin": "4ed5a51b"
-    },
-    "sidebar": "814f3328",
-    "content": "c4a19803"
-  },
   "/blog/pytorch-dataset-split-c3b": {
     "__comp": "ccc49370",
     "__context": {
@@ -90,6 +82,14 @@
     },
     "sidebar": "814f3328",
     "content": "cfae5def"
+  },
+  "/blog/pytorch-dataset-split-4e6": {
+    "__comp": "ccc49370",
+    "__context": {
+      "plugin": "4ed5a51b"
+    },
+    "sidebar": "814f3328",
+    "content": "c4a19803"
   },
   "/blog/spring-boot-component-research-656": {
     "__comp": "ccc49370",
@@ -115,7 +115,7 @@
     "sidebar": "814f3328",
     "tags": "a7023ddc"
   },
-  "/blog/tags/ai-f29": {
+  "/blog/tags/ai-deb": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -123,10 +123,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       }
     ],
     "tag": "f32fe326",
@@ -146,7 +146,7 @@
     "tag": "631037e5",
     "listMetadata": "3f3a03c1"
   },
-  "/blog/tags/choropleth-a3a": {
+  "/blog/tags/choropleth-5bc": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -154,7 +154,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "9a97df7f"
+        "content": "49cec1dd"
       }
     ],
     "tag": "66671b5b",
@@ -191,7 +191,7 @@
     "tag": "332c576c",
     "listMetadata": "e0eb994a"
   },
-  "/blog/tags/dataset-042": {
+  "/blog/tags/dataset-1cd": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -199,10 +199,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       }
     ],
     "tag": "489e7b1b",
@@ -250,7 +250,7 @@
     "tag": "031793e1",
     "listMetadata": "096bfee4"
   },
-  "/blog/tags/folium-298": {
+  "/blog/tags/folium-e97": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -258,13 +258,13 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "9a97df7f"
+        "content": "49cec1dd"
       }
     ],
     "tag": "461a784a",
     "listMetadata": "3e1ed252"
   },
-  "/blog/tags/geo-interface-6e3": {
+  "/blog/tags/geo-interface-10b": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -272,13 +272,13 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "9a97df7f"
+        "content": "49cec1dd"
       }
     ],
     "tag": "133a873c",
     "listMetadata": "08c5c1cd"
   },
-  "/blog/tags/geo-json-faa": {
+  "/blog/tags/geo-json-f85": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -286,7 +286,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "9a97df7f"
+        "content": "49cec1dd"
       }
     ],
     "tag": "e897bada",
@@ -334,7 +334,7 @@
     "tag": "30a24c52",
     "listMetadata": "66406991"
   },
-  "/blog/tags/key-on-ff0": {
+  "/blog/tags/key-on-917": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -342,7 +342,7 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "9a97df7f"
+        "content": "49cec1dd"
       }
     ],
     "tag": "55eabfa4",
@@ -362,7 +362,7 @@
     "tag": "d740a617",
     "listMetadata": "0a2019c5"
   },
-  "/blog/tags/pytorch-c45": {
+  "/blog/tags/pytorch-c71": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -370,16 +370,16 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       }
     ],
     "tag": "56ea5381",
     "listMetadata": "ae03ca28"
   },
-  "/blog/tags/sklearn-8e2": {
+  "/blog/tags/sklearn-762": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
@@ -387,10 +387,10 @@
     "sidebar": "814f3328",
     "items": [
       {
-        "content": "34f474c3"
+        "content": "07868772"
       },
       {
-        "content": "34f474c3"
+        "content": "07868772"
       }
     ],
     "tag": "4f221e6d",
