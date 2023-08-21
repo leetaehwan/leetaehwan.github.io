@@ -4,7 +4,7 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 export default [
   {
     path: '/blog',
-    component: ComponentCreator('/blog', '3a0'),
+    component: ComponentCreator('/blog', '2b7'),
     exact: true
   },
   {

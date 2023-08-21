@@ -7,7 +7,7 @@ authors :
     url : https://github.com/leetaehwan
     image_url : https://github.com/leetaehwan.png
   
-tags : [folium, Choropleth, __geo_interface__, GeoJSON, key_on]
+tags : [folium, Choropleth, __geo_interface__, GeoJSON, key_on, data]
 ---
 
 ## 폴리움으로 등차지역도 그리기

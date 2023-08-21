@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[5630],{9561:e=>{e.exports=JSON.parse('{"label":"GeoJSON","permalink":"/blog/tags/geo-json","allTagsPath":"/blog/tags","count":1}')}}]);
