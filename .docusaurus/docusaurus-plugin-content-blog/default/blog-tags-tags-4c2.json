@@ -25,6 +25,11 @@
     "count": 1
   },
   {
+    "label": "data",
+    "permalink": "/blog/tags/data",
+    "count": 3
+  },
+  {
     "label": "ai",
     "permalink": "/blog/tags/ai",
     "count": 2
@@ -42,11 +47,6 @@
   {
     "label": "sklearn",
     "permalink": "/blog/tags/sklearn",
-    "count": 2
-  },
-  {
-    "label": "data",
-    "permalink": "/blog/tags/data",
     "count": 2
   },
   {

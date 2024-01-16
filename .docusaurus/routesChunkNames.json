@@ -1,5 +1,5 @@
 {
-  "/blog-2b7": {
+  "/blog-3a0": {
     "__comp": "a6aa9e1f",
     "__context": {
       "plugin": "4ed5a51b"
@@ -22,10 +22,10 @@
         "content": "43acb624"
       },
       {
-        "content": "f5d9fd2d"
+        "content": "5c321b4e"
       },
       {
-        "content": "5c321b4e"
+        "content": "f5d9fd2d"
       },
       {
         "content": "35f0e8ad"
@@ -174,13 +174,16 @@
     "tag": "deb78cde",
     "listMetadata": "b864a303"
   },
-  "/blog/tags/data-826": {
+  "/blog/tags/data-cdf": {
     "__comp": "6875c492",
     "__context": {
       "plugin": "4ed5a51b"
     },
     "sidebar": "814f3328",
     "items": [
+      {
+        "content": "00d63a0e"
+      },
       {
         "content": "59acd36f"
       },

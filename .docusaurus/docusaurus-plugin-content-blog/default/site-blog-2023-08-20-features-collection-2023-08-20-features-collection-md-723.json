@@ -26,6 +26,10 @@
     {
       "label": "key_on",
       "permalink": "/blog/tags/key-on"
+    },
+    {
+      "label": "data",
+      "permalink": "/blog/tags/data"
     }
   ],
   "readingTime": 3.005,
@@ -56,7 +60,8 @@
       "Choropleth",
       "__geo_interface__",
       "GeoJSON",
-      "key_on"
+      "key_on",
+      "data"
     ]
   },
   "nextItem": {
