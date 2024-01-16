@@ -4,21 +4,337 @@
         <title>데이터 기반 쉐어링 Blog</title>
         <link>https://leetaehwan.github.io/blog</link>
         <description>데이터 기반 쉐어링 Blog</description>
-        <lastBuildDate>Sun, 20 Aug 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 16 Jan 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>ko</language>
+        <item>
+            <title><![CDATA[Supabase란 무엇인가? 웹페이지 SELECT, INSERT 실습]]></title>
+            <link>https://leetaehwan.github.io/blog/supabase_tutorial_practice</link>
+            <guid>https://leetaehwan.github.io/blog/supabase_tutorial_practice</guid>
+            <pubDate>Tue, 16 Jan 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Supabase란 무엇인가? 웹페이지 SELECT, INSERT 실습]]></description>
+            <content:encoded><![CDATA[<h2 id="supabase란-무엇인가-웹페이지-select-insert-실습">Supabase란 무엇인가? 웹페이지 SELECT, INSERT 실습</h2>
+<h3 id="목적">목적</h3>
+<ul>
+<li>Supabase란 무엇인가?<!-- -->
+<ul>
+<li>Firebase와의 차이점은 무엇인가?</li>
+</ul>
+</li>
+<li>웹페이지에서 데이터를 불러오고 삽입하기<!-- -->
+<ul>
+<li>구현하고자 하는 코드</li>
+<li>발생한 문제</li>
+</ul>
+</li>
+</ul>
+<h2 id="생활코딩의-supabase-입문수업---youtube를-실습했습니다">생활코딩의 <a href="https://www.youtube.com/watch?v=FbLzqoENTsg">Supabase 입문수업 - YouTube</a>를 실습했습니다.</h2>
+<ul>
+<li>부딪혔던 문제와 해결법을 공유합니다.</li>
+</ul>
+<h2 id="supabase란-무엇인가">Supabase란 무엇인가?</h2>
+<ul>
+<li>웹과 앱의 백앤드를 구현하기 위한 모든 기능을 제공하는 클라우드 서비스</li>
+<li>데이터베이스 : 데이터가 모여져 있는 공간으로 구조적인 방식으로 관리되는 데이터들의 집합</li>
+<li>스토리지 : 업로드된 파일을 저장</li>
+<li>인증기능 : 회원가입 및 로그인, 로그아웃 등</li>
+<li>Edge Function : 프로그래밍적으로 다양한 기능 처리 (장고, FastAPI 등이 수행하던)</li>
+</ul>
+<h3 id="구글의-firebase와의-차이점">구글의 Firebase와의 차이점</h3>
+<ul>
+<li>Supabase는 데이터베이스를 관계형 데이터베이스인 PostgreSQL을 사용합니다.</li>
+</ul>
+<h2 id="supabase의-계층">Supabase의 계층</h2>
+<p><img src="https://i.imgur.com/VZY2ILh.png" alt=""></p>
+<ol>
+<li>계정 (Account)</li>
+<li>조직 (Organizations)</li>
+<li>프로젝트 (Projects)<!-- -->
+<ul>
+<li>데이터베이스</li>
+<li>스토리지</li>
+<li>인증기능</li>
+<li>Edge functions</li>
+</ul>
+</li>
+</ol>
+<h2 id="실습에서-만들고자-하는-서비스">실습에서 만들고자 하는 서비스</h2>
+<ul>
+<li>슈파베이스를 통해 데이터베이스를 구축한다.<!-- -->
+<ul>
+<li>title(text), body(text), create_at(date), id(int8) 컬럼을 만든다.</li>
+</ul>
+</li>
+<li>웹페이지를 통해 구축된 데이터베이스에서 불러와 렌더링한다.</li>
+<li>웹페이지의 'Create' 버튼을 이용해서 새로운 'title'과 'body'를 입력받아 데이터베이스로 신규 데이터로 추가한다.</li>
+</ul>
+<p><img src="https://i.imgur.com/OjScxnD.png" alt=""></p>
+<h3 id="1-supabase-가입하기">1. Supabase 가입하기</h3>
+<p><img src="https://i.imgur.com/eefXkLv.png" alt=""></p>
+<ul>
+<li>
+<p>웹페이지에 들어가면, 나오는 대문 내용이 아주 맘에든다.</p>
+<ul>
+<li>일주일안에 만들어서, 수백만에게 배포하기</li>
+</ul>
+</li>
+<li>
+<p>회원가입을 해보자.
+<img src="https://i.imgur.com/BDrXTjX.png" alt=""></p>
+</li>
+<li>
+<p>나는 GitHub으로 회원가입했다.</p>
+</li>
+</ul>
+<h3 id="2-프로젝트-만들기">2. 프로젝트 만들기</h3>
+<p><img src="https://i.imgur.com/BBHoA3p.png" alt=""></p>
+<ul>
+<li>프로젝트를 시작하기 위해서 'Start your project' 버튼을 눌러보자.</li>
+<li>그러면 아래와 같은 대쉬보드가 나타난다.</li>
+</ul>
+<p><img src="https://i.imgur.com/cQ2iBwd.png" alt=""></p>
+<ul>
+<li>이름을 사용한 기본값 조직이 생성되어 있을 것이다. 이 조직 안에 'New Project' 버튼을 눌러보자.</li>
+</ul>
+<p><img src="https://i.imgur.com/Mn8vMqw.png" alt=""></p>
+<ul>
+<li>프로젝트 상위 조직을 지정한다.</li>
+<li>프로젝트 이름을 정하고</li>
+<li>PostgreSQL의 데이터베이스의 암호를 입력한다.<!-- -->
+<ul>
+<li>나는 생성기를 통해서 생성했다. (따로 저장해두고 사용할 일을 거의 없다고 한다.)</li>
+</ul>
+</li>
+<li>Region은 서비스가 배포될 지역과 가까운 곳으로 설정하자.<!-- -->
+<ul>
+<li>나는 한국에 서비스를 해야하니, 서울로 정한다.</li>
+</ul>
+</li>
+<li>위 내용들을 설정하면 이제 프로젝트가 만들어졌다.</li>
+</ul>
+<h3 id="3-데이터-입력하기">3. 데이터 입력하기</h3>
+<p><img src="https://i.imgur.com/cjHpJ8u.png" alt=""></p>
+<ul>
+<li>프로젝트 생성을 마치면, 위와 같이 대쉬보드가 보입니다.</li>
+<li>테이블 데이터를 만들어주기 위해서 '테이블 에디터' 버튼을 눌러줍니다.</li>
+</ul>
+<p><img src="https://i.imgur.com/8p95VR0.png" alt=""></p>
+<ul>
+<li>'New table' 버튼을 눌러 새 테이블을 만듭시다.</li>
+</ul>
+<p><img src="https://i.imgur.com/3ZZnWex.png" alt=""></p>
+<ul>
+<li>기본값으로는 'RLS'가 활성화 되어있다.</li>
+</ul>
+<p><img src="https://i.imgur.com/hlzJLYv.png" alt=""></p>
+<ul>
+<li>처음에 RLS를 체크를 해제하고 아래와 같이 'page' 테이블을 만들었다.</li>
+</ul>
+<p><img src="https://i.imgur.com/bGBVF2L.png" alt=""></p>
+<ul>
+<li>이렇게 만든 테이블은 누구나에게 접근이 가능하게 된다고 경고가 나온다.<!-- -->
+<ul>
+<li>RLS을 활성화 하지 않아서 그렇다.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/gvv9342.png" alt=""></p>
+<ul>
+<li>'Insert' 버튼을 누르고, 'Insert row'를 눌러 데이터를 추가해보자.</li>
+</ul>
+<p><img src="https://i.imgur.com/kpDXNDl.png" alt=""></p>
+<ul>
+<li>'id'와 'create_at'은 자동으로 입력된다.</li>
+<li>선택 영역인 'title'과 'body'를 예시로 입력하고 저장해보자.</li>
+</ul>
+<p><img src="https://i.imgur.com/7FQrdn0.png" alt=""></p>
+<ul>
+<li>'id'값이 1인 데이터가 하나 만들어졌다.</li>
+</ul>
+<h3 id="4-웹서비스와-연결하기">4. 웹서비스와 연결하기</h3>
+<ul>
+<li>웹페이지와 데이터베이스를 연결한 서비스를 만든다고 가정해보자.</li>
+<li>완성된 예시 코드를 먼저 훑어보자.</li>
+</ul>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width" /&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"&gt;&lt;/script&gt;
+    &lt;title&gt;JS Bin&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Supatodo&lt;/h1&gt;
+    &lt;div id="history"&gt;&lt;/div&gt;
+    &lt;input type="button" value="create" id="create_btn" /&gt;
+
+    &lt;script&gt;
+      const supabaseUrl = API의 url
+      const supabaseKey = API의 key
+      const client = supabase.createClient(supabaseUrl, supabaseKey)
+        async function refreshHistory() {
+        let { data: record, error } = await client.from('page').select('*');
+        console.log('record', record);
+        let tag = "";
+        for (let i = 0; i &lt; record.length; i++) {
+          tag += `&lt;h2&gt;${record[i].title}&lt;/h2&gt;${record[i].body}`;
+        }
+        document.querySelector('#history').innerHTML = tag;
+        }
+      refreshHistory()
+
+      async function recordHandler() {
+        const { data, error } = await client
+      .from('page')
+      .insert([
+        { title: prompt("title?"), body: prompt("body?") }
+      ]).select()
+        refreshHistory()
+      }
+      document.querySelector('#create_btn').addEventListener("click", recordHandler);
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="4-1-웹페이지에-supabase-설치">4-1. 웹페이지에 supabase 설치</h4>
+<ul>
+<li>supabase의 도큐먼트 -&gt; <a href="https://supabase.com/docs/reference/javascript/installing">Installing</a>을 보면 'package' 또는 'CDN'을 통한 설치 안내가 나와있다.</li>
+<li>여기서는 CDN으로 supabase를 설치한다.</li>
+</ul>
+<pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"&gt;&lt;/script&gt;
+//or
+&lt;script src="https://unpkg.com/@supabase/supabase-js@2"&gt;&lt;/script&gt;
+</code></pre>
+<h4 id="4-2-supabase-api-연결하기">4-2. supabase API 연결하기</h4>
+<p><img src="https://i.imgur.com/IkZn2Rd.png" alt=""></p>
+<ul>
+<li>'API 문서' 탭을 들어가면, 'Introduction' 영역에서 우리가 API를 연결할 수 있는 코드가 제공된다.</li>
+<li>웹페이지에서 패키지를 import하는 것이 까다롭기 때문에, 여기서는 사용하지 않는다.<!-- -->
+<ul>
+<li>대신에 CDN으로 설치하면 전역변수 supabase를 통해 기능을 접근할 수 있다.</li>
+</ul>
+</li>
+<li>'url'과 'key'가 입력되어야 한다.</li>
+</ul>
+<p><img src="https://i.imgur.com/HiRJ0JG.png" alt=""></p>
+<ul>
+<li>이는 '설정 -&gt; API'에 들어가면 볼 수 있다.</li>
+</ul>
+<h4 id="4-3-테이블에서-데이터를-읽어오기">4-3. 테이블에서 데이터를 읽어오기</h4>
+<p><img src="https://i.imgur.com/Vf3G1ne.png" alt=""></p>
+<ul>
+<li>'Introduction' 항목 밑에 우리가 만든 테이블 이름을 고를 수 있다.</li>
+<li>밑으로 스크롤을 좀 내리면 'Read rows' 영역에 'READ ALL ROWS'의 코드가 있다.</li>
+<li>이 비동기(await) 코드를 async 함수에 넣어서 사용해주면 데이터를 불러와 콘솔에 출력시켜볼 수 있다.</li>
+</ul>
+<pre><code class="language-js">async function refreshHistory() {
+    let { data: record, error } = await client.from('page').select('*');
+    console.log('record', record);
+</code></pre>
+<h4 id="4-4-웹페이지-div-태그에-불러온-데이터-삽입하기">4-4. 웹페이지 div 태그에 불러온 데이터 삽입하기</h4>
+<ul>
+<li>데이터를 읽은 수 만큼 할당하는 동적할당을 위해서 for문을 사용한다.<!-- -->
+<ul>
+<li>for문으로 record를 반복해서 title과 body를 문자열 tag에 담아준다.</li>
+<li>완성된 tag를 querySelector()를 통해서 div를 선택햬서, innerHTML에 넣어준다.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">let tag = "";
+for (let i = 0; i &lt; record.length; i++) {
+  tag += `&lt;h2&gt;${record[i].title}&lt;/h2&gt;${record[i].body}`;
+}
+document.querySelector("#history").innerHTML = tag;
+</code></pre>
+<h4 id="4-5-웹페이지에-create-버튼으로-데이터베이스에-데이터-추가하기">4-5 웹페이지에 'create' 버튼으로 데이터베이스에 데이터 추가하기</h4>
+<ul>
+<li>아까 읽어온 것처럼 'API 문서'의 테이블에 들어가서 'INSERT A ROW'의 코드를 가져온다.
+<img src="https://i.imgur.com/O64exzD.png" alt=""></li>
+<li>위 코드를 가져와서 async 함수에 넣어준다.</li>
+<li>위에서 some_column과 other_column에 우리가 넣고자 하는 데이터베이스의 컬럼 값을 넣어준다.</li>
+<li>그리고 'someValue'와 'otherValue'에 넣고자 하는 값을 넣어준다.<!-- -->
+<ul>
+<li>여기서는 prompt를 입력받아서 데이터를 삽입해주고 페이지에 랜더링한다.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-js">async function recordHandler() {
+  const { data, error } = await client
+    .from("page")
+    .insert([{ title: prompt("title?"), body: prompt("body?") }])
+    .select();
+  refreshHistory();
+}
+document.querySelector("#create_btn").addEventListener("click", recordHandler);
+</code></pre>
+<ul>
+<li>여기까지 supabase 입문에 대해 알아보는 것을 마친다.</li>
+</ul>
+<h3 id="결론">결론</h3>
+<ul>
+<li>supabase를 가입</li>
+<li>프로젝트를 만들고</li>
+<li>table을 만들어 웹페이지에서 불러와(SELECT) 랜더링</li>
+<li>웹페이지에서 table의 데이터를 삽입(INSERT)</li>
+</ul>]]></content:encoded>
+            <category>supabase</category>
+            <category>postgreSQL</category>
+            <category>insert</category>
+            <category>select</category>
+            <category>firebase</category>
+            <category>data</category>
+        </item>
         <item>
             <title><![CDATA[폴리움의 key_on 파라미터와 GeoJson 및 GeoData 이해하기]]></title>
             <link>https://leetaehwan.github.io/blog/features_collection</link>
             <guid>https://leetaehwan.github.io/blog/features_collection</guid>
             <pubDate>Sun, 20 Aug 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[폴리움으로 등차지역도 그리기]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="폴리움으로-등차지역도-그리기">폴리움으로 등차지역도 그리기<a href="#폴리움으로-등차지역도-그리기" class="hash-link" aria-label="폴리움으로 등차지역도 그리기에 대한 직접 링크" title="폴리움으로 등차지역도 그리기에 대한 직접 링크">​</a></h2><p>folium.Choropleth() 메서드를 이용해서 등차지역도를 그릴 수 있다.
-<a href="http://data.seoul.go.kr/dataList/OA-1180/F/1/datasetView.do" target="_blank" rel="noopener noreferrer">서울시 개별공시지가 정보</a>의 데이터를 활용하면, 동별 평균 공시지가를 구할 수 있고,
-지정된 데이터의 법정동 이름과 공시지가의 컬럼을 가지고 데이터 만들고, 법정동 명을 키로 해서 지도에 시각화 시키고자 한다.</p><p><img loading="lazy" src="/assets/images/1_folium_choropleth-f844e60bff6b176fdef2bff4b491da7a.png" width="688" height="312" class="img_ev3q"></p><p>key_on의 파라미터의 인수로서 geo_data의 컬럼을 지정하는 지 않고, JSON의 형식처럼 "feature.propertiees.bj_nm"을 넣어주었다.</p><p>geo_data는 어떻게 생겼길래 이렇게 넣어주는 것인가?</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="geo_data는-어떤-녀석인가">Geo_data는 어떤 녀석인가?<a href="#geo_data는-어떤-녀석인가" class="hash-link" aria-label="Geo_data는 어떤 녀석인가?에 대한 직접 링크" title="Geo_data는 어떤 녀석인가?에 대한 직접 링크">​</a></h2><p>여기에서 나오는 sungdong_gu_dong_gpd는 GeoDataFrame이다.</p><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sungdong_gu_dong_gpd</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">info</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>를 출력해보자. GeoDataFrame이라고 한다. 컬럼들을 갖는게 데이터프레임과 비슷해보인다.</p><p><img loading="lazy" src="/assets/images/2_sungdong_gu_dong_gpd-b9dc6c55367a15b76bcc32b2ae004c82.png" width="872" height="564" class="img_ev3q"></p><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sungdong_gu_dong_gpd</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">head</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>를 출력해보자. 여전히 데이터 프레임과 같아 보인다.</p><p><img loading="lazy" src="/assets/images/3_sungdong_gu_dong_gpd-68fb83e49f2195a27c255c9f67e66741.png" width="1556" height="368" class="img_ev3q"></p><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sungdong_gu_dong_gpd</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">to_json</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>으로 JSON 형식으로 바꿔보자.</p><p><img loading="lazy" src="/assets/images/4_sungdong_gu_dong_gpd-403611afb9552a40b05aa6a85f7414bd.png" width="1740" height="192" class="img_ev3q">
-한 줄로 나와서 보기가 불편하다.</p><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">sungdong_gu_dong_gpd</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">__geo_interface__</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><p>으로 출력하니 보기가 좋다.</p><p><img loading="lazy" src="/assets/images/5_sungdong_gu_dong_gpd-f3a065f9148ad6a955f715309183340a.png" width="570" height="1432" class="img_ev3q"></p><p>우리가 찾는 구조의 json형식의 파일이 나온다. 그럼 JSON 자료형인가? <code>__geo_interface__</code> 에 대해서 알아보자.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="__geo_interface__이란-무엇인가"><code>__geo_interface__</code>이란 무엇인가?<a href="#__geo_interface__이란-무엇인가" class="hash-link" aria-label="__geo_interface__이란-무엇인가에 대한 직접 링크" title="__geo_interface__이란-무엇인가에 대한 직접 링크">​</a></h2><p><code>GeoDataFrame.__geo_interface__</code> 메서드는 GeoDataFrame을 파이썬의 GeoJSON 같은 FeaturesCollection의 형식으로 반환한다.</p><h2 class="anchor anchorWithStickyNavbar_LWe7" id="foliumchoroplethkey_on-파라미터는-무엇인가">folium.choropleth(key_on) 파라미터는 무엇인가?<a href="#foliumchoroplethkey_on-파라미터는-무엇인가" class="hash-link" aria-label="folium.choropleth(key_on) 파라미터는 무엇인가?에 대한 직접 링크" title="folium.choropleth(key_on) 파라미터는 무엇인가?에 대한 직접 링크">​</a></h2><p><code>folium.Choropleth()</code>는 컬러 그레디언트를 사용해서 맵에 데이터를 시각화 하기 위해 사용하는 메서드이다.
-메서드의 한 파라미터가 <code>key_on</code>이다. 이 파라미터는 다른 파라미터로 제공된 <code>data</code>와 매칭되어 사용되어질 GeoJSON 데이터의 property를 가리킨다.</p><p>위 코드에서 사용한 <code>key_on=feature.properties.bj_nm</code>을 쪼개서 이해해보면</p><ul><li>feature : folium이 GeoJSON을 구성하고 있는 feature 레벨 데이터에 접근하도록 말해준다.</li><li>properties : feature와 함께 많이 쓰게 되는 <code>properties</code>는 GeoJSON Feature들로 묶여 저장된 데이터들을 말하며 <code>&lt;GeoJSON_object&gt;</code>의 하나이다.</li><li>bj_nm : <code>properties</code>로 묶여진 특정 속성의 이름이다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="요약">요약<a href="#요약" class="hash-link" aria-label="요약에 대한 직접 링크" title="요약에 대한 직접 링크">​</a></h2><ul><li>foilum.choropleth()는 geoData와 DataFrame을 연결하여 시각화 한다.</li><li>이때, DataFrame은 컬럼, GeoData는 GeoJSON의 property들을 매칭하여 시각화 한다.</li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<h2 id="폴리움으로-등차지역도-그리기">폴리움으로 등차지역도 그리기</h2>
+<p>folium.Choropleth() 메서드를 이용해서 등차지역도를 그릴 수 있다.
+<a href="http://data.seoul.go.kr/dataList/OA-1180/F/1/datasetView.do">서울시 개별공시지가 정보</a>의 데이터를 활용하면, 동별 평균 공시지가를 구할 수 있고,
+지정된 데이터의 법정동 이름과 공시지가의 컬럼을 가지고 데이터 만들고, 법정동 명을 키로 해서 지도에 시각화 시키고자 한다.</p>
+<p><img src="https://leetaehwan.github.io/assets/images/1_folium_choropleth-f844e60bff6b176fdef2bff4b491da7a.png" width="688" height="312"></p>
+<p>key_on의 파라미터의 인수로서 geo_data의 컬럼을 지정하는 지 않고, JSON의 형식처럼 "feature.propertiees.bj_nm"을 넣어주었다.</p>
+<p>geo_data는 어떻게 생겼길래 이렇게 넣어주는 것인가?</p>
+<h2 id="geo_data는-��어떤-녀석인가">Geo_data는 어떤 녀석인가?</h2>
+<p>여기에서 나오는 sungdong_gu_dong_gpd는 GeoDataFrame이다.</p>
+<pre><code class="language-python">sungdong_gu_dong_gpd.info()
+</code></pre>
+<p>를 출력해보자. GeoDataFrame이라고 한다. 컬럼들을 갖는게 데이터프레임과 비슷해보인다.</p>
+<p><img src="https://leetaehwan.github.io/assets/images/2_sungdong_gu_dong_gpd-b9dc6c55367a15b76bcc32b2ae004c82.png" width="872" height="564"></p>
+<pre><code class="language-python">sungdong_gu_dong_gpd.head()
+</code></pre>
+<p>를 출력해보자. 여전히 데이터 프레임과 같아 보인다.</p>
+<p><img src="https://leetaehwan.github.io/assets/images/3_sungdong_gu_dong_gpd-68fb83e49f2195a27c255c9f67e66741.png" width="1556" height="368"></p>
+<pre><code class="language-python">sungdong_gu_dong_gpd.to_json()
+</code></pre>
+<p>으로 JSON 형식으로 바꿔보자.</p>
+<p><img src="https://leetaehwan.github.io/assets/images/4_sungdong_gu_dong_gpd-403611afb9552a40b05aa6a85f7414bd.png" width="1740" height="192">
+한 줄로 나와서 보기가 불편하다.</p>
+<pre><code class="language-python">sungdong_gu_dong_gpd.__geo_interface__
+</code></pre>
+<p>으로 출력하니 보기가 좋다.</p>
+<p><img src="https://leetaehwan.github.io/assets/images/5_sungdong_gu_dong_gpd-f3a065f9148ad6a955f715309183340a.png" width="570" height="1432"></p>
+<p>우리가 찾는 구조의 json형식의 파일이 나온다. 그럼 JSON 자료형인가? <code>__geo_interface__</code> 에 대해서 알아보자.</p>
+<h2 id="__geo_interface__이란-무엇인가"><code>__geo_interface__</code>이란 무엇인가?</h2>
+<p><code>GeoDataFrame.__geo_interface__</code> 메서드는 GeoDataFrame을 파이썬의 GeoJSON 같은 FeaturesCollection의 형식으로 반환한다.</p>
+<h2 id="foliumchoroplethkey_on-파라미터는-무엇인가">folium.choropleth(key_on) 파라미터는 무엇인가?</h2>
+<p><code>folium.Choropleth()</code>는 컬러 그레디언트를 사용해서 맵에 데이터를 시각화 하기 위해 사용하는 메서드이다.
+메서드의 한 파라미터가 <code>key_on</code>이다. 이 파라미터는 다른 파라미터로 제공된 <code>data</code>와 매칭되어 사용되어질 GeoJSON 데이터의 property를 가리킨다.</p>
+<p>위 코드에서 사용한 <code>key_on=feature.properties.bj_nm</code>을 쪼개서 이해해보면</p>
+<ul>
+<li>feature : folium이 GeoJSON을 구성하고 있는 feature 레벨 데이터에 접근하도록 말해준다.</li>
+<li>properties : feature와 함께 많이 쓰게 되는 <code>properties</code>는 GeoJSON Feature들로 묶여 저장된 데이터들을 말하며 <code>&lt;GeoJSON_object&gt;</code>의 하나이다.</li>
+<li>bj_nm : <code>properties</code>로 묶여진 특정 속성의 이름이다.</li>
+</ul>
+<h2 id="요약">요약</h2>
+<ul>
+<li>foilum.choropleth()는 geoData와 DataFrame을 연결하여 시각화 한다.</li>
+<li>이때, DataFrame은 컬럼, GeoData는 GeoJSON의 property들을 매칭하여 시각화 한다.</li>
+</ul>]]></content:encoded>
             <category>folium</category>
             <category>Choropleth</category>
             <category>__geo_interface__</category>
@@ -32,8 +348,123 @@
             <guid>https://leetaehwan.github.io/blog/bean-scope</guid>
             <pubDate>Sun, 23 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.]]></description>
-            <content:encoded><![CDATA[<ul><li>파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.</li><li>분리하는 과정에서 사용되는 함수들에 대해 정리하자.</li></ul><h1>왜 파이토치인가?</h1><ul><li>파이토치에서 사용하는 토치는 신경망을 구성하고 훈련하는 핵심 기능을 제공하는 패키지다.</li><li>다차원 배열이라 불리는 텐서를 사용한다. 넘파이배열도 다차원을 지원한다.</li><li>하지만, 텐서는 GPU가속 지원과 텐서의 그라디언트를 자동으로 구해주는 'autograd'를 지원한다.</li><li>이로써, 개발자가 복잡한 연산 그래프를 정의하도록 해주고 훈련 중에 역전파에 대한 그레디언트를 자동으로 연산해준다.</li></ul><h1>데이터셋의 분리</h1><ul><li>데이터셋은 모델의 학습, 검증, 평가에 따라 구분하여 사용한다.</li><li>학습데이터셋은 모델에 파라미터를 학습하는데 사용하고</li><li>검증데이터셋은 학습하는데 사용하지 않지만, 검증데이터를 좋게 만들기 위해 하이퍼파라미터를 튜닝하거나 학습데이터를 전처리한다.</li><li>평가데이터셋은 다양한 모델의 성능을 비교하기 위해 사용하는 용도로 구분한다.</li></ul><h1>데이터프레임의 분리</h1><h2 class="anchor anchorWithStickyNavbar_LWe7" id="sklearn-데이터셋-불러오기">sklearn 데이터셋 불러오기<a href="#sklearn-데이터셋-불러오기" class="hash-link" aria-label="sklearn 데이터셋 불러오기에 대한 직접 링크" title="sklearn 데이터셋 불러오기에 대한 직접 링크">​</a></h2><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">from</span><span class="token plain"> sklearn</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">datasets </span><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> fetch_california_housing</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">califonia </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> fetch_california_housing</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>sklearn.datasets에서 fetch_califonia_housing을 임포트해서 califonia에 넣어준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">df </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> pd</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">DataFrame</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">califonia</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> columns </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> califonia</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">feature_names</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>임포트한 califonia.values를 pandas.DataFrame()인 df에 넣어준다.</li><li>sklearn에서 임포트한 califonia는 data, target, feature_names, DESCR, frame 등의 데이터셋인 Bunch를 가지고 있다. 호출 하는 방법은 객체.(요청하는 bunch)를 통해 호출한다.</li><li>.data는 ndarray타입으로, shpae = (20640, 8)이다.</li><li>.feature_names은 길이가 8인 리스트이다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">df</span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">"Target"</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> califonia</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">target</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>.target은 numpy array 타입으로, shape = (20640,)</li><li>만들어진 df에 "Target" 컬럼을 추가하고, califonia.target의 어레이를 넣어준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">df</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tail</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>데이터프레임의 하위 5개의 데이터를 드려다보면 아래와 같다.
-<img loading="lazy" src="/assets/images/sklearn-california-housing-a5947cb88528afecc8c196ccaf64e739.png" width="1498" height="346" class="img_ev3q"></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="파이토치의-텐서-분리하기">파이토치의 텐서 분리하기<a href="#파이토치의-텐서-분리하기" class="hash-link" aria-label="파이토치의 텐서 분리하기에 대한 직접 링크" title="파이토치의 텐서 분리하기에 대한 직접 링크">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="float-자료형의-텐서-호출">float 자료형의 텐서 호출<a href="#float-자료형의-텐서-호출" class="hash-link" aria-label="float 자료형의 텐서 호출에 대한 직접 링크" title="float 자료형의 텐서 호출에 대한 직접 링크">​</a></h3><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> torch</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">data </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">from_numpy</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">df</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">values</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token builtin">float</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>파이토치를 임포트하고</li><li>df.values로 데이터프레임의 값을 넘파이배열로 호출한다.</li><li>호출된 배열을 from_numpy()를 통해 텐서를 반환하고</li><li>.float()을 통해서 자료형을 선언한다.</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="입력과-출력을-나눈다">입력과 출력을 나눈다.<a href="#입력과-출력을-나눈다" class="hash-link" aria-label="입력과 출력을 나눈다.에 대한 직접 링크" title="입력과 출력을 나눈다.에 대한 직접 링크">​</a></h3><ul><li>텐서의 데이터셋을 입력값과 출력값(레이블)으로 분리한다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">,</span><span class="token punctuation" style="color:#393A34">:</span><span class="token operator" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>나누고 사이즈를 출력해보자.</li><li>x.size() = torch.Size<!-- -->[20640,8]</li><li>y.size() = torch.Size<!-- -->[20640,1]</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="훈련--검증--평가-데이터셋-비율-정하기">훈련 / 검증 / 평가 데이터셋 비율 정하기<a href="#훈련--검증--평가-데이터셋-비율-정하기" class="hash-link" aria-label="훈련 / 검증 / 평가 데이터셋 비율 정하기에 대한 직접 링크" title="훈련 / 검증 / 평가 데이터셋 비율 정하기에 대한 직접 링크">​</a></h3><ul><li>6:2:2로 하는게 무난하지만, 데이터셋이 클수록, 비율은 크게 상관 없다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">ratios </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">.6</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">.2</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">.2</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="비율에-따른-데이터셋의-크기를-정하기">비율에 따른 데이터셋의 크기를 정하기<a href="#비율에-따른-데이터셋의-크기를-정하기" class="hash-link" aria-label="비율에 따른 데이터셋의 크기를 정하기에 대한 직접 링크" title="비율에 따른 데이터셋의 크기를 정하기에 대한 직접 링크">​</a></h3><ul><li>비율에 따른 데이터셋의 크기를 train_cnt, valid_cnt, test_cnt로 각각 정의하고 cnts 배열에 넣어준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">train_cnt </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">int</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">*</span><span class="token plain"> ratios</span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">vaild_cnt </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">int</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">*</span><span class="token plain"> ratios</span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">test_cnt </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">train_cnt</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">valid_cnt</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cnts </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">train_cnt</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> valid_cnt</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> test_cnt</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="무작위로-추출하기-위해-섞어서-분리한다">무작위로 추출하기 위해 섞어서 분리한다.<a href="#무작위로-추출하기-위해-섞어서-분리한다" class="hash-link" aria-label="무작위로 추출하기 위해 섞어서 분리한다.에 대한 직접 링크" title="무작위로 추출하기 위해 섞어서 분리한다.에 대한 직접 링크">​</a></h3><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">indices </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">randperm</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>torch.randperm(n)은 0부터 n-1까지 정수의 랜덤 수열을 반환한다.</li><li>data.size(0)는 텐서의 0차원의 크기인 20640을 반환한다.</li><li>즉, indices 변수는 0부터 20639까지의 정수를 랜덤 수열로 반환한다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">index_select</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> index </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> indices</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">index_select</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">y</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> index </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> indices</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>torch.index_select()를 통해서, 텐서 x,y의 0차원의 방향으로 indices를 인덱스로 하는 새로운 텐서를 반환한다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">list</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">split</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">cnts</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> y</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">split</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">cnts</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>0차원을 따라 cnts 배열의 split_size를 가지고 분리한다.</li><li>x를 분리하면 tuple의 자료형이라 list()로 감싸준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">for</span><span class="token plain"> x_i</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> y_i </span><span class="token keyword" style="color:#00009f">in</span><span class="token plain"> </span><span class="token builtin">zip</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain">y</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">print</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x_i</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> y_i</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>다음과 같이 작성하고 실행하면 분리된 결과를 확인할 수 있다.</li><li>torch.Size(<!-- -->[12384, 8]<!-- -->). torch.Size(<!-- -->[12384, 1]<!-- -->)</li><li>torch.Size(<!-- -->[4128, 8]<!-- -->). torch.Size(<!-- -->[4128, 1]<!-- -->)</li><li>torch.Size(<!-- -->[4128, 8]<!-- -->). torch.Size(<!-- -->[4128, 1]<!-- -->)</li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<ul>
+<li>파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.</li>
+<li>분리하는 과정에서 사용되는 함수들에 대해 정리하자.</li>
+</ul>
+<h1 id="왜-파이토치인가">왜 파이토치인가?</h1>
+<ul>
+<li>파이토치에서 사용하는 토치는 신경망을 구성하고 훈련하는 핵심 기능을 제공하는 패키지다.</li>
+<li>다차원 배열이라 불리는 텐서를 사용한다. 넘파이배열도 다차원을 지원한다.</li>
+<li>하지만, 텐서는 GPU가속 지원과 텐서의 그라디언트를 자동으로 구해주는 'autograd'를 지원한다.</li>
+<li>이로써, 개발자가 복잡한 연산 그래프를 정의하도록 해주고 훈련 중에 역전파에 대한 그레디언트를 자동으로 연산해준다.</li>
+</ul>
+<h1 id="데이터셋의-분리">데이터셋의 분리</h1>
+<ul>
+<li>데이터셋은 모델의 학습, 검증, 평가에 따라 구분하여 사용한다.</li>
+<li>학습데이터셋은 모델에 파라미터를 학습하는데 사용하고</li>
+<li>검증데이터셋은 학습하는데 사용하지 않지만, 검증데이터를 좋게 만들기 위해 하이퍼파라미터를 튜닝하거나 학습데이터를 전처리한다.</li>
+<li>평가데이터셋은 다양한 모델의 성능을 비교하기 위해 사용하는 용도로 구분한다.</li>
+</ul>
+<h1 id="데이터프레임의-분리">데이터프레임의 분리</h1>
+<h2 id="sklearn-데이터셋-불러오기">sklearn 데이터셋 불러오기</h2>
+<pre><code class="language-python">from sklearn.datasets import fetch_california_housing
+
+califonia = fetch_california_housing()
+</code></pre>
+<ul>
+<li>sklearn.datasets에서 fetch_califonia_housing을 임포트해서 califonia에 넣어준다.</li>
+</ul>
+<pre><code class="language-python">df = pd.DataFrame(califonia.data, columns = califonia.feature_names)
+</code></pre>
+<ul>
+<li>임포트한 califonia.values를 pandas.DataFrame()인 df에 넣어준다.</li>
+<li>sklearn에서 임포트한 califonia는 data, target, feature_names, DESCR, frame 등의 데이터셋인 Bunch를 가지고 있다. 호출 하는 방법은 객체.(요청하는 bunch)를 통해 호출한다.</li>
+<li>.data는 ndarray타입으로, shpae = (20640, 8)이다.</li>
+<li>.feature_names은 길이가 8인 리스트이다.</li>
+</ul>
+<pre><code class="language-python">df["Target"] = califonia.target
+</code></pre>
+<ul>
+<li>.target은 numpy array 타입으로, shape = (20640,)</li>
+<li>만들어진 df에 "Target" 컬럼을 추가하고, califonia.target의 어레이를 넣어준다.</li>
+</ul>
+<pre><code class="language-python">df.tail()
+</code></pre>
+<ul>
+<li>데이터프레임의 하위 5개의 데이터를 드려다보면 아래와 같다.
+<img src="https://leetaehwan.github.io/assets/images/sklearn-california-housing-a5947cb88528afecc8c196ccaf64e739.png" width="1498" height="346"></li>
+</ul>
+<h2 id="파이토치의-텐서-분리하기">파이토치의 텐서 분리하기</h2>
+<h3 id="float-자료형의-텐서-호출">float 자료형의 텐서 호출</h3>
+<pre><code class="language-python">import torch
+
+data = torch.from_numpy(df.values).float()
+</code></pre>
+<ul>
+<li>파이토치를 임포트하고</li>
+<li>df.values로 데이터프레임의 값을 넘파이배열로 호출한다.</li>
+<li>호출된 배열을 from_numpy()를 통해 텐서를 반환하고</li>
+<li>.float()을 통해서 자료형을 선언한다.</li>
+</ul>
+<h3 id="입력과-출력을-나눈다">입력과 출력을 나눈다.</h3>
+<ul>
+<li>텐서의 데이터셋을 입력값과 출력값(레이블)으로 분리한다.</li>
+</ul>
+<pre><code class="language-python">x = data[:,:-1]
+y = data[:, -1:]
+</code></pre>
+<ul>
+<li>나누고 사이즈를 출력해보자.</li>
+<li>x.size() = torch.Size[20640,8]</li>
+<li>y.size() = torch.Size[20640,1]</li>
+</ul>
+<h3 id="훈련--검증--평가-데이터셋-비율-정하기">훈련 / 검증 / 평가 데이터셋 비율 정하기</h3>
+<ul>
+<li>6:2:2로 하는게 무난하지만, 데이터셋이 클수록, 비율은 크게 상관 없다.</li>
+</ul>
+<pre><code class="language-python">ratios = [.6, .2, .2]
+</code></pre>
+<h3 id="비율에-따른-데이터셋의-크기를-정하기">비율에 따른 데이터셋의 크기를 정하기</h3>
+<ul>
+<li>비율에 따른 데이터셋의 크기를 train_cnt, valid_cnt, test_cnt로 각각 정의하고 cnts 배열에 넣어준다.</li>
+</ul>
+<pre><code class="language-python">train_cnt = int(data.size(0) * ratios[0])
+vaild_cnt = int(data.size(0) * ratios[1])
+test_cnt = data.size(0)-train_cnt-valid_cnt
+
+cnts = [train_cnt, valid_cnt, test_cnt]
+</code></pre>
+<h3 id="무작위로-추출하기-위해-섞어서-분리한다">무작위로 추출하기 위해 섞어서 분리한다.</h3>
+<pre><code class="language-python">indices = torch.randperm(data.size(0))
+</code></pre>
+<ul>
+<li>torch.randperm(n)은 0부터 n-1까지 정수의 랜덤 수열을 반환한다.</li>
+<li>data.size(0)는 텐서의 0차원의 크기인 20640을 반환한다.</li>
+<li>즉, indices 변수는 0부터 20639까지의 정수를 랜덤 수열로 반환한다.</li>
+</ul>
+<pre><code class="language-python">x = torch.index_select(x, dim=0, index = indices)
+y = torch.index_select(y, dim=0, index = indices)
+</code></pre>
+<ul>
+<li>torch.index_select()를 통해서, 텐서 x,y의 0차원의 방향으로 indices를 인덱스로 하는 새로운 텐서를 반환한다.</li>
+</ul>
+<pre><code class="language-python">x = list(x.split(cnts, dim=0))
+y = y.split(cnts, dim=0)
+</code></pre>
+<ul>
+<li>0차원을 따라 cnts 배열의 split_size를 가지고 분리한다.</li>
+<li>x를 분리하면 tuple의 자료형이라 list()로 감싸준다.</li>
+</ul>
+<pre><code class="language-python">for x_i, y_i in zip(x,y):
+	print(x_i.size(), y_i.size())
+</code></pre>
+<ul>
+<li>다음과 같이 작성하고 실행하면 분리된 결과를 확인할 수 있다.</li>
+<li>torch.Size([12384, 8]). torch.Size([12384, 1])</li>
+<li>torch.Size([4128, 8]). torch.Size([4128, 1])</li>
+<li>torch.Size([4128, 8]). torch.Size([4128, 1])</li>
+</ul>]]></content:encoded>
             <category>ai</category>
             <category>pytorch</category>
             <category>dataset</category>
@@ -45,8 +476,123 @@
             <guid>https://leetaehwan.github.io/blog/pytorch-dataset-split</guid>
             <pubDate>Mon, 03 Apr 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[- 파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.]]></description>
-            <content:encoded><![CDATA[<ul><li>파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.</li><li>분리하는 과정에서 사용되는 함수들에 대해 정리하자.</li></ul><h1>왜 파이토치인가?</h1><ul><li>파이토치에서 사용하는 토치는 신경망을 구성하고 훈련하는 핵심 기능을 제공하는 패키지다.</li><li>다차원 배열이라 불리는 텐서를 사용한다. 넘파이배열도 다차원을 지원한다.</li><li>하지만, 텐서는 GPU가속 지원과 텐서의 그라디언트를 자동으로 구해주는 'autograd'를 지원한다.</li><li>이로써, 개발자가 복잡한 연산 그래프를 정의하도록 해주고 훈련 중에 역전파에 대한 그레디언트를 자동으로 연산해준다.</li></ul><h1>데이터셋의 분리</h1><ul><li>데이터셋은 모델의 학습, 검증, 평가에 따라 구분하여 사용한다.</li><li>학습데이터셋은 모델에 파라미터를 학습하는데 사용하고</li><li>검증데이터셋은 학습하는데 사용하지 않지만, 검증데이터를 좋게 만들기 위해 하이퍼파라미터를 튜닝하거나 학습데이터를 전처리한다.</li><li>평가데이터셋은 다양한 모델의 성능을 비교하기 위해 사용하는 용도로 구분한다.</li></ul><h1>데이터프레임의 분리</h1><h2 class="anchor anchorWithStickyNavbar_LWe7" id="sklearn-데이터셋-불러오기">sklearn 데이터셋 불러오기<a href="#sklearn-데이터셋-불러오기" class="hash-link" aria-label="sklearn 데이터셋 불러오기에 대한 직접 링크" title="sklearn 데이터셋 불러오기에 대한 직접 링크">​</a></h2><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">from</span><span class="token plain"> sklearn</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">datasets </span><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> fetch_california_housing</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">califonia </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> fetch_california_housing</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>sklearn.datasets에서 fetch_califonia_housing을 임포트해서 califonia에 넣어준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">df </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> pd</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">DataFrame</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">califonia</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> columns </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> califonia</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">feature_names</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>임포트한 califonia.values를 pandas.DataFrame()인 df에 넣어준다.</li><li>sklearn에서 임포트한 califonia는 data, target, feature_names, DESCR, frame 등의 데이터셋인 Bunch를 가지고 있다. 호출 하는 방법은 객체.(요청하는 bunch)를 통해 호출한다.</li><li>.data는 ndarray타입으로, shpae = (20640, 8)이다.</li><li>.feature_names은 길이가 8인 리스트이다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">df</span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">"Target"</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> califonia</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">target</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>.target은 numpy array 타입으로, shape = (20640,)</li><li>만들어진 df에 "Target" 컬럼을 추가하고, califonia.target의 어레이를 넣어준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">df</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">tail</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>데이터프레임의 하위 5개의 데이터를 드려다보면 아래와 같다.
-<img loading="lazy" src="/assets/images/sklearn-california-housing-a5947cb88528afecc8c196ccaf64e739.png" width="1498" height="346" class="img_ev3q"></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="파이토치의-텐서-분리하기">파이토치의 텐서 분리하기<a href="#파이토치의-텐서-분리하기" class="hash-link" aria-label="파이토치의 텐서 분리하기에 대한 직접 링크" title="파이토치의 텐서 분리하기에 대한 직접 링크">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="float-자료형의-텐서-호출">float 자료형의 텐서 호출<a href="#float-자료형의-텐서-호출" class="hash-link" aria-label="float 자료형의 텐서 호출에 대한 직접 링크" title="float 자료형의 텐서 호출에 대한 직접 링크">​</a></h3><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> torch</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">data </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">from_numpy</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">df</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">values</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">.</span><span class="token builtin">float</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>파이토치를 임포트하고</li><li>df.values로 데이터프레임의 값을 넘파이배열로 호출한다.</li><li>호출된 배열을 from_numpy()를 통해 텐서를 반환하고</li><li>.float()을 통해서 자료형을 선언한다.</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="입력과-출력을-나눈다">입력과 출력을 나눈다.<a href="#입력과-출력을-나눈다" class="hash-link" aria-label="입력과 출력을 나눈다.에 대한 직접 링크" title="입력과 출력을 나눈다.에 대한 직접 링크">​</a></h3><ul><li>텐서의 데이터셋을 입력값과 출력값(레이블)으로 분리한다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">,</span><span class="token punctuation" style="color:#393A34">:</span><span class="token operator" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>나누고 사이즈를 출력해보자.</li><li>x.size() = torch.Size<!-- -->[20640,8]</li><li>y.size() = torch.Size<!-- -->[20640,1]</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="훈련--검증--평가-데이터셋-비율-정하기">훈련 / 검증 / 평가 데이터셋 비율 정하기<a href="#훈련--검증--평가-데이터셋-비율-정하기" class="hash-link" aria-label="훈련 / 검증 / 평가 데이터셋 비율 정하기에 대한 직접 링크" title="훈련 / 검증 / 평가 데이터셋 비율 정하기에 대한 직접 링크">​</a></h3><ul><li>6:2:2로 하는게 무난하지만, 데이터셋이 클수록, 비율은 크게 상관 없다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">ratios </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">.6</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">.2</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">.2</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="비율에-따른-데이터셋의-크기를-정하기">비율에 따른 데이터셋의 크기를 정하기<a href="#비율에-따른-데이터셋의-크기를-정하기" class="hash-link" aria-label="비율에 따른 데이터셋의 크기를 정하기에 대한 직접 링크" title="비율에 따른 데이터셋의 크기를 정하기에 대한 직접 링크">​</a></h3><ul><li>비율에 따른 데이터셋의 크기를 train_cnt, valid_cnt, test_cnt로 각각 정의하고 cnts 배열에 넣어준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">train_cnt </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">int</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">*</span><span class="token plain"> ratios</span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">vaild_cnt </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">int</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">*</span><span class="token plain"> ratios</span><span class="token punctuation" style="color:#393A34">[</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">test_cnt </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">train_cnt</span><span class="token operator" style="color:#393A34">-</span><span class="token plain">valid_cnt</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">cnts </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">train_cnt</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> valid_cnt</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> test_cnt</span><span class="token punctuation" style="color:#393A34">]</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="무작위로-추출하기-위해-섞어서-분리한다">무작위로 추출하기 위해 섞어서 분리한다.<a href="#무작위로-추출하기-위해-섞어서-분리한다" class="hash-link" aria-label="무작위로 추출하기 위해 섞어서 분리한다.에 대한 직접 링크" title="무작위로 추출하기 위해 섞어서 분리한다.에 대한 직접 링크">​</a></h3><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">indices </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">randperm</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">data</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>torch.randperm(n)은 0부터 n-1까지 정수의 랜덤 수열을 반환한다.</li><li>data.size(0)는 텐서의 0차원의 크기인 20640을 반환한다.</li><li>즉, indices 변수는 0부터 20639까지의 정수를 랜덤 수열로 반환한다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">index_select</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> index </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> indices</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> torch</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">index_select</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">y</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> index </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> indices</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>torch.index_select()를 통해서, 텐서 x,y의 0차원의 방향으로 indices를 인덱스로 하는 새로운 텐서를 반환한다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">x </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token builtin">list</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">split</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">cnts</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">y </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> y</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">split</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">cnts</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> dim</span><span class="token operator" style="color:#393A34">=</span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>0차원을 따라 cnts 배열의 split_size를 가지고 분리한다.</li><li>x를 분리하면 tuple의 자료형이라 list()로 감싸준다.</li></ul><div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">for</span><span class="token plain"> x_i</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> y_i </span><span class="token keyword" style="color:#00009f">in</span><span class="token plain"> </span><span class="token builtin">zip</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain">y</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">print</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">x_i</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> y_i</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">size</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>다음과 같이 작성하고 실행하면 분리된 결과를 확인할 수 있다.</li><li>torch.Size(<!-- -->[12384, 8]<!-- -->). torch.Size(<!-- -->[12384, 1]<!-- -->)</li><li>torch.Size(<!-- -->[4128, 8]<!-- -->). torch.Size(<!-- -->[4128, 1]<!-- -->)</li><li>torch.Size(<!-- -->[4128, 8]<!-- -->). torch.Size(<!-- -->[4128, 1]<!-- -->)</li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<ul>
+<li>파이토치를 이용해서 데이터셋을 분리하는 절차에 대해 알아보자.</li>
+<li>분리하는 과정에서 사용되는 함수들에 대해 정리하자.</li>
+</ul>
+<h1 id="왜-파이토치인가">왜 파이토치인가?</h1>
+<ul>
+<li>파이토치에서 사용하는 토치는 신경망을 구성하고 훈련하는 핵심 기능을 제공하는 패키지다.</li>
+<li>다차원 배열이라 불리는 텐서를 사용한다. 넘파이배열도 다차원을 지원한다.</li>
+<li>하지만, 텐서는 GPU가속 지원과 텐서의 그라디언트를 자동으로 구해주는 'autograd'를 지원한다.</li>
+<li>이로써, 개발자가 복잡한 연산 그래프를 정의하도록 해주고 훈련 중에 역전파에 대한 그레디언트를 자동으로 연산해준다.</li>
+</ul>
+<h1 id="데이터셋의-분리">데이터셋의 분리</h1>
+<ul>
+<li>데이터셋은 모델의 학습, 검증, 평가에 따라 구분하여 사용한다.</li>
+<li>학습데이터셋은 모델에 파라미터를 학습하는데 사용하고</li>
+<li>검증데이터셋은 학습하는데 사용하지 않지만, 검증데이터를 좋게 만들기 위해 하이퍼파라미터를 튜닝하거나 학습데이터를 전처리한다.</li>
+<li>평가데이터셋은 다양한 모델의 성능을 비교하기 위해 사용하는 용도로 구분한다.</li>
+</ul>
+<h1 id="데이터프레임의-분리">데이터프레임의 분리</h1>
+<h2 id="sklearn-데이터셋-불러오기">sklearn 데이터셋 불러오기</h2>
+<pre><code class="language-python">from sklearn.datasets import fetch_california_housing
+
+califonia = fetch_california_housing()
+</code></pre>
+<ul>
+<li>sklearn.datasets에서 fetch_califonia_housing을 임포트해서 califonia에 넣어준다.</li>
+</ul>
+<pre><code class="language-python">df = pd.DataFrame(califonia.data, columns = califonia.feature_names)
+</code></pre>
+<ul>
+<li>임포트한 califonia.values를 pandas.DataFrame()인 df에 넣어준다.</li>
+<li>sklearn에서 임포트한 califonia는 data, target, feature_names, DESCR, frame 등의 데이터셋인 Bunch를 가지고 있다. 호출 하는 방법은 객체.(요청하는 bunch)를 통해 호출한다.</li>
+<li>.data는 ndarray타입으로, shpae = (20640, 8)이다.</li>
+<li>.feature_names은 길이가 8인 리스트이다.</li>
+</ul>
+<pre><code class="language-python">df["Target"] = califonia.target
+</code></pre>
+<ul>
+<li>.target은 numpy array 타입으로, shape = (20640,)</li>
+<li>만들어진 df에 "Target" 컬럼을 추가하고, califonia.target의 어레이를 넣어준다.</li>
+</ul>
+<pre><code class="language-python">df.tail()
+</code></pre>
+<ul>
+<li>데이터프레임의 하위 5개의 데이터를 드려다보면 아래와 같다.
+<img src="https://leetaehwan.github.io/assets/images/sklearn-california-housing-a5947cb88528afecc8c196ccaf64e739.png" width="1498" height="346"></li>
+</ul>
+<h2 id="파이토치의-텐서-분리하기">파이토치의 텐서 분리하기</h2>
+<h3 id="float-자료형의-텐서-호출">float 자료형의 텐서 호출</h3>
+<pre><code class="language-python">import torch
+
+data = torch.from_numpy(df.values).float()
+</code></pre>
+<ul>
+<li>파이토치를 임포트하고</li>
+<li>df.values로 데이터프레임의 값을 넘파이배열로 호출한다.</li>
+<li>호출된 배열을 from_numpy()를 통해 텐서를 반환하고</li>
+<li>.float()을 통해서 자료형을 선언한다.</li>
+</ul>
+<h3 id="입력과-출력을-나눈다">입력과 출력을 나눈다.</h3>
+<ul>
+<li>텐서의 데이터셋을 입력값과 출력값(레이블)으로 분리한다.</li>
+</ul>
+<pre><code class="language-python">x = data[:,:-1]
+y = data[:, -1:]
+</code></pre>
+<ul>
+<li>나누고 사이즈를 출력해보자.</li>
+<li>x.size() = torch.Size[20640,8]</li>
+<li>y.size() = torch.Size[20640,1]</li>
+</ul>
+<h3 id="훈련--검증--평가-데이터셋-비율-정하기">훈련 / 검증 / 평가 데이터셋 비율 정하기</h3>
+<ul>
+<li>6:2:2로 하는게 무난하지만, 데이터셋이 클수록, 비율은 크게 상관 없다.</li>
+</ul>
+<pre><code class="language-python">ratios = [.6, .2, .2]
+</code></pre>
+<h3 id="비율에-따른-데이터셋의-크기를-정하기">비율에 따른 데이터셋의 크기를 정하기</h3>
+<ul>
+<li>비율에 따른 데이터셋의 크기를 train_cnt, valid_cnt, test_cnt로 각각 정의하고 cnts 배열에 넣어준다.</li>
+</ul>
+<pre><code class="language-python">train_cnt = int(data.size(0) * ratios[0])
+vaild_cnt = int(data.size(0) * ratios[1])
+test_cnt = data.size(0)-train_cnt-valid_cnt
+
+cnts = [train_cnt, valid_cnt, test_cnt]
+</code></pre>
+<h3 id="무작위로-추출하기-위해-섞어서-분리한다">무작위로 추출하기 위해 섞어서 분리한다.</h3>
+<pre><code class="language-python">indices = torch.randperm(data.size(0))
+</code></pre>
+<ul>
+<li>torch.randperm(n)은 0부터 n-1까지 정수의 랜덤 수열을 반환한다.</li>
+<li>data.size(0)는 텐서의 0차원의 크기인 20640을 반환한다.</li>
+<li>즉, indices 변수는 0부터 20639까지의 정수를 랜덤 수열로 반환한다.</li>
+</ul>
+<pre><code class="language-python">x = torch.index_select(x, dim=0, index = indices)
+y = torch.index_select(y, dim=0, index = indices)
+</code></pre>
+<ul>
+<li>torch.index_select()를 통해서, 텐서 x,y의 0차원의 방향으로 indices를 인덱스로 하는 새로운 텐서를 반환한다.</li>
+</ul>
+<pre><code class="language-python">x = list(x.split(cnts, dim=0))
+y = y.split(cnts, dim=0)
+</code></pre>
+<ul>
+<li>0차원을 따라 cnts 배열의 split_size를 가지고 분리한다.</li>
+<li>x를 분리하면 tuple의 자료형이라 list()로 감싸준다.</li>
+</ul>
+<pre><code class="language-python">for x_i, y_i in zip(x,y):
+	print(x_i.size(), y_i.size())
+</code></pre>
+<ul>
+<li>다음과 같이 작성하고 실행하면 분리된 결과를 확인할 수 있다.</li>
+<li>torch.Size([12384, 8]). torch.Size([12384, 1])</li>
+<li>torch.Size([4128, 8]). torch.Size([4128, 1])</li>
+<li>torch.Size([4128, 8]). torch.Size([4128, 1])</li>
+</ul>]]></content:encoded>
             <category>ai</category>
             <category>pytorch</category>
             <category>dataset</category>
@@ -58,8 +604,285 @@
             <guid>https://leetaehwan.github.io/blog/spring-boot-dev-basic</guid>
             <pubDate>Sat, 25 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[- 애플리케이션이 어떻게 동작하는지]]></description>
-            <content:encoded><![CDATA[<ul><li>애플리케이션이 어떻게 동작하는지</li><li>어떠한 이유로 이러한 구성을 갖게 되는지</li><li>위에 관한 점들을 알고 실습하기 위한 기초지식</li></ul><h1>서버 간 통신</h1><ul><li>서버 간 통신은 한 서버에서 다른 서버로 요청하는 것을 의미하는 단어로</li><li>통신을 요청하는 클라이언트와 응답을 내려주는 서버 간의 통신을 이야기한다.</li><li>가장 흔한 프로토콜이 HTTP/HTTPS 방식이다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="마이크로서비스-아키텍처에서-더-많이-활용된다">마이크로서비스 아키텍처에서 더 많이 활용된다.<a href="#마이크로서비스-아키텍처에서-더-많이-활용된다" class="hash-link" aria-label="마이크로서비스 아키텍처에서 더 많이 활용된다.에 대한 직접 링크" title="마이크로서비스 아키텍처에서 더 많이 활용된다.에 대한 직접 링크">​</a></h2><ul><li>단일 애플리케이션으로 다양한 서비스를 하면 유지보수에 따른 비용이 크다.</li><li>따라서, 요즘에는 여러 애플리케이션을 서비스별로 나눠서 개발한다.</li><li>하지만 이때문에 각자의 독립적인 애플리케이션 서버간의 통신이 잦아진다.</li></ul><h1>스프링 부트 동작 방식</h1><ul><li>스프링 부트에서는 기본적으로 톰캣을 사용하는 스프링 MVC 구조를 기반으로 동작한다.
-<img loading="lazy" src="/assets/images/dispatching-servlet-2d1d65483391b0f750b5826bea51750c.png" width="1770" height="814" class="img_ev3q"></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="서블릿">서블릿<a href="#서블릿" class="hash-link" aria-label="서블릿에 대한 직접 링크" title="서블릿에 대한 직접 링크">​</a></h2><ul><li>서블릿은 클라이언트의 요청을 처리하고 결과를 반환하는 웹프로그래밍 기술이다.</li><li>서블릿 컨테이너가 서블릿 인스턴스를 생성하고 관리한다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="스프링에서-서블릿">스프링에서 서블릿<a href="#스프링에서-서블릿" class="hash-link" aria-label="스프링에서 서블릿에 대한 직접 링크" title="스프링에서 서블릿에 대한 직접 링크">​</a></h2><ul><li>스프링에서는 발송 서블렛이 웹 애플리케이션으로 들어오는 모든 요청을 중앙제어하는 프론트 컨트롤러를 구현한다.</li><li>발송 서블릿이 들어오는 요청을 받아서 적절한 핸들러에 전달한다.</li><li>발송 서블릿이 많은 핸들러 매핑을 사용하여, 각각의 요청을 어떤 핸들러가 처리해야하는지 결정한다.</li><li>스픵은임베딩된 톰캣을 내장서버로서 사용하기 때문에, 서블렛, 필터와 애플리케이션을 구성하는 웹 컴포넌트들의 환경설정을 web.xml에 적는다.</li><li>즉, web.xml 파일안에 정의된 URL 매핑을 기반으로 적절한 서블릿과 필터로 요청을 보낸다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="스프링-부트의-동작-순서">스프링 부트의 동작 순서<a href="#스프링-부트의-동작-순서" class="hash-link" aria-label="스프링 부트의 동작 순서에 대한 직접 링크" title="스프링 부트의 동작 순서에 대한 직접 링크">​</a></h2><ol><li>발송 서블렛으로 HttpServletRequest의 요청이 들어오면, 요청받은 URL에 매핑된 핸들러 컨트롤러를 탐색한다.</li><li>핸들러 어댑터로 컨트롤러가 호출된다.</li><li>핸들러 어댑터에 컨트롤러의 응답이 돌아오면 ModelAndVew로 응답을 가공해 반환한다.</li><li>뷰 형식으로 리턴하는 컨트롤러를 사용할 때는 뷰 리졸버가 뷰를 반환한다.</li></ol><h2 class="anchor anchorWithStickyNavbar_LWe7" id="핸들러-매핑">핸들러 매핑<a href="#핸들러-매핑" class="hash-link" aria-label="핸들러 매핑에 대한 직접 링크" title="핸들러 매핑에 대한 직접 링크">​</a></h2><ul><li>핸들러 매핑 인터페이스는 요청 정보를 기준으로 어떤 컨트롤러를 사용할 것인가 결정한다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="핸들러-매핑의-구현체-클래스">핸들러 매핑의 구현체 클래스<a href="#핸들러-매핑의-구현체-클래스" class="hash-link" aria-label="핸들러 매핑의 구현체 클래스에 대한 직접 링크" title="핸들러 매핑의 구현체 클래스에 대한 직접 링크">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="beannameurlhandlermapping">BeanNameUrlHandlerMapping<a href="#beannameurlhandlermapping" class="hash-link" aria-label="BeanNameUrlHandlerMapping에 대한 직접 링크" title="BeanNameUrlHandlerMapping에 대한 직접 링크">​</a></h3><ul><li>기본설정값의 핸들러 매핑 구현체로</li><li>빈의 이름을 요청 URL과 매핑하는데 사용한다.</li><li>빈을 정의하면서, 슬래시(/)와 함께 작성된 식별자인 슬러그를 지정하여 매핑한다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Bean("/hello")</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li><p>'/hello'라는 슬러그에 빈이 매핑되었다.</p></li><li><p>이러한 매핑은 직접적인 이름 매칭과 "*"패턴을 사용하는 패턴 매칭을 돕는다.</p></li><li><p>수신된 URL "/foo"가 '/foo'라고 불리는 빈에 매핑된다.</p></li><li><p>패턴 매핑은 "/foo" 요청을 '/foo', '/foo2', '/fooOne' 등으로 매칭한다.</p></li><li><p>아래는 '/beanNameUrl' 요청을 다루는 빈 컨트롤러를 등록하는 소스코드이다.</p></li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Configuration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class BeanNameUrlHandlerMappingConfig {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new BeanNameUrlHandlerMapping();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean("/beanNameUrl")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public WelcomeController welcome() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new WelcomeController();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>이것이 위의 자바 기반 환경 구성과 같은 xml 코드이다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean name="/beanNameUrl" class="com.baeldung.WelcomeController" /&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>이러한 환경설정 둘 다, BeanNameUrlHandlerMapping에 관한 빈을 정의하는 것이 필수가 아니다.</li><li>스프링 MVC에서 다 제공된다.</li><li>빈 정의를 지우는 것이 문제를 발생시키지 않기에, 요청들이 등록된 핸들러 빈에 여전히 매핑될 것이다.</li><li>'/beanNameUrl'의 모든 요청이 발송 서블릿에 의해서 'WelcomeController'로 보내진다.</li><li>그러면 'WelcomeController'는 'welcome'이라는 뷰를 반환한다.</li><li>아래의 코드를 통해 환경설정을 테스트하고 올바른 뷰 이름을 반환하는지 확인하자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class BeanNameMappingConfigTest {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Test</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void whenBeanNameMapping_thenMappedOK() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        mockMvc.perform(get("/beanNameUrl"))</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          .andExpect(status().isOk())</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          .andExpect(view().name("welcome"));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="simpleurlhandlermapping">SimpleUrlHandlerMapping<a href="#simpleurlhandlermapping" class="hash-link" aria-label="SimpleUrlHandlerMapping에 대한 직접 링크" title="SimpleUrlHandlerMapping에 대한 직접 링크">​</a></h3><ul><li>SimpleUrlHandlerMapping은 좀 더 유연한 핸들러 매핑 구현체이다.</li><li>이 매핑은 빈 객체와 URL 간 또는 빈 이름과 URL 간의 직접적이고 선언적인 매핑이다.</li><li>"/simpleUrlWelcome"과 "/*/simpleUrlWelcome" 요청을 'welcome' 빈으로 매핑해보자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Configuration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class SimpleUrlHandlerMappingConfig {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        SimpleUrlHandlerMapping simpleUrlHandlerMapping</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          = new SimpleUrlHandlerMapping();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Map&lt;String, Object&gt; urlMap = new HashMap&lt;&gt;();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        urlMap.put("/simpleUrlWelcome", welcome());</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        simpleUrlHandlerMapping.setUrlMap(urlMap);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return simpleUrlHandlerMapping;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public WelcomeController welcome() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new WelcomeController();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>XML 환경설정에서도 아래와 같이 똑같이 설정할 수 있다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;property name="mappings"&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;value&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            /simpleUrlWelcome=welcome</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            /*/simpleUrlWelcome=welcome</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;/value&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;/property&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/bean&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean id="welcome" class="com.baeldung.WelcomeController" /&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li><p>XML 환경설정을 다음과 같은 것들이 중요하다. java.util.Properties 클래스에 의해 받아지는 폼에서 &lt; value &gt; 태그 사이의 매핑이 이루어진다.</p></li><li><p>매핑을 할 때는 path = Handler_Bean_Name 의 규칙을 따른다.</p></li><li><p>URL이 보통 리딩 슬래시와 함께 작성되지만, 경로가 하나로 시작하는 게 아니라면 스프링 MVC는 자동으로 추가해준다.</p></li><li><p>XML에 위의 예를 설정하는 다른 방법은 'props' 속성을 'value' 속성을 대신해 사용하는 것이다.</p></li><li><p>Props은 prop태그의 리스트를 가진다.</p></li><li><p>prop태그를 통해서 매핑하는데, 'key'가 매핑된 URL을 참조하고 태그의 값이 빈의 이름이다.</p></li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;property name="mappings"&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;props&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;prop key="/simpleUrlWelcome"&gt;welcome&lt;/prop&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">            &lt;prop key="/*/simpleUrlWelcome"&gt;welcome&lt;/prop&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;/props&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;/property&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/bean&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>아래 테스트 코드가 "/simpleUrlWelcome" 요청이 'welcome' 뷰를 반환하는 'WelcomeController'에 의해 핸들되는지 확인한다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class SimpleUrlMappingConfigTest {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Test</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void whenSimpleUrlMapping_thenMappedOK() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        mockMvc.perform(get("/simpleUrlWelcome"))</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          .andExpect(status().isOk())</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          .andExpect(view().name("welcome"));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="controllerclassnamehandlermapping">ControllerClassNameHandlerMapping<a href="#controllerclassnamehandlermapping" class="hash-link" aria-label="ControllerClassNameHandlerMapping에 대한 직접 링크" title="ControllerClassNameHandlerMapping에 대한 직접 링크">​</a></h3><ul><li><p>URL과 일치하는 클래스 이름을 갖는 빈을 컨트롤러로 사용한다.</p></li><li><p>ControllerClassNameHandlerMapping은 URL을 등록된 컨드롤러 빈(@Controller 주석이 언급된 컨트롤러)에 매핑한다.</p></li><li><p>컨트롤러의 이름은 같은 이름을 가지거나 그 이름으로 시작한다.</p></li><li><p>많은 경우에서 더 편리할 수 있는데, 특히 하나의 요청 형을 핸들링하는 단순한 컨트롤러 구현체에 경우 더욱 편리하다.</p></li><li><p>스프링 MVC에서 사용하는 규칙은 이름에서 Controller를 제외하고 접미사를 소문자로 "/"을 붙여서 매핑한다.</p></li><li><p>"WelcomeController"는 "/welcome*"을 매핑한다. 즉, "welcome"으로 시작하는 어떠한 URL이 매핑된다.</p></li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Configuration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class ControllerClassNameHandlerMappingConfig {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new ControllerClassNameHandlerMapping();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public WelcomeController welcome() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new WelcomeController();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>ControllerClassNameHandlerMapping이 스프링 4.3에서 사라지게되었다. 주석 주도 핸들러 방법이 선호되어지기 때문이다.</li><li>컨트롤러 이름이 항상 컨트롤러 접미사를 지우고 소문자로 반환한다는 것도 중요하다.</li><li>따라서 '/welcomTaehwan'은 요청에서 처리하지 못하고 '/welcometaehwan'의 요청만 처리할 수 있다.</li><li>자바와 아래의 XML 환경설정 모두에서, ControllerClassNameHandlerMapping 빈을 정의하고 요청을 처리할 때 사용할 컨트롤러에 빈을 등록한다. </li><li>'/welcome'으로 시작하는 요청을 핸들링하는 "WelcomeControlle"를 XML로 만들어보자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Configuration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class ControllerClassNameHandlerMappingConfig {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new ControllerClassNameHandlerMapping();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public WelcomeController welcome() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return new WelcomeController();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>위의 XML 환경설정을 사용하면, '/welcome'에 대한 요청이 "WelcomeController"에 의해서 핸들링된다.</li><li>아래 코드는 "welcometest"과 같은 "/welcome*" 요청이 'WelcomeController'에 의해서 핸들링이 되는지 테스트하고 welcome' 이름의 뷰를 반환하는지 확인한다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class ControllerClassNameHandlerMappingTest {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    // ...</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @Test</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void whenControllerClassNameMapping_thenMappedOK() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        mockMvc.perform(get("/welcometest"))</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          .andExpect(status().isOk())</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">          .andExpect(view().name("welcome"));</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h3 class="anchor anchorWithStickyNavbar_LWe7" id="defaultannotationhandlermapping">DefaultAnnotationHandlerMapping<a href="#defaultannotationhandlermapping" class="hash-link" aria-label="DefaultAnnotationHandlerMapping에 대한 직접 링크" title="DefaultAnnotationHandlerMapping에 대한 직접 링크">​</a></h3><ul><li>어노테이션으로 URL과 컨트롤러를 매핑한다.</li><li>들어오는 HTTP 요청을 주석이 있는 컨트롤러 중에 적절한 것으로 보내준다.</li><li>요청이 들어오면, DefaultAnnotationHandlerMapping이 스프링 ApplicationContext에 등록된 모든 빈을 스캔해서 '@RequestMapping', '@GetMapping', '@PostMapping'이나 비슷한 어노테이션을 갖는 빈을 모두 찾는다.</li><li>그리고 이 정보를 활용해서 어떤 컨트롤러가 요청을 핸들링할 지 결정한다.</li><li>또한 DefaultAnnotationHandlerMapping은 매핑 처리의 동작을 커스터마이징하는 많은 어노테이션도 지원한다. (e.g. '@PathVariable', '@RequestParam', '@RequestBody')</li><li>기본설정으로, DefaultAnnotationHandlerMapping이 스프링 MVC 구성에 포함되어 들어오는 HTTP 요을 핸들링하는데 사용된다.</li><li>하지만 필요하다면, 다른 매핑 전략으로 대체되거나 커스터마이징 될 수 있다.</li></ul><h1>Refference</h1><ul><li><a href="https://www.baeldung.com/spring-handler-mappings" target="_blank" rel="noopener noreferrer">Baeldung</a></li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<ul>
+<li>애플리케이션이 어떻게 동작하는지</li>
+<li>어떠한 이유로 이러한 구성을 갖게 되는지</li>
+<li>위에 관한 점들을 알고 실습하기 위한 기초지식</li>
+</ul>
+<h1 id="서버-간-통신">서버 간 통신</h1>
+<ul>
+<li>서버 간 통신은 한 서버에서 다른 서버로 요청하는 것을 의미하는 단어로</li>
+<li>통신을 요청하는 클라이언트와 응답을 내려주는 서버 간의 통신을 이야기한다.</li>
+<li>가장 흔한 프로토콜이 HTTP/HTTPS 방식이다.</li>
+</ul>
+<h2 id="마이크로서비스-아키텍처에서-더-많이-활용된다">마이크로서비스 아키텍처에서 더 많이 활용된다.</h2>
+<ul>
+<li>단일 애플리케이션으로 다양한 서비스를 하면 유지보수에 따른 비용이 크다.</li>
+<li>따라서, 요즘에는 여러 애플리케이션을 서비스별로 나눠서 개발한다.</li>
+<li>하지만 이때문에 각자의 독립적인 애플리케이션 서버간의 통신이 잦아진다.</li>
+</ul>
+<h1 id="스프링-부트-동작-방식">스프링 부트 동작 방식</h1>
+<ul>
+<li>스프링 부트에서는 기본적으로 톰캣을 사용하는 스프링 MVC 구조를 기반으로 동작한다.
+<img src="https://leetaehwan.github.io/assets/images/dispatching-servlet-2d1d65483391b0f750b5826bea51750c.png" width="1770" height="814"></li>
+</ul>
+<h2 id="서블릿">서블릿</h2>
+<ul>
+<li>서블릿은 클라이언트의 요청을 처리하고 결과를 반환하는 웹프로그래밍 기술이다.</li>
+<li>서블릿 컨테이너가 서블릿 인스턴스를 생성하고 관리한다.</li>
+</ul>
+<h2 id="스프링에서-서블릿">스프링에서 서블릿</h2>
+<ul>
+<li>스프링에서는 발송 서블렛이 웹 애플리케이션으로 들어오는 모든 요청을 중앙제어하는 프론트 컨트롤러를 구현한다.</li>
+<li>발송 서블릿이 들어오는 요청을 받아서 적절한 핸들러에 전달한다.</li>
+<li>발송 서블릿이 많은 핸들러 매핑을 사용하여, 각각의 요청을 어떤 핸들러가 처리해야하는지 결정한다.</li>
+<li>스픵은임베딩된 톰캣을 내장서버로서 사용하기 때문에, 서블렛, 필터와 애플리케이션을 구성하는 웹 컴포넌트들의 환경설정을 web.xml에 적는다.</li>
+<li>즉, web.xml 파일안에 정의된 URL 매핑을 기반으로 적절한 서블릿과 필터로 요청을 보낸다.</li>
+</ul>
+<h2 id="스프링-부트의-동작-순서">스프링 부트의 동작 순서</h2>
+<ol>
+<li>발송 서블렛으로 HttpServletRequest의 요청이 들어오면, 요청받은 URL에 매핑된 핸들러 컨트롤러를 탐색한다.</li>
+<li>핸들러 어댑터로 컨트롤러가 호출된다.</li>
+<li>핸들러 어댑터에 컨트롤러의 응답이 돌아오면 ModelAndVew로 응답을 가공해 반환한다.</li>
+<li>뷰 형식으로 리턴하는 컨트롤러를 사용할 때는 뷰 리졸버가 뷰를 반환한다.</li>
+</ol>
+<h2 id="핸들러-매핑">핸들러 매핑</h2>
+<ul>
+<li>핸들러 매핑 인터페이스는 요청 정보를 기준으로 어떤 컨트롤러를 사용할 것인가 결정한다.</li>
+</ul>
+<h2 id="핸들러-매핑의-구현체-클래스">핸들러 매핑의 구현체 클래스</h2>
+<h3 id="beannameurlhandlermapping">BeanNameUrlHandlerMapping</h3>
+<ul>
+<li>기본설정값의 핸들러 매핑 구현체로</li>
+<li>빈의 이름을 요청 URL과 매핑하는데 사용한다.</li>
+<li>빈을 정의하면서, 슬래시(/)와 함께 작성된 식별자인 슬러그를 지정하여 매핑한다.</li>
+</ul>
+<pre><code>@Bean("/hello")
+</code></pre>
+<ul>
+<li>
+<p>'/hello'라는 슬러그에 빈이 매핑되었다.</p>
+</li>
+<li>
+<p>이러한 매핑은 직접적인 이름 매칭과 "*"패턴을 사용하는 패턴 매칭을 돕는다.</p>
+</li>
+<li>
+<p>수신된 URL "/foo"가 '/foo'라고 불리는 빈에 매핑된다.</p>
+</li>
+<li>
+<p>패턴 매핑은 "/foo" 요청을 '/foo', '/foo2', '/fooOne' 등으로 매칭한다.</p>
+</li>
+<li>
+<p>아래는 '/beanNameUrl' 요청을 다루는 빈 컨트롤러를 등록하는 소스코드이다.</p>
+</li>
+</ul>
+<pre><code>@Configuration
+public class BeanNameUrlHandlerMappingConfig {
+    @Bean
+    BeanNameUrlHandlerMapping beanNameUrlHandlerMapping() {
+        return new BeanNameUrlHandlerMapping();
+    }
+
+    @Bean("/beanNameUrl")
+    public WelcomeController welcome() {
+        return new WelcomeController();
+    }
+}
+</code></pre>
+<ul>
+<li>이것이 위의 자바 기반 환경 구성과 같은 xml 코드이다.</li>
+</ul>
+<pre><code>&lt;bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" /&gt;
+&lt;bean name="/beanNameUrl" class="com.baeldung.WelcomeController" /&gt;
+
+</code></pre>
+<ul>
+<li>이러한 환경설정 둘 다, BeanNameUrlHandlerMapping에 관한 빈을 정의하는 것이 필수가 아니다.</li>
+<li>스프링 MVC에서 다 제공된다.</li>
+<li>빈 정의를 지우는 것이 문제를 발생시키지 않기에, 요청들이 등록된 핸들러 빈에 여전히 매핑될 것이다.</li>
+<li>'/beanNameUrl'의 모든 요청이 발송 서블릿에 의해서 'WelcomeController'로 보내진다.</li>
+<li>그러면 'WelcomeController'는 'welcome'이라는 뷰를 반환한다.</li>
+<li>아래의 코드를 통해 환경설정을 테스트하고 올바른 뷰 이름을 반환하는지 확인하자.</li>
+</ul>
+<pre><code>public class BeanNameMappingConfigTest {
+    // ...
+
+    @Test
+    public void whenBeanNameMapping_thenMappedOK() {
+        mockMvc.perform(get("/beanNameUrl"))
+          .andExpect(status().isOk())
+          .andExpect(view().name("welcome"));
+    }
+}
+</code></pre>
+<h3 id="simpleurlhandlermapping">SimpleUrlHandlerMapping</h3>
+<ul>
+<li>SimpleUrlHandlerMapping은 좀 더 유연한 핸들러 매핑 구현체이다.</li>
+<li>이 매핑은 빈 객체와 URL 간 또는 빈 이름과 URL 간의 직접적이고 선언적인 매핑이다.</li>
+<li>"/simpleUrlWelcome"과 "/*/simpleUrlWelcome" 요청을 'welcome' 빈으로 매핑해보자.</li>
+</ul>
+<pre><code>@Configuration
+public class SimpleUrlHandlerMappingConfig {
+
+    @Bean
+    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+        SimpleUrlHandlerMapping simpleUrlHandlerMapping
+          = new SimpleUrlHandlerMapping();
+        
+        Map&lt;String, Object&gt; urlMap = new HashMap&lt;&gt;();
+        urlMap.put("/simpleUrlWelcome", welcome());
+        simpleUrlHandlerMapping.setUrlMap(urlMap);
+        
+        return simpleUrlHandlerMapping;
+    }
+
+    @Bean
+    public WelcomeController welcome() {
+        return new WelcomeController();
+    }
+}
+</code></pre>
+<ul>
+<li>XML 환경설정에서도 아래와 같이 똑같이 설정할 수 있다.</li>
+</ul>
+<pre><code>&lt;bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt;
+    &lt;property name="mappings"&gt;
+        &lt;value&gt;
+            /simpleUrlWelcome=welcome
+            /*/simpleUrlWelcome=welcome
+        &lt;/value&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+&lt;bean id="welcome" class="com.baeldung.WelcomeController" /&gt;
+</code></pre>
+<ul>
+<li>
+<p>XML 환경설정을 다음과 같은 것들이 중요하다. java.util.Properties 클래스에 의해 받아지는 폼에서 &lt; value &gt; 태그 사이의 매핑이 이루어진다.</p>
+</li>
+<li>
+<p>매핑을 할 때는 path = Handler_Bean_Name 의 규칙을 따른다.</p>
+</li>
+<li>
+<p>URL이 보통 리딩 슬래시와 함께 작성되지만, 경로가 하나로 시작하는 게 아니라면 스프링 MVC는 자동으로 추가해준다.</p>
+</li>
+<li>
+<p>XML에 위의 예를 설정하는 다른 방법은 'props' 속성을 'value' 속성을 대신해 사용하는 것이다.</p>
+</li>
+<li>
+<p>Props은 prop태그의 리스트를 가진다.</p>
+</li>
+<li>
+<p>prop태그를 통해서 매핑하는데, 'key'가 매핑된 URL을 참조하고 태그의 값이 빈의 이름이다.</p>
+</li>
+</ul>
+<pre><code>&lt;bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt;
+    &lt;property name="mappings"&gt;
+        &lt;props&gt;
+            &lt;prop key="/simpleUrlWelcome"&gt;welcome&lt;/prop&gt;
+            &lt;prop key="/*/simpleUrlWelcome"&gt;welcome&lt;/prop&gt;
+        &lt;/props&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre>
+<ul>
+<li>아래 테스트 코드가 "/simpleUrlWelcome" 요청이 'welcome' 뷰를 반환하는 'WelcomeController'에 의해 핸들되는지 확인한다.</li>
+</ul>
+<pre><code>public class SimpleUrlMappingConfigTest {
+    // ...
+
+    @Test
+    public void whenSimpleUrlMapping_thenMappedOK() {
+        mockMvc.perform(get("/simpleUrlWelcome"))
+          .andExpect(status().isOk())
+          .andExpect(view().name("welcome"));
+    }
+}
+</code></pre>
+<h3 id="controllerclassnamehandlermapping">ControllerClassNameHandlerMapping</h3>
+<ul>
+<li>
+<p>URL과 일치하는 클래스 이름을 갖는 빈을 컨트롤러로 사용한다.</p>
+</li>
+<li>
+<p>ControllerClassNameHandlerMapping은 URL을 등록된 컨드롤러 빈(@Controller 주석이 언급된 컨트롤러)에 매핑한다.</p>
+</li>
+<li>
+<p>컨트롤러의 이름은 같은 이름을 가지거나 그 이름으로 시작한다.</p>
+</li>
+<li>
+<p>많은 경우에서 더 편리할 수 있는데, 특히 하나의 요청 형을 핸들링하는 단순한 컨트롤러 구현체에 경우 더욱 편리하다.</p>
+</li>
+<li>
+<p>스프링 MVC에서 사용하는 규칙은 이름에서 Controller를 제외하고 접미사를 소문자로 "/"을 붙여서 매핑한다.</p>
+</li>
+<li>
+<p>"WelcomeController"는 "/welcome*"을 매핑한다. 즉, "welcome"으로 시작하는 어떠한 URL이 매핑된다.</p>
+</li>
+</ul>
+<pre><code>@Configuration
+public class ControllerClassNameHandlerMappingConfig {
+
+    @Bean
+    public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
+        return new ControllerClassNameHandlerMapping();
+    }
+
+    @Bean
+    public WelcomeController welcome() {
+        return new WelcomeController();
+    }
+}
+</code></pre>
+<ul>
+<li>ControllerClassNameHandlerMapping이 스프링 4.3에서 사라지게되었다. 주석 주도 핸들러 방법이 선호되어지기 때문이다.</li>
+<li>컨트롤러 이름이 항상 컨트롤러 접미사를 지우고 소문자로 반환한다는 것도 중요하다.</li>
+<li>따라서 '/welcomTaehwan'은 요청에서 처리하지 못하고 '/welcometaehwan'의 요청만 처리할 수 있다.</li>
+<li>자바와 아래의 XML 환경설정 모두에서, ControllerClassNameHandlerMapping 빈을 정의하고 요청을 처리할 때 사용할 컨트롤러에 빈을 등록한다.</li>
+<li>'/welcome'으로 시작하는 요청을 핸들링하는 "WelcomeControlle"를 XML로 만들어보자.</li>
+</ul>
+<pre><code>@Configuration
+public class ControllerClassNameHandlerMappingConfig {
+
+    @Bean
+    public ControllerClassNameHandlerMapping controllerClassNameHandlerMapping() {
+        return new ControllerClassNameHandlerMapping();
+    }
+
+    @Bean
+    public WelcomeController welcome() {
+        return new WelcomeController();
+    }
+}
+</code></pre>
+<ul>
+<li>위의 XML 환경설정을 사용하면, '/welcome'에 대한 요청이 "WelcomeController"에 의해서 핸들링된다.</li>
+<li>아래 코드는 "welcometest"과 같은 "/welcome*" 요청이 'WelcomeController'에 의해서 핸들링이 되는지 테스트하고 welcome' 이름의 뷰를 반환하는지 확인한다.</li>
+</ul>
+<pre><code>public class ControllerClassNameHandlerMappingTest {
+    // ...
+
+    @Test
+    public void whenControllerClassNameMapping_thenMappedOK() {
+        mockMvc.perform(get("/welcometest"))
+          .andExpect(status().isOk())
+          .andExpect(view().name("welcome"));
+    }
+}
+</code></pre>
+<h3 id="defaultannotationhandlermapping">DefaultAnnotationHandlerMapping</h3>
+<ul>
+<li>어노테이션으로 URL과 컨트롤러를 매핑한다.</li>
+<li>들어오는 HTTP 요청을 주석이 있는 컨트롤러 중에 적절한 것으로 보내준다.</li>
+<li>요청이 들어오면, DefaultAnnotationHandlerMapping이 스프링 ApplicationContext에 등록된 모든 빈을 스캔해서 '@RequestMapping', '@GetMapping', '@PostMapping'이나 비슷한 어노테이션을 갖는 빈을 모두 찾는다.</li>
+<li>그리고 이 정보를 활용해서 어떤 컨트롤러가 요청을 핸들링할 지 결정한다.</li>
+<li>또한 DefaultAnnotationHandlerMapping은 매핑 처리의 동작을 커스터마이징하는 많은 어노테이션도 지원한다. (e.g. '@PathVariable', '@RequestParam', '@RequestBody')</li>
+<li>기본설정으로, DefaultAnnotationHandlerMapping이 스프링 MVC 구성에 포함되어 들어오는 HTTP 요을 핸들링하는데 사용된다.</li>
+<li>하지만 필요하다면, 다른 매핑 전략으로 대체되거나 커스터마이징 될 수 있다.</li>
+</ul>
+<h1 id="refference">Refference</h1>
+<ul>
+<li><a href="https://www.baeldung.com/spring-handler-mappings">Baeldung</a></li>
+</ul>]]></content:encoded>
             <category>data</category>
             <category>spring-boot</category>
             <category>contoller</category>
@@ -71,26 +894,63 @@
             <guid>https://leetaehwan.github.io/blog/pandas-2-feature-1</guid>
             <pubDate>Fri, 24 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[다양한 자료형을 지원하는 인덱스]]></description>
-            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="다양한-자료형을-지원하는-인덱스">다양한 자료형을 지원하는 인덱스<a href="#다양한-자료형을-지원하는-인덱스" class="hash-link" aria-label="다양한 자료형을 지원하는 인덱스에 대한 직접 링크" title="다양한 자료형을 지원하는 인덱스에 대한 직접 링크">​</a></h2><ul><li>인덱스가 dtype 속성에서 더많은 넘파이 숫자 자료형으로 지정할 수 있다. (e.g. np.int8, np.unit32, float32)<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">- 기존에는 np.int64, np.uint64와 np.float64만이 지정가능했다.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><img loading="lazy" src="/assets/images/pandas1.5-numeric-dtype-bd052c9f68173391488182f388d59316.png" width="854" height="700" class="img_ev3q"></li><li>기존에는 인덱스의 자료형이 int, uint, flaot으로만 지정되고,</li><li>64비트로만 지정이 가능으며 Int64Index 등으로 표현되었다.</li><li>판다스2.0 부터는 다양한 비트의 숫자 자료형을 인덱스를 지원하게 되었다.</li><li>그리고 인덱스의 이름도 Index로 통일되었다.</li></ul><p><img loading="lazy" src="/assets/images/pandas2.0-numeric-dtype-83aaa8589187dee1aaa35fa7a95a01c1.png" width="784" height="304" class="img_ev3q"></p><ul><li>인덱스가 더 넘파이 숫자 자료형을 가질 수 있어, 판다스 기능에 변화가 생겼다.</li><li>특히 64비트로 생성하도록 강제되었던 작업들이 이제는 작은 비트 사이즈를 갖는 인덱스를 생성하게 되었다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="넘파이-숫자-자료형으로-달라진-작업">넘파이 숫자 자료형으로 달라진 작업<a href="#넘파이-숫자-자료형으로-달라진-작업" class="hash-link" aria-label="넘파이 숫자 자료형으로 달라진 작업에 대한 직접 링크" title="넘파이 숫자 자료형으로 달라진 작업에 대한 직접 링크">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="넘파이-배열">넘파이 배열<a href="#넘파이-배열" class="hash-link" aria-label="넘파이 배열에 대한 직접 링크" title="넘파이 배열에 대한 직접 링크">​</a></h3><ul><li>넘파이 숫자형 배열을 인스턴스화 시킬 때 넘파이 배열의 자료형을 따르게 된다.</li><li>이전에는, 모든 인덱스들이 64비트로 강제된 넘파이 숫자 배열로 생성되었다.
-<img loading="lazy" src="/assets/images/pandas1.5-arry-numeric-dtype-52bbb6769e302a11a54dd5b7b3b8ed10.png" width="916" height="332" class="img_ev3q"></li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="숫자-날짜-속성의-datetimeindex">숫자 날짜 속성의 DatetimeIndex<a href="#숫자-날짜-속성의-datetimeindex" class="hash-link" aria-label="숫자 날짜 속성의 DatetimeIndex에 대한 직접 링크" title="숫자 날짜 속성의 DatetimeIndex에 대한 직접 링크">​</a></h3><ul><li>판다스 2.0 이전에는 DatetimeIndex(day, month, year)의 자료형이 int64이다.</li><li>반면에 arrays.DatetimeArray에서는 32비트이다. </li><li>2.0 이후 버전에서는 DatetimeIndex가 int32 자료형으로 변경되면서 통일되었다.
-<img loading="lazy" src="/assets/images/pandas2.0-datetime-dtype-ceeedcd227980d906b1e5838b13a2dff.png" width="1094" height="276" class="img_ev3q"></li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="seriessparsefrom_coo가-int32를-지원한다">Series.sparse.from_coo()가 int32를 지원한다.<a href="#seriessparsefrom_coo가-int32를-지원한다" class="hash-link" aria-label="Series.sparse.from_coo()가 int32를 지원한다.에 대한 직접 링크" title="Series.sparse.from_coo()가 int32를 지원한다.에 대한 직접 링크">​</a></h3><ul><li>Series.sparse.from_coo()의 인덱스의 레벨 자료형이 int32 자료형이 되었다.</li><li>2.0버전 이전에는 행과 열 모두 int64 자료형을 가졌다.
-<img loading="lazy" src="/assets/images/1.5-sparse-matrix-dtype-4b69eeca705851bc61583c85ee1ff03c.png" width="1030" height="640" class="img_ev3q"></li><li>2.0 버전부터는 행과 열의 자료형이 int32로 바꼈다.
-<img loading="lazy" src="/assets/images/2.0-sparse-matrix-dtype-cb85cb5604e5c1e320fceb6edb7a1dfb.png" width="1142" height="510" class="img_ev3q"></li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="index가-float16-dtype으로-인스턴스화-시킬-수-없다">Index가 float16 dtype으로 인스턴스화 시킬 수 없다.<a href="#index가-float16-dtype으로-인스턴스화-시킬-수-없다" class="hash-link" aria-label="Index가 float16 dtype으로 인스턴스화 시킬 수 없다.에 대한 직접 링크" title="Index가 float16 dtype으로 인스턴스화 시킬 수 없다.에 대한 직접 링크">​</a></h3><ul><li><p>이전 버전에서는 Index를 float16의 자료형으로 인스턴스화 시키면 Float64Index로 생성되었다.</p></li><li><p>이제 float16으로 자료형을 설정한 Index 인스턴스는 NotImplementedError의 에러를 발생한다.
-<img loading="lazy" src="/assets/images/NotImplementedError-3048befdd09154aa668bb1412fc89a27.png" width="1224" height="216" class="img_ev3q"></p></li><li><p>다음 변경점들은 하나씩 포스팅 해보겠다. 그럼 이만</p></li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="refference">refference<a href="#refference" class="hash-link" aria-label="refference에 대한 직접 링크" title="refference에 대한 직접 링크">​</a></h2><p><a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html" target="_blank" rel="noopener noreferrer">판다스 공식 페이지</a></p>]]></content:encoded>
+            <content:encoded><![CDATA[<h2 id="다양한-자료형을-지원하는-인덱스">다양한 자료형을 지원하는 인덱스</h2>
+<ul>
+<li>인덱스가 dtype 속성에서 더많은 넘파이 숫자 자료형으로 지정할 수 있다. (e.g. np.int8, np.unit32, float32)<!-- -->
+<ul>
+<li>기존에는 np.int64, np.uint64와 np.float64만이 지정가능했다.
+<img src="https://leetaehwan.github.io/assets/images/pandas1.5-numeric-dtype-bd052c9f68173391488182f388d59316.png" width="854" height="700"></li>
+</ul>
+</li>
+<li>기존에는 인덱스의 자료형이 int, uint, flaot으로만 지정되고,</li>
+<li>64비트로만 지정이 가능으며 Int64Index 등으로 표현되었다.</li>
+<li>판다스2.0 부터는 다양한 비트의 숫자 자료형을 인덱스를 지원하게 되었다.</li>
+<li>그리고 인덱스의 이름도 Index로 통일되었다.</li>
+</ul>
+<p><img src="https://leetaehwan.github.io/assets/images/pandas2.0-numeric-dtype-83aaa8589187dee1aaa35fa7a95a01c1.png" width="784" height="304"></p>
+<ul>
+<li>인덱스가 더 넘파이 숫자 자료형을 가질 수 있어, 판다스 기능에 변화가 생겼다.</li>
+<li>특히 64비트로 생성하도록 강제되었던 작업들이 이제는 작은 비트 사이즈를 갖는 인덱스를 생성하게 되었다.</li>
+</ul>
+<h2 id="넘파이-숫자-자료형으로-달라진-작업">넘파이 숫자 자료형으로 달라진 작업</h2>
+<h3 id="넘파이-배열">넘파이 배열</h3>
+<ul>
+<li>넘파이 숫자형 배열을 인스턴스화 시킬 때 넘파이 배열의 자료형을 따르게 된다.</li>
+<li>이전에는, 모든 인덱스들이 64비트로 강제된 넘파이 숫자 배열로 생성되었다.
+<img src="https://leetaehwan.github.io/assets/images/pandas1.5-arry-numeric-dtype-52bbb6769e302a11a54dd5b7b3b8ed10.png" width="916" height="332"></li>
+</ul>
+<h3 id="숫자-날짜-속성의-datetimeindex">숫자 날짜 속성의 DatetimeIndex</h3>
+<ul>
+<li>판다스 2.0 이전에는 DatetimeIndex(day, month, year)의 자료형이 int64이다.</li>
+<li>반면에 arrays.DatetimeArray에서는 32비트이다.</li>
+<li>2.0 이후 버전에서는 DatetimeIndex가 int32 자료형으로 변경되면서 통일되었다.
+<img src="https://leetaehwan.github.io/assets/images/pandas2.0-datetime-dtype-ceeedcd227980d906b1e5838b13a2dff.png" width="1094" height="276"></li>
+</ul>
+<h3 id="seriessparsefrom_coo가-int32를-지원한다">Series.sparse.from_coo()가 int32를 지원한다.</h3>
+<ul>
+<li>Series.sparse.from_coo()의 인덱스의 레벨 자료형이 int32 자료형이 되었다.</li>
+<li>2.0버전 이전에는 행과 열 모두 int64 자료형을 가졌다.
+<img src="https://leetaehwan.github.io/assets/images/1.5-sparse-matrix-dtype-4b69eeca705851bc61583c85ee1ff03c.png" width="1030" height="640"></li>
+<li>2.0 버전부터는 행과 열의 자료형이 int32로 바꼈다.
+<img src="https://leetaehwan.github.io/assets/images/2.0-sparse-matrix-dtype-cb85cb5604e5c1e320fceb6edb7a1dfb.png" width="1142" height="510"></li>
+</ul>
+<h3 id="index가-float16-dtype으로-인스턴스화-시킬-수-없다">Index가 float16 dtype으로 인스턴스화 시킬 수 없다.</h3>
+<ul>
+<li>
+<p>이전 버전에서는 Index를 float16의 자료형으로 인스턴스화 시키면 Float64Index로 생성되었다.</p>
+</li>
+<li>
+<p>이제 float16으로 자료형을 설정한 Index 인스턴스는 NotImplementedError의 에러를 발생한다.
+<img src="https://leetaehwan.github.io/assets/images/NotImplementedError-3048befdd09154aa668bb1412fc89a27.png" width="1224" height="216"></p>
+</li>
+<li>
+<p>다음 변경점들은 하나씩 포스팅 해보겠다. 그럼 이만</p>
+</li>
+</ul>
+<h2 id="refference">refference</h2>
+<p><a href="https://pandas.pydata.org/docs/dev/whatsnew/v2.0.0.html">판다스 공식 페이지</a></p>]]></content:encoded>
             <category>eda</category>
             <category>pandas</category>
-        </item>
-        <item>
-            <title><![CDATA[스프링 부트 구성요소 살펴보기]]></title>
-            <link>https://leetaehwan.github.io/blog/spring-boot-component-research</link>
-            <guid>https://leetaehwan.github.io/blog/spring-boot-component-research</guid>
-            <pubDate>Thu, 23 Mar 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[- 백엔드를 배워본 적이 없는 학생이 김영한 스프링 부트 입문 강의를 듣고 작성한 글이다.]]></description>
-            <content:encoded><![CDATA[<ul><li>백엔드를 배워본 적이 없는 학생이 김영한 스프링 부트 입문 강의를 듣고 작성한 글이다.</li><li>스프링 부트를 통해서 손쉽게 스프링 프레임워크를 활용한 웹 어플리케이션 서버를 만든다.</li><li>클라이언트 사이드인 웹 브라우저가 보내는 요청을 내장 톰캣 서버를 통해 스프링 컨테이너에서 처리하여 반환 시킨다.</li></ul><h1>스프링 부트 구성요소 톺아보기</h1><h2 class="anchor anchorWithStickyNavbar_LWe7" id="내장-톰캣-서버">내장 톰캣 서버<a href="#내장-톰캣-서버" class="hash-link" aria-label="내장 톰캣 서버에 대한 직접 링크" title="내장 톰캣 서버에 대한 직접 링크">​</a></h2><ul><li>아파치 소프트웨어 재단에서 만든 WAS, 웹 어플리케이션이다.</li><li>자바 서블릿과 JSP, JavaServer Pages를 실행할 수 있는 환경을 제공한다.</li><li>Jakarta Servlet, Jakata Server Pages, Jakarta Expression Language 등의 사양을 구현한 오픈소스 소프트웨어이다.</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="아파치와-톰캣의-차이점">아파치와 톰캣의 차이점<a href="#아파치와-톰캣의-차이점" class="hash-link" aria-label="아파치와 톰캣의 차이점에 대한 직접 링크" title="아파치와 톰캣의 차이점에 대한 직접 링크">​</a></h3><ul><li>아파치 소프트웨어 재단의 아파치 웹 서버이다.</li><li>정적 데이터인 HTML, CSS, 이미지 등을 처리하는데 빠르지만</li><li>톰캣은 WAS로서 JSP, 서블릿 처리, DB 연결 및 데이터 조작 등의 동적인 데이터를 처리하는데 적합하다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="정적--동적-데이터">정적 / 동적 데이터<a href="#정적--동적-데이터" class="hash-link" aria-label="정적 / 동적 데이터에 대한 직접 링크" title="정적 / 동적 데이터에 대한 직접 링크">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="정적-데이터">정적 데이터<a href="#정적-데이터" class="hash-link" aria-label="정적 데이터에 대한 직접 링크" title="정적 데이터에 대한 직접 링크">​</a></h3><ul><li>사용자의 요청에 따라 변하지 않는 데이터이다.</li><li>HTML, CSS, 이미지 파일과 같은 데이터를 말하며, 정적인 데이터는 웹 서버를 통해서 처리된다.</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="동적-데이터">동적 데이터<a href="#동적-데이터" class="hash-link" aria-label="동적 데이터에 대한 직접 링크" title="동적 데이터에 대한 직접 링크">​</a></h3><ul><li>사용자의 요청에 따라 변하는 데이터를 의미한다.</li><li>사용자가 입력한 정보를 바탕으로 DB에서 정보를 검색하거나 조작하여 반환되는 데이터들을 말한다.</li><li>이러한 동적 데이터는 WAS에서 처리된다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="웹-서버와-웹-어플리케이션-서버-was와의-차이점">웹 서버와 웹 어플리케이션 서버, WAS와의 차이점<a href="#웹-서버와-웹-어플리케이션-서버-was와의-차이점" class="hash-link" aria-label="웹 서버와 웹 어플리케이션 서버, WAS와의 차이점에 대한 직접 링크" title="웹 서버와 웹 어플리케이션 서버, WAS와의 차이점에 대한 직접 링크">​</a></h2><h1>스프링 컨테이너와 빈</h1><ul><li>스프링에서, 어플리케이션의 중추를 구성하는 객체와 스프링 Ioc 컨테이너에서 관리되는 객체들을 빈이라고 한다.</li><li>빈은 간단히 구체화된 객체로 스프링 IoC 컨테이너에 의해 조립되거나 관리되어진다.</li><li>이런 빈과 그것들 간의 의존관계가 컨테이너에서 사용하는 Configuration 메타데이터에 반영된다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="컨테이너">컨테이너<a href="#컨테이너" class="hash-link" aria-label="컨테이너에 대한 직접 링크" title="컨테이너에 대한 직접 링크">​</a></h2><h3 class="anchor anchorWithStickyNavbar_LWe7" id="beanfactory">BeanFactory<a href="#beanfactory" class="hash-link" aria-label="BeanFactory에 대한 직접 링크" title="BeanFactory에 대한 직접 링크">​</a></h3><ul><li>org.springframework.beans.factory.BeanFactory는 스프링 IoC 컨테이너의 실체의 대표이다.</li><li>스프링 IoC 컨테이너는 앞서 언급했던 빈들을 담거나 관리하는 책임이 있다.</li><li>BeanFractory 인터페이스는 스프링의 중심 IoC 컨테이너 인터페이스이다. </li><li>스프링으로 바로 제공되어지는 BeanFactory 인터페이스의다양한 구현들이 있다.</li><li>가장 많이 쓰이는 구현이 XmlBeanFactory 클래스이다.</li><li>이 구현은 우리가 앱을 구성하는 객체들과 의심할 여지없이 많은 객채들 간의 상호 의존관계를 XML의 언어로 표현하도록 한다.</li><li>XmlBeanFactory는 XML Configuration 메타데이터를 취해서 완전하게 환경설정된 시스템이나 앱을 만드는데 사용한다.</li></ul><p><img loading="lazy" src="https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/images/container-magic.png" class="img_ev3q">
-<a href="https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch04s02.html" target="_blank" rel="noopener noreferrer">4.2 Basics - containers and beans</a></p><h3 class="anchor anchorWithStickyNavbar_LWe7" id="applicationcontext">ApplicationContext<a href="#applicationcontext" class="hash-link" aria-label="ApplicationContext에 대한 직접 링크" title="ApplicationContext에 대한 직접 링크">​</a></h3><ul><li>ApplicationContext 인터페이스도 스프링 IoC 컨테이너를 대표하고 구현, 환경설정, 빈을 조합하는 역할을 수행한다.</li><li>BeanFactory의 대체 인터페이스로 더 많은 기업에 특화된 기능들을 제공한다.</li><li>제공되는 기능으로 메시지 확인(다국언어 지원), 이벤트 게시, 어플리케이션 레이어 특화 문맥이 있다.</li><li>어플리케이션 컴포넌트에 접근할 때 사용하는 ListableBeanFactory 메서드를 상속 받았고</li><li>일반적인 방법으로 파일 리스소를 읽는 기능을 ResourceLoader로부터 상속 받았다.</li><li>ApplicationEventPublisher로부터 상속받은 등록된 리스너들의 이벤트를 게시하는 능력도 가지고 있다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="컨트롤러란-무엇인가">컨트롤러란 무엇인가?<a href="#컨트롤러란-무엇인가" class="hash-link" aria-label="컨트롤러란 무엇인가?에 대한 직접 링크" title="컨트롤러란 무엇인가?에 대한 직접 링크">​</a></h2><ul><li>전형적인 MVC, Model-View-Controller 아키텍처에서 Controller의 개념을 들여다보자.</li></ul><h3 class="anchor anchorWithStickyNavbar_LWe7" id="컨트롤러의-역할">컨트롤러의 역할<a href="#컨트롤러의-역할" class="hash-link" aria-label="컨트롤러의 역할에 대한 직접 링크" title="컨트롤러의 역할에 대한 직접 링크">​</a></h3><ul><li>들어오는 응답을 가로챈다.</li><li>응답의 내용을 데이터 내부 체계로 변환시킨다.</li><li>추가의 처리를 위한 모델에 데이터를 보낸다.</li><li>모델로부터 처리된 데이터를 얻어와 렌더링을 위해 해당 데이터를 뷰로 전달한다.</li></ul><p><strong>스프링 MVC 다이어그램</strong>
-<img loading="lazy" src="/assets/images/dispatching-servlet-2d1d65483391b0f750b5826bea51750c.png" width="1770" height="814" class="img_ev3q"></p><ul><li>여기서 발송 서블릿이 아키텍처에서 Front 컨트롤러의 역할을 수행한다.</li><li>위 MCV 다이어그램이 전형적인 MCV 컨트롤러 뿐만아니라 RESTful 컨트롤러에 해당된다. (약간만 다르다.)</li><li>전통적인 접근법으로 MVC 어플리케이션은 서비스 지향이 아니라서 뷰 리졸버를 통해 컨트롤러로부터 얻어낸 데이터를 기반으로 최종 뷰를 렌더링한다.</li><li>RESTful 어플리케이션은 서비스 지향으로 디자인되어서 원본 데이터(주로 JSON)을 반환한다.</li><li>이러한 어플리케이션이 어떠한 뷰 렌더링도 하지 않기 때문에, 뷰 리졸버가 존재하지 않는다.</li><li>그래서 컨트롤러가 일반적으로 직접 HTTP 응답을 통해 데이터를 전송할 것으로 기대한다.
-<a href="https://www.baeldung.com/spring-controllers" target="_blank" rel="noopener noreferrer">출처</a></li></ul><h1>Maven Dependencies</h1><ul><li>Maven은 빌드 자동화 도구로 주로 자바 프로젝트에서 쓰인다.</li><li>스프링에서는 Maven이 의존성들을 구성하고 프로젝트를 빌드하는데 사용된다.</li><li>다음은 스프링 부트에서 스프링 MVC로 동작하기 위해서 Maven 의존성을 다뤄본다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;dependency&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;version&gt;3.0.2&lt;/version&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/dependency&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h1>스프링 부트 Web Config</h1><ul><li>스프링 부트에서 어떻게 구성하는지 들여다보자.</li><li>클래서 경로에 thymeleaf 의존성을 추가했기 때문에, 이를 위한 어떤 @Beans도 구성할 필요가 없습니다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;dependency&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;/dependency&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>WebConfig에서 기본 설정 서블릿과 Greeting 객체와 오브젝트 매퍼를 위한 빈을 가능하도록 추가해준다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public WebServerFactoryCustomizer&lt;ConfigurableServletWebServerFactory&gt; enableDefaultServlet(){</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    return factory -&gt; factory.setRegisterDefaultServlet(true);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public Greeting greeting() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    Greeting greeting = new Greeting();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    greeting.setMessage("Hello World !!");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    return greeting;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@Bean</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public ObjectMapper objectMapper() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">return new ObejctMapper();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>예를들어, 만약 컨트롤러가 "welcome" 이름의 뷰를 반환하면, 뷰 리졸버는 템플릿 폴더 안에 "welcome.html"이라 불리는 페이지를 처리한다.</li><li>템플릿 폴더가 thymeleaf가 뷰를 찾도록 기본 설정된 폴더이다.</li></ul><h1>MVC 컨트롤러</h1><ul><li>MVC 스타일의 컨트롤러를 구현하자</li><li>어떻게 ModelAndView 객체를 반환하는지 주목하자.</li><li>ModelAndView 객체는 모델 맵과 뷰 객체를 포함하고 둘다 뷰 리졸버에서 데이터 렌더링에 사용된다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@Controller</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">@RequestMapping(value= "/test")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class TestController {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @GetMapping</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public ModelAndView getTestData() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        ModelAndView mv = new ModelAndView();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        mv.setViewName("welcome");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        mv.getModel().put("data", "Welcome Home man");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return mv;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li><p>여기까지 정확하게 구축한게 여기있다.</p></li><li><p>먼저 TestController라고 불리는 컨테이너를 만들고 그것을 "/test" 경로에 매핑했다.</p></li><li><p>클래스에서, ModelAndView 객체를 반환하는 메서드를 만들고</p></li><li><p>GET 요청을 통해서 메서드를 패밍하여 "test"로 끝나는 URL 호출이 발송 서블릿으로 라우팅되어 TestContoller의 getTestData 메서드로 전달됩니다.</p></li><li><p>물론 ModelAndView 객체에 추가로 몇몇 모델 데이터도 반환한다.</p></li><li><p>뷰 객체는 "welcome"으로 설정되었고 위에서 언급한대로, 뷰 리졸버가 템플릿 폴더 안에 'welcome.html'으로 불리는 페이지를 찾는다.</p></li></ul><h1>REST 컨트롤러</h1><ul><li>스프링 RESTful 어플리케이션 구축은 MVC어플리케이션의 것과 뷰리졸버와 모델 맵이 없다는 것 빼고는 같다.</li><li>API가 간단히 JSON과 같은 방식의 원본 데이터로 클라이언트에게 반환한다.</li><li>그래서 발송 서블릿이 뷰 리졸버를 우회하여 HTTP 응답 바디의 데이터를 바로 반환한다.</li><li>간단한 RESTful controller의 구현을 보자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">@RestContorller</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">public class Restcontroller {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    @GetMapping(value = "/student/{studentId}")</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public Student getTestData(@PathVariable Integer studentId) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        Student student = new Student();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        student.setName("Peter");</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        student.setId(student.ID);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return student;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>]]></content:encoded>
-            <category>data</category>
         </item>
         <item>
             <title><![CDATA[Docusaurus 깃허브 페이지 호스팅하기]]></title>
@@ -98,12 +958,332 @@
             <guid>https://leetaehwan.github.io/blog/docusaurus-deploy</guid>
             <pubDate>Thu, 23 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[- 깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자.]]></description>
-            <content:encoded><![CDATA[<ul><li>깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자. </li></ul><h1>목적</h1><ul><li>GitHub 블로그를 만들어보자.</li><li>Docusaurus를 사용해보자.</li></ul><h1>작업순서</h1><p><img loading="lazy" src="/assets/images/docusaurus-deploy-6634d8ecdb74a7a650f058c7e302570c.png" width="1290" height="776" class="img_ev3q"></p><ol><li>깃허브 블로그 repo 생성</li><li>개발환경 구축</li><li>Docusaurus 설치</li><li>로컬에서 서비스</li><li>깃허브 페이지에 배포</li></ol><h1>깃허브 블로그 repo 생성</h1><p><img loading="lazy" src="/assets/images/git-hub-repo-generation-910ec19d8487f8c23963ffac2a0d977b.png" width="1578" height="1426" class="img_ev3q"></p><ul><li>Repo 이름은 github 아이디.github.io로 작성한다.</li><li>Public 상태로 설정된 걸 확인하고 생성한다.</li></ul><h1>개발환경 구축</h1><ul><li>Docusaurus 블로그를 구축하기 위해서는 Node.js, npm, yarn, git 등이 필요하다. 하나씩 따라해보자.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="nodejs">Node.js<a href="#nodejs" class="hash-link" aria-label="Node.js에 대한 직접 링크" title="Node.js에 대한 직접 링크">​</a></h2><ul><li>터미널(CLI)을 켜고, Node.js의 버전을 확인하자.</li><li>macOS의 터미널에서는 node -v 명령어를 통해 확인할 수 있다.</li><li>Docusaurus v2.3.1(2023.3월 기준)에는 v16.14 이상의 Node.js가 설치되어야 한다.</li><li>nvm을 통해서 설치나 버전을 관리할 수 있다.</li><li>아래와 같은 명령어를 통해 최신버전으로 관리할 수 있다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm install -g npm</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="npm">NPM<a href="#npm" class="hash-link" aria-label="NPM에 대한 직접 링크" title="NPM에 대한 직접 링크">​</a></h2><ul><li>위의 명령어로 npm이 설치되면 node.js와 npm이 설치가 된다.</li><li>npm -v 명령어를 통해 버전도 확인할 수 있다.</li><li>npm은 docusaurus를 로컬에서 테스트할 때 사용한다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="yarn">Yarn<a href="#yarn" class="hash-link" aria-label="Yarn에 대한 직접 링크" title="Yarn에 대한 직접 링크">​</a></h2><ul><li>Yarn을 통해서 우리는 빌드하고 배포한다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm install --global yarn</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>다음과 같이 yarn을 설치한다.</li><li>설치가 잘 됐는지, 버전을 확인하기 위해서 아래 명령어를 입력해보자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">yarn --version</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h1>Git</h1><ul><li>앞서 생성한 repo를 로컬에 클론을 떠와서 작업한다.
-<img loading="lazy" src="/assets/images/github-ssh-code-10bbbcab637c1556fb892c1dd72a8b71.png" width="1630" height="1156" class="img_ev3q"></li><li>위의 화면같이 코드의 SSH코드를 복사하자.</li><li>CLI를 통하여 클론 폴더를 가질 로컬 폴더에 가서 아래의 명령어를 통해 클론을 진행한다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git clone {SSH 코드}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li><p>중괄호 없이 SSH 코드를 입력한다.</p></li><li><p>그러면 로컬에 000.github.io repo 클론이 저장되었고, repo에 연결된다.</p></li><li><p>이제 다음 단계로 넘어가자</p></li></ul><h1>Docusaurus 설치하기</h1><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npx create-docusaurus@latest my-website classic</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>터미널현재 경로에서 my-website 폴더가 설치된다.</li><li>해당 폴더 안의 폴더와 파일들을 모두 복사해 클론 repo인 000.github.io 폴더 안에 붙여넣는다.</li><li>아래와 같이 깃 허브에 add / commit / push를 해보자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git add .</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git commit -m 'test'</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git push</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><h2 class="anchor anchorWithStickyNavbar_LWe7" id="로컬에서-docusaurus-서비스-테스트">로컬에서 docusaurus 서비스 테스트<a href="#로컬에서-docusaurus-서비스-테스트" class="hash-link" aria-label="로컬에서 docusaurus 서비스 테스트에 대한 직접 링크" title="로컬에서 docusaurus 서비스 테스트에 대한 직접 링크">​</a></h2><ul><li>다시 CLI에서 000.github.io 폴더에 접근하여 아래 명령어를 입력한다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">yarn run start</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>그러면 http://localhost:3000 로컬 url을 통해서 접속할 수 있다.</li></ul><h2 class="anchor anchorWithStickyNavbar_LWe7" id="깃허브-페이지에-호스팅하기">깃허브 페이지에 호스팅하기<a href="#깃허브-페이지에-호스팅하기" class="hash-link" aria-label="깃허브 페이지에 호스팅하기에 대한 직접 링크" title="깃허브 페이지에 호스팅하기에 대한 직접 링크">​</a></h2><ul><li>docusaurus를 호스팅하는 다양한 방법이 있지만, 여기서는 깃허브페이지에 호스팅한다.</li><li>먼저 빌드를 해야된다.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">yarn build</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li>이렇게 하면 build 폴더안에 콘텐츠들이 만들어진다. 이제 호스팅에 배포해보자.</li></ul><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">GIT_USER={깃허브 유저명} USE_SSH=true yarn deploy</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="클립보드에 코드 복사" title="복사" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><ul><li><p>이렇게 하면 gh-pages라는 브랜치가 생성된다.</p></li><li><p>여기 까지 했다면 깃허브 repo의 page 설정을 다시 확인해보자.
-<img loading="lazy" src="/assets/images/Github-pages-setting-7f0e18b4d7a666e85f581e2c43d8024a.png" width="2258" height="1096" class="img_ev3q"></p></li><li><p>그림과 같이 페이지 설정에 들어가서, gh-pages라는 브랜치로 저장한다.</p></li><li><p>이제 000.github.io에 접속해보자.</p></li><li><p>이제 내용을 꾸며보자.</p></li></ul><h1>refference</h1><ul><li><a href="https://docusaurus.io/docs/installation" target="_blank" rel="noopener noreferrer">docusaurus installation</a></li><li><a href="https://github.com/dochavez/Documenting-with-Docusaurus-V2.-" target="_blank" rel="noopener noreferrer">docusaurus documentation</a></li></ul>]]></content:encoded>
+            <content:encoded><![CDATA[<ul>
+<li>깃허브 페이지에 Docusaurus 블로그 사이트를 서비스해보자.</li>
+</ul>
+<ul>
+<li>GitHub 블로그를 만들어보자.</li>
+<li>Docusaurus를 사용해보자.</li>
+</ul>
+<h1 id="작업순서">작업순서</h1>
+<p><img src="https://leetaehwan.github.io/assets/images/docusaurus-deploy-6634d8ecdb74a7a650f058c7e302570c.png" width="1290" height="776"></p>
+<ol>
+<li>깃허브 블로그 repo 생성</li>
+<li>개발환경 구축</li>
+<li>Docusaurus 설치</li>
+<li>로컬에서 서비스</li>
+<li>깃허브 페이지에 배포</li>
+</ol>
+<h1 id="깃허브-블로그-repo-생성">깃허브 블로그 repo 생성</h1>
+<p><img src="https://leetaehwan.github.io/assets/images/git-hub-repo-generation-910ec19d8487f8c23963ffac2a0d977b.png" width="1578" height="1426"></p>
+<ul>
+<li>Repo 이름은 github 아이디.github.io로 작성한다.</li>
+<li>Public 상태로 설정된 걸 확인하고 생성한다.</li>
+</ul>
+<h1 id="개발환경-구축">개발환경 구축</h1>
+<ul>
+<li>Docusaurus 블로그를 구축하기 위해서는 Node.js, npm, yarn, git 등이 필요하다. 하나씩 따라해보자.</li>
+</ul>
+<h2 id="nodejs">Node.js</h2>
+<ul>
+<li>터미널(CLI)을 켜고, Node.js의 버전을 확인하자.</li>
+<li>macOS의 터미널에서는 node -v 명령어를 통해 확인할 수 있다.</li>
+<li>Docusaurus v2.3.1(2023.3월 기준)에는 v16.14 이상의 Node.js가 설치되어야 한다.</li>
+<li>nvm을 통해서 설치나 버전을 관리할 수 있다.</li>
+<li>아래와 같은 명령어를 통해 최신버전으로 관리할 수 있다.</li>
+</ul>
+<pre><code>npm install -g npm
+</code></pre>
+<h2 id="npm">NPM</h2>
+<ul>
+<li>위의 명령어로 npm이 설치되면 node.js와 npm이 설치가 된다.</li>
+<li>npm -v 명령어를 통해 버전도 확인할 수 있다.</li>
+<li>npm은 docusaurus를 로컬에서 테스트할 때 사용한다.</li>
+</ul>
+<h2 id="yarn">Yarn</h2>
+<ul>
+<li>Yarn을 통해서 우리는 빌드하고 배포한다.</li>
+</ul>
+<pre><code>npm install --global yarn
+</code></pre>
+<ul>
+<li>다음과 같이 yarn을 설치한다.</li>
+<li>설치가 잘 됐는지, 버전을 확인하기 위해서 아래 명령어를 입력해보자.</li>
+</ul>
+<pre><code>yarn --version
+</code></pre>
+<h1 id="git">Git</h1>
+<ul>
+<li>앞서 생성한 repo를 로컬에 클론을 떠와서 작업한다.
+<img src="https://leetaehwan.github.io/assets/images/github-ssh-code-10bbbcab637c1556fb892c1dd72a8b71.png" width="1630" height="1156"></li>
+<li>위의 화면같이 코드의 SSH코드를 복사하자.</li>
+<li>CLI를 통하여 클론 폴더를 가질 로컬 폴더에 가서 아래의 명령어를 통해 클론을 진행한다.</li>
+</ul>
+<pre><code>git clone {SSH 코드}
+</code></pre>
+<ul>
+<li>
+<p>중괄호 없이 SSH 코드를 입력한다.</p>
+</li>
+<li>
+<p>그러면 로컬에 000.github.io repo 클론이 저장되었고, repo에 연결된다.</p>
+</li>
+<li>
+<p>이제 다음 단계로 넘어가자</p>
+</li>
+</ul>
+<h1 id="docusaurus-설치하기">Docusaurus 설치하기</h1>
+<pre><code>npx create-docusaurus@latest my-website classic
+</code></pre>
+<ul>
+<li>터미널현재 경로에서 my-website 폴더가 설치된다.</li>
+<li>해당 폴더 안의 폴더와 파일들을 모두 복사해 클론 repo인 000.github.io 폴더 안에 붙여넣는다.</li>
+<li>아래와 같이 깃 허브에 add / commit / push를 해보자.</li>
+</ul>
+<pre><code>git add .
+</code></pre>
+<pre><code>git commit -m 'test'
+</code></pre>
+<pre><code>git push
+</code></pre>
+<h2 id="로컬에서-docusaurus-서비스-테스트">로컬에서 docusaurus 서비스 테스트</h2>
+<ul>
+<li>다시 CLI에서 000.github.io 폴더에 접근하여 아래 명령어를 입력한다.</li>
+</ul>
+<pre><code>yarn run start
+</code></pre>
+<ul>
+<li>그러면 <a href="http://localhost:3000/">http://localhost:3000</a> 로컬 url을 통해서 접속할 수 있다.</li>
+</ul>
+<h2 id="깃허브-페이지에-호스팅하기">깃허브 페이지에 호스팅하기</h2>
+<ul>
+<li>docusaurus를 호스팅하는 다양한 방법이 있지만, 여기서는 깃허브페이지에 호스팅한다.</li>
+<li>먼저 빌드를 해야된다.</li>
+</ul>
+<pre><code>yarn build
+</code></pre>
+<ul>
+<li>이렇게 하면 build 폴더안에 콘텐츠들이 만들어진다. 이제 호스팅에 배포해보자.</li>
+</ul>
+<pre><code>GIT_USER={깃허브 유저명} USE_SSH=true yarn deploy
+</code></pre>
+<ul>
+<li>
+<p>이렇게 하면 gh-pages라는 브랜치가 생성된다.</p>
+</li>
+<li>
+<p>여기 까지 했다면 깃허브 repo의 page 설정을 다시 확인해보자.
+<img src="https://leetaehwan.github.io/assets/images/Github-pages-setting-7f0e18b4d7a666e85f581e2c43d8024a.png" width="2258" height="1096"></p>
+</li>
+<li>
+<p>그림과 같이 페이지 설정에 들어가서, gh-pages라는 브랜치로 저장한다.</p>
+</li>
+<li>
+<p>이제 000.github.io에 접속해보자.</p>
+</li>
+<li>
+<p>이제 내용을 꾸며보자.</p>
+</li>
+</ul>
+<h1 id="refference">refference</h1>
+<ul>
+<li><a href="https://docusaurus.io/docs/installation">docusaurus installation</a></li>
+<li><a href="https://github.com/dochavez/Documenting-with-Docusaurus-V2.-">docusaurus documentation</a></li>
+</ul>]]></content:encoded>
             <category>web</category>
             <category>blog</category>
             <category>writing</category>
+        </item>
+        <item>
+            <title><![CDATA[스프링 부트 구성요소 살펴보기]]></title>
+            <link>https://leetaehwan.github.io/blog/spring-boot-component-research</link>
+            <guid>https://leetaehwan.github.io/blog/spring-boot-component-research</guid>
+            <pubDate>Thu, 23 Mar 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[- 백엔드를 배워본 적이 없는 학생이 김영한 스프링 부트 입문 강의를 듣고 작성한 글이다.]]></description>
+            <content:encoded><![CDATA[<ul>
+<li>백엔드를 배워본 적이 없는 학생이 김영한 스프링 부트 입문 강의를 듣고 작성한 글이다.</li>
+<li>스프링 부트를 통해서 손쉽게 스프링 프레임워크를 활용한 웹 어플리케이션 서버를 만든다.</li>
+<li>클라이언트 사이드인 웹 브라우저가 보내는 요청을 내장 톰캣 서버를 통해 스프링 컨테이너에서 처리하여 반환 시킨다.</li>
+</ul>
+<h1 id="스프링-부트-구성요소-톺아보기">스프링 부트 구성요소 톺아보기</h1>
+<h2 id="내장-톰캣-서버">내장 톰캣 서버</h2>
+<ul>
+<li>아파치 소프트웨어 재단에서 만든 WAS, 웹 어플리케이션이다.</li>
+<li>자바 서블릿과 JSP, JavaServer Pages를 실행할 수 있는 환경을 제공한다.</li>
+<li>Jakarta Servlet, Jakata Server Pages, Jakarta Expression Language 등의 사양을 구현한 오픈소스 소프트웨어이다.</li>
+</ul>
+<h3 id="아파치와-톰캣의-차이점">아파치와 톰캣의 차이점</h3>
+<ul>
+<li>아파치 소프트웨어 재단의 아파치 웹 서버이다.</li>
+<li>정적 데이터인 HTML, CSS, 이미지 등을 처리하는데 빠르지만</li>
+<li>톰캣은 WAS로서 JSP, 서블릿 처리, DB 연결 및 데이터 조작 등의 동적인 데이터를 처리하는데 적합하다.</li>
+</ul>
+<h2 id="정적--동적-데이터">정적 / 동적 데이터</h2>
+<h3 id="정적-데이터">정적 데이터</h3>
+<ul>
+<li>사용자의 요청에 따라 변하지 않는 데이터이다.</li>
+<li>HTML, CSS, 이미지 파일과 같은 데이터를 말하며, 정적인 데이터는 웹 서버를 통해서 처리된다.</li>
+</ul>
+<h3 id="동적-데이터">동적 데이터</h3>
+<ul>
+<li>사용자의 요청에 따라 변하는 데이터를 의미한다.</li>
+<li>사용자가 입력한 정보를 바탕으로 DB에서 정보를 검색하거나 조작하여 반환되는 데이터들을 말한다.</li>
+<li>이러한 동적 데이터는 WAS에서 처리된다.</li>
+</ul>
+<h2 id="웹-서버와-웹-어플리케이션-서버-was와의-차이점">웹 서버와 웹 어플리케이션 서버, WAS와의 차이점</h2>
+<h1 id="스프링-컨테이너와-빈">스프링 컨테이너와 빈</h1>
+<ul>
+<li>스프링에서, 어플리케이션의 중추를 구성하는 객체와 스프링 Ioc 컨테이너에서 관리되는 객체들을 빈이라고 한다.</li>
+<li>빈은 간단히 구체화된 객체로 스프링 IoC 컨테이너에 의해 조립되거나 관리되어진다.</li>
+<li>이런 빈과 그것들 간의 의존관계가 컨테이너에서 사용하는 Configuration 메타데이터에 반영된다.</li>
+</ul>
+<h2 id="컨테이너">컨테이너</h2>
+<h3 id="beanfactory">BeanFactory</h3>
+<ul>
+<li>org.springframework.beans.factory.BeanFactory는 스프링 IoC 컨테이너의 실체의 대표이다.</li>
+<li>스프링 IoC 컨테이너는 앞서 언급했던 빈들을 담거나 관리하는 책임이 있다.</li>
+<li>BeanFractory 인터페이스는 스프링의 중심 IoC 컨테이너 인터페이스이다.</li>
+<li>스프링으로 바로 제공되어지는 BeanFactory 인터페이스의다양한 구현들이 있다.</li>
+<li>가장 많이 쓰이는 구현이 XmlBeanFactory 클래스이다.</li>
+<li>이 구현은 우리가 앱을 구성하는 객체들과 의심할 여지없이 많은 객채들 간의 상호 의존관계를 XML의 언어로 표현하도록 한다.</li>
+<li>XmlBeanFactory는 XML Configuration 메타데이터를 취해서 완전하게 환경설정된 시스템이나 앱을 만드는데 사용한다.</li>
+</ul>
+<p><img src="https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/images/container-magic.png" alt="">
+<a href="https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch04s02.html">4.2 Basics - containers and beans</a></p>
+<h3 id="applicationcontext">ApplicationContext</h3>
+<ul>
+<li>ApplicationContext 인터페이스도 스프링 IoC 컨테이너를 대표하고 구현, 환경설정, 빈을 조합하는 역할을 수행한다.</li>
+<li>BeanFactory의 대체 인터페이스로 더 많은 기업에 특화된 기능들을 제공한다.</li>
+<li>제공되는 기능으로 메시지 확인(다국언어 지원), 이벤트 게시, 어플리케이션 레이어 특화 문맥이 있다.</li>
+<li>어플리케이션 컴포넌트에 접근할 때 사용하는 ListableBeanFactory 메서드를 상속 받았고</li>
+<li>일반적인 방법으로 파일 리스소를 읽는 기능을 ResourceLoader로부터 상속 받았다.</li>
+<li>ApplicationEventPublisher로부터 상속받은 등록된 리스너들의 이벤트를 게시하는 능력도 가지고 있다.</li>
+</ul>
+<h2 id="컨트롤러란-무엇인가">컨트롤러란 무엇인가?</h2>
+<ul>
+<li>전형적인 MVC, Model-View-Controller 아키텍처에서 Controller의 개념을 들여다보자.</li>
+</ul>
+<h3 id="컨트롤러의-역할">컨트롤러의 역할</h3>
+<ul>
+<li>들어오는 응답을 가로챈다.</li>
+<li>응답의 내용을 데이터 내부 체계로 변환시킨다.</li>
+<li>추가의 처리를 위한 모델에 데이터를 보낸다.</li>
+<li>모델로부터 처리된 데이터를 얻어와 렌더링을 위해 해당 데이터를 뷰로 전달한다.</li>
+</ul>
+<p><strong>스프링 MVC 다이어그램</strong>
+<img src="https://leetaehwan.github.io/assets/images/dispatching-servlet-2d1d65483391b0f750b5826bea51750c.png" width="1770" height="814"></p>
+<ul>
+<li>여기서 발송 서블릿이 아키텍처에서 Front 컨트롤러의 역할을 수행한다.</li>
+<li>위 MCV 다이어그램이 전형적인 MCV 컨트롤러 뿐만아니라 RESTful 컨트롤러에 해당된다. (약간만 다르다.)</li>
+<li>전통적인 접근법으로 MVC 어플리케이션은 서비스 지향이 아니라서 뷰 리졸버를 통해 컨트롤러로부터 얻어낸 데이터를 기반으로 최종 뷰를 렌더링한다.</li>
+<li>RESTful 어플리케이션은 서비스 지향으로 디자인되어서 원본 데이터(주로 JSON)을 반환한다.</li>
+<li>이러한 어플리케이션이 어떠한 뷰 렌더링도 하지 않기 때문에, 뷰 리졸버가 존재하지 않는다.</li>
+<li>그래서 컨트롤러가 일반적으로 직접 HTTP 응답을 통해 데이터를 전송할 것으로 기대한다.
+<a href="https://www.baeldung.com/spring-controllers">출처</a></li>
+</ul>
+<h1 id="maven-dependencies">Maven Dependencies</h1>
+<ul>
+<li>Maven은 빌드 자동화 도구로 주로 자바 프로젝트에서 쓰인다.</li>
+<li>스프링에서는 Maven이 의존성들을 구성하고 프로젝트를 빌드하는데 사용된다.</li>
+<li>다음은 스프링 부트에서 스프링 MVC로 동작하기 위해서 Maven 의존성을 다뤄본다.</li>
+</ul>
+<pre><code>&lt;dependency&gt;
+	&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;version&gt;3.0.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h1 id="스프링-부트-web-config">스프링 부트 Web Config</h1>
+<ul>
+<li>스프링 부트에서 어떻게 구성하는지 들여다보자.</li>
+<li>클래서 경로에 thymeleaf 의존성을 추가했기 때문에, 이를 위한 어떤 @Beans도 구성할 필요가 없습니다.</li>
+</ul>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+&lt;/dependency&gt;
+</code></pre>
+<ul>
+<li>WebConfig에서 기본 설정 서블릿과 Greeting 객체와 오브젝트 매퍼를 위한 빈을 가능하도록 추가해준다.</li>
+</ul>
+<pre><code>@Bean
+public WebServerFactoryCustomizer&lt;ConfigurableServletWebServerFactory&gt; enableDefaultServlet(){
+	return factory -&gt; factory.setRegisterDefaultServlet(true);
+}
+
+@Bean
+public Greeting greeting() {
+	Greeting greeting = new Greeting();
+	greeting.setMessage("Hello World !!");
+	return greeting;
+}
+
+@Bean
+public ObjectMapper objectMapper() {
+return new ObejctMapper();
+}
+</code></pre>
+<ul>
+<li>예를들어, 만약 컨트롤러가 "welcome" 이름의 뷰를 반환하면, 뷰 리졸버는 템플릿 폴더 안에 "welcome.html"이라 불리는 페이지를 처리한다.</li>
+<li>템플릿 폴더가 thymeleaf가 뷰를 찾도록 기본 설정된 폴더이다.</li>
+</ul>
+<h1 id="mvc-컨트롤러">MVC 컨트롤러</h1>
+<ul>
+<li>MVC 스타일의 컨트롤러를 구현하자</li>
+<li>어떻게 ModelAndView 객체를 반환하는지 주목하자.</li>
+<li>ModelAndView 객체는 모델 맵과 뷰 객체를 포함하고 둘다 뷰 리졸버에서 데이터 렌더링에 사용된다.</li>
+</ul>
+<pre><code>@Controller
+@RequestMapping(value= "/test")
+public class TestController {
+	@GetMapping
+	public ModelAndView getTestData() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("welcome");
+		mv.getModel().put("data", "Welcome Home man");
+		return mv;
+	}
+}
+</code></pre>
+<ul>
+<li>
+<p>여기까지 정확하게 구축한게 여기있다.</p>
+</li>
+<li>
+<p>먼저 TestController라고 불리는 컨테이너를 만들고 그것을 "/test" 경로에 매핑했다.</p>
+</li>
+<li>
+<p>클래스에서, ModelAndView 객체를 반환하는 메서드를 만들고</p>
+</li>
+<li>
+<p>GET 요청을 통해서 메서드를 패밍하여 "test"로 끝나는 URL 호출이 발송 서블릿으로 라우팅되어 TestContoller의 getTestData 메서드로 전달됩니다.</p>
+</li>
+<li>
+<p>물론 ModelAndView 객체에 추가로 몇몇 모델 데이터도 반환한다.</p>
+</li>
+<li>
+<p>뷰 객체는 "welcome"으로 설정되었고 위에서 언급한대로, 뷰 리졸버가 템플릿 폴더 안에 'welcome.html'으로 불리는 페이지를 찾는다.</p>
+</li>
+</ul>
+<h1 id="rest-컨트롤러">REST 컨트롤러</h1>
+<ul>
+<li>스프링 RESTful 어플리케이션 구축은 MVC어플리케이션의 것과 뷰리졸버와 모델 맵이 없다는 것 빼고는 같다.</li>
+<li>API가 간단히 JSON과 같은 방식의 원본 데이터로 클라이언트에게 반환한다.</li>
+<li>그래서 발송 서블릿이 뷰 리졸버를 우회하여 HTTP 응답 바디의 데이터를 바로 반환한다.</li>
+<li>간단한 RESTful controller의 구현을 보자.</li>
+</ul>
+<pre><code>@RestContorller
+public class Restcontroller {
+	@GetMapping(value = "/student/{studentId}")
+	public Student getTestData(@PathVariable Integer studentId) {
+		Student student = new Student();
+		student.setName("Peter");
+		student.setId(student.ID);
+		return student;
+	}
+}
+</code></pre>]]></content:encoded>
+            <category>data</category>
         </item>
         <item>
             <title><![CDATA[Greetings!]]></title>
@@ -111,7 +1291,8 @@
             <guid>https://leetaehwan.github.io/blog/greetings</guid>
             <pubDate>Sat, 18 Mar 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Congratulations, you have made your first post!]]></description>
-            <content:encoded><![CDATA[<p>Congratulations, you have made your first post!</p><p>Feel free to play around and edit this post as much you like.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p>Congratulations, you have made your first post!</p>
+<p>Feel free to play around and edit this post as much you like.</p>]]></content:encoded>
             <category>greetings</category>
         </item>
         <item>
@@ -120,7 +1301,18 @@
             <guid>https://leetaehwan.github.io/blog/welcome</guid>
             <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
-            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p><p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p><p>Regular blog authors can be added to <code>authors.yml</code>.</p><p>The blog post date can be extracted from filenames, such as:</p><ul><li><code>2019-05-30-welcome.md</code></li><li><code>2019-05-30-welcome/index.md</code></li></ul><p>A blog post folder can be convenient to co-locate blog post images:</p><p><img loading="lazy" alt="Docusaurus Plushie" src="/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p><p>The blog supports tags as well!</p><p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
+            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog">blog plugin</a>.</p>
+<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
+<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
+<p>The blog post date can be extracted from filenames, such as:</p>
+<ul>
+<li><code>2019-05-30-welcome.md</code></li>
+<li><code>2019-05-30-welcome/index.md</code></li>
+</ul>
+<p>A blog post folder can be convenient to co-locate blog post images:</p>
+<p><img alt="Docusaurus Plushie" src="https://leetaehwan.github.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500"></p>
+<p>The blog supports tags as well!</p>
+<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
             <category>facebook</category>
             <category>hello</category>
             <category>docusaurus</category>

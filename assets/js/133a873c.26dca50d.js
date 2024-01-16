@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[7650],{8127:e=>{e.exports=JSON.parse('{"label":"__geo_interface__","permalink":"/blog/tags/geo-interface","allTagsPath":"/blog/tags","count":1}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[5528],{7713:e=>{e.exports=JSON.parse('{"label":"postgreSQL","permalink":"/blog/tags/postgre-sql","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);

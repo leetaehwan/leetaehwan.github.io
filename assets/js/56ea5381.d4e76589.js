@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[4732],{1329:e=>{e.exports=JSON.parse('{"label":"pytorch","permalink":"/blog/tags/pytorch","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);
